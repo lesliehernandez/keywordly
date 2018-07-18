@@ -12,13 +12,6 @@ class Signup extends Component {
     this.signupUser = this.signupUser.bind(this);
   }
 
-  componentDidMount() {
-    // this.callApi()
-    //   .then(res => this.setState({ response: res.express }))
-    //   .catch(err => console.log(err));
-
-  }
-
   signupUser = (e) => {
     e.preventDefault()
     const newUser = {
@@ -34,8 +27,6 @@ class Signup extends Component {
       passwordMatch: newUser.passwordMatch
     })
 
-    console.log(this.state.name);
-
     const headers = new Headers()
     headers.append('Content-Type', 'application/json')
     const options = {
@@ -47,8 +38,11 @@ class Signup extends Component {
     fetch('/auth/signup', options);
     // on response 
       // if errors send errors
-      // set errors in state
-      // render errors on page
+        // set errors in state
+        // render errors on page
+      // if !errors 
+        // clear state
+        // render the login
 
     
 
