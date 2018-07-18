@@ -1,38 +1,23 @@
 import React, { Component } from 'react';
-
-import logo from './logo.svg';
-
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Login from './Pages/Login'
+import Signup from './Pages/Signup'
+import Landing from './Pages/Landing'
+import Nav from './Components/Nav'
 
 class App extends Component {
-  state = {
-    response: ''
-  };
-
-  componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ response: res.express }))
-      .catch(err => console.log(err));
-  }
-
-  callApi = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
-  };
-
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">{this.state.response}</p>
-      </div>
+      <Router>
+        <div>
+          <Nav />
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/auth/login" component={Login} />
+            <Route exact path="/auth/signup" component={Signup} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
