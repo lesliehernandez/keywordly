@@ -14,5 +14,20 @@ module.exports.createUser = (newUser, cb) => {
             user.save(cb)
         })
     })
+}
 
+module.exports.getUserByEmail = (email, cb) => {
+    const query = {email: email}
+    User.findOne(query, cb)
+}
+
+module.exports.comparePassword = (candidatePassword, hash, cb) => {    
+    bcrypt.compare(candidatePassword, hash, (err, salt) => {
+        if(err) throw err
+        cb(null, salt)
+    })
+} 
+
+module.exports.getUserById = (id, cb) => {
+    User.findById(id, cb)
 }

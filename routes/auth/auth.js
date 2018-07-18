@@ -1,9 +1,42 @@
 const path = require("path");
 const router = require("express").Router();
-const usersController = require('../../controllers/usersController')
+const usersController = require('../../controllers/usersController');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
-router.get('/login', (req, res) => {
-    res.send({ express: 'login' });
+
+
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+     passwordField: 'password'
+    },
+    (email, password, done) => {
+        usersController.getUserByEmail(email, (err, user) => {
+            if(err) throw err
+            if(!user) return done(null, false, {message: 'User not found'})
+            usersController.comparePassword(password, user.password, (err, isMatch) => {
+                if(err) throw err
+                if(isMatch){
+                    return done(null, user)
+                } 
+                else return done(null, false, {message: 'Invalid Password'})
+            })
+        })
+}))
+
+passport.serializeUser((user, done) => {
+    done(null, user.id)
+})
+
+passport.deserializeUser((id, done) => {
+    usersController.getUserById(id, (err, user) => {
+        done(err, user)
+    })
+})
+
+router.post('/login', passport.authenticate('local', {failureFlash: true}), (req, res) => {    
+    req.flash('success_msg', 'You are now logged in')
+    res.send(res.json());
 });
 
 router.post('/signup', (req, res) => {
@@ -43,10 +76,12 @@ router.post('/signup', (req, res) => {
         res.redirect('/auth/login');
 
     }
-
-
-
 });
+
+router.get('/logout', (req, res) => {
+    req.logout()
+    res.flash('success_msg', 'You are logged out')
+})
 
 
 module.exports = router;
