@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NewProject from '../../Components/NewProject/NewProject'
+import NewProject from '../../Components/Modals/NewProject'
 import './Dashboard.css'
 
 
