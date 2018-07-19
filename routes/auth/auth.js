@@ -1,81 +1,55 @@
-const path = require("path");
 const router = require("express").Router();
 const usersController = require('../../controllers/usersController');
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
+const jwt = require('jsonwebtoken');
+const exjwt = require('express-jwt');
+
+const jwtMW = exjwt({
+    secret: 'keyboard cat 4 ever'
+})
 
 
+router.post('/login', (req, res) => {    
+    const { email, password } = req.body
 
-passport.use(new LocalStrategy({
-    usernameField: 'email',
-     passwordField: 'password'
-    },
-    (email, password, done) => {
-        usersController.getUserByEmail(email, (err, user) => {
+    usersController.getUserByEmail(email, (err, user) => {
+        if(err) throw err
+        if(!user) return res.json(false)
+        usersController.comparePassword(password, user.password, (err, isMatch) => {
             if(err) throw err
-            if(!user) return done(null, false, {message: 'User not found'})
-            usersController.comparePassword(password, user.password, (err, isMatch) => {
-                if(err) throw err
-                if(isMatch){
-                    return done(null, user)
-                } 
-                else return done(null, false, {message: 'Invalid Password'})
-            })
+            if(isMatch){
+                let token = jwt.sign({user: user.email}, 'keyboard cat 4 ever', {expiresIn: 129600});
+                res.json({
+                    success: true,
+                    err: null,
+                    token
+                })
+            }
+            else {
+                res.status(401).json({
+                    success: false,
+                    token: null,
+                    err: 'Entered Password and Hash do not match!'
+                })
+            }
         })
-}))
-
-passport.serializeUser((user, done) => {
-    done(null, user.id)
-})
-
-passport.deserializeUser((id, done) => {
-    usersController.getUserById(id, (err, user) => {
-        done(err, user)
     })
-})
-
-router.post('/login', passport.authenticate('local', {failureFlash: true}), (req, res) => {    
-    req.flash('success_msg', 'You are now logged in')
-    res.send(res.json());
 });
 
 router.post('/signup', (req, res) => {
-    const name = req.body.name,
-        email = req.body.email,
-        password = req.body.password,
-        passwordMatch = req.body.passwordMatch
-
-    req.checkBody('name', 'Name is required').notEmpty();
-    req.checkBody('email', 'Email is required').notEmpty();
-    req.checkBody('email', 'Email is not valid').isEmail();
-    req.checkBody('password', 'Password is required').notEmpty();
-    req.checkBody('passwordMatch', 'Passwords do not match').equals(req.body.password);
-    const errors =  req.validationErrors();
-
-    console.log(name);
-    console.log(email);
-    console.log(password);
+    console.log(req.body);
     
-    if(errors){
-        console.log('Yes');
-        res.send(errors)
-    }
-    else{
-        console.log('No');
-        const newUser = {
-            name: name,
-            email: email,
-            password: password
-        }
-        usersController.createUser(newUser, (err, user) => {
-            if(err) throw err
-            console.log(user);            
-        })
+    const { name, email, password } = req.body
 
-        req.flash('success_msg', 'You are signed up and can now login');
-        res.redirect('/auth/login');
-
+    const newUser = {
+        name: name,
+        email: email,
+        password: password
     }
+
+    usersController.createUser(newUser, (err, user) => {
+        if(err) throw err
+        console.log(user);            
+    })
 });
 
 router.get('/logout', (req, res) => {
@@ -83,5 +57,8 @@ router.get('/logout', (req, res) => {
     res.flash('success_msg', 'You are logged out')
 })
 
+router.get('/', jwtMW, (req, res) => {
+    res.send('You are authenticated');
+})
 
 module.exports = router;

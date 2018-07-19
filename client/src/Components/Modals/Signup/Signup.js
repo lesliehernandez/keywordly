@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import ReactModal from 'react-modal'
 import Form from './Form'
+import AuthService from '../../Auth/AuthService';
 
 class Signup extends Component {
+  Auth = new AuthService()
   constructor () {
     super();
     this.state = {
@@ -24,7 +26,7 @@ class Signup extends Component {
   render () {
     return (
       <div>
-        <button onClick={this.handleOpenModal}>Signup</button>
+        {this.Auth.loggedIn() ? null : <button onClick={this.handleOpenModal}>Signup</button>}
         <ReactModal 
            isOpen={this.state.showModal}
            contentLabel="onRequestClose Example"
