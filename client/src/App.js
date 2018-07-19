@@ -5,6 +5,9 @@ import Signup from './Pages/Signup'
 import Landing from './Pages/Landing'
 import Dashboard from './Pages/Dashboard'
 import Nav from './Components/Nav'
+import ReactModal from 'react-modal'
+
+ReactModal.setAppElement('#root')
 
 class App extends Component {
   render() {
