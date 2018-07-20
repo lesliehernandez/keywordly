@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Client from '../../Pages/Client'
-import Projects from '../../Pages/Projects'
+import Client from '../../../Client'
+import Projects from '../../../Projects'
 
 // Each logical "route" has two components, one for
 // the sidebar and one for the main area. We want to
