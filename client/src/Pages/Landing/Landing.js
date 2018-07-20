@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 import './Landing.css'
-import Jumbotron from './Jumbotron';
-import Button from './Button';
+import { Button } from 'react-bootstrap'
+import { Jumbotron } from 'react-bootstrap'
 
 class Landing extends Component {
   render() {
     return (
       <div className="Landing">
-        <h1 className="App-title">Welcome to Keywordly</h1>
-        <p className="App-intro">Where Data Analytics meets Automation</p>
-      </div>
+          <Jumbotron>
+            <h1>Say Goodbye to Spreadsheets</h1>
+            <p>
+              Generate the perfect keyword ideas and eliminate the need for tedious spreadsheets.
+            </p>
+            <img src="http://via.placeholder.com/550x450" class="img-fluid" alt="Responsive image"></img>
+            <p>
+              <Button bsStyle="primary">Get Started</Button>
+              <Button bsStyle="primary">Learn More</Button>
+            </p>
+          </Jumbotron>;
+        </div>
 
 
 
