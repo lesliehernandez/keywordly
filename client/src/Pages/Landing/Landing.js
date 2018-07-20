@@ -7,6 +7,18 @@ import { Col } from 'react-bootstrap';
 import { ControlLabel } from 'react-bootstrap';
 import { FormControl } from 'react-bootstrap';
 import { Glyphicon } from 'react-bootstrap';
+=======
+
+import './Landing.css'
+import { Button} from 'react-bootstrap';
+import { Jumbotron} from 'react-bootstrap';
+import { Form} from 'react-bootstrap';
+import { FormGroup} from 'react-bootstrap';
+import { Col} from 'react-bootstrap';
+import { ControlLabel} from 'react-bootstrap';
+import { FormControl} from 'react-bootstrap';
+
+
 
 
 class Landing extends Component {
@@ -70,6 +82,32 @@ class Landing extends Component {
 
 
 
+  <h2>Lorem ipsum dolor sit amet consectetur adipsicing elit sed do</h2>
+  <img src="http://via.placeholder.com/800x600" class="img-fluid" alt="Responsive image"></img>
+</Jumbotron>
+<h2>Sign up and start your free trial</h2>
+<Form >
+  <FormGroup controlId="formInlineName">
+    <ControlLabel>First Name</ControlLabel>{' '}
+    <FormControl type="text" placeholder="Jane" />
+  </FormGroup>{' '}
+  <FormGroup controlId="formInlineName">
+    <ControlLabel>Last Name</ControlLabel>{' '}
+    <FormControl type="text" placeholder="Doe" />
+  </FormGroup>{' '}
+<FormGroup controlId="formInlineEmail">
+    <ControlLabel>Email</ControlLabel>{' '}
+    <FormControl type="email" placeholder="Email" />
+  </FormGroup>{' '}
+  <Button type="submit">Sign Up</Button>
+</Form>
+
+
+
+        </div>
+
+        
+          
     );
   }
 }
