@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
 import { Jumbotron } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { FormGroup } from 'react-bootstrap';
-import { Col } from 'react-bootstrap';
 import { ControlLabel } from 'react-bootstrap';
 import { FormControl } from 'react-bootstrap';
-import { Glyphicon } from 'react-bootstrap';
 
 
 class Landing extends Component {
@@ -53,7 +51,7 @@ class Landing extends Component {
               <a href="#!">About</a>{' '}
               <a href="#!">Pricing</a>{' '}
               <a href="#!">Contact</a>{' '}
-              <a type="button" class="btn-floating btn-lg btn-fb"><i class="fa fa-facebook"></i></a>{' '} 
+              <a type="button" class="btn-floating btn-lg btn-fb"><i class="fa fa-facebook-square"></i></a>{' '} 
               <a type="button" class="btn-floating btn-lg btn-email"><i class="fa fa-twitter"></i></a>{' '} 
               <a type="button" class="btn-floating btn-lg btn-git"><i class="fa fa-instagram"></i></a>{' '} 
 

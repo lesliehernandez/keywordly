@@ -9,6 +9,7 @@
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.1.1",
     "@material-ui/core": "^1.4.0",
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
@@ -18,12 +19,14 @@
     "express-session": "^1.15.6",
     "if-env": "^1.0.4",
     "jsonwebtoken": "^8.3.0",
+    "material-ui": "^0.20.1",
     "mongodb": "^3.1.1",
     "mongoose": "^5.2.3",
     "nodemon": "^1.18.3",
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
+    "react-scripts": "^1.1.4",
     "uuid": "^3.2.1",
     "yarn": "^1.7.0"
   },
