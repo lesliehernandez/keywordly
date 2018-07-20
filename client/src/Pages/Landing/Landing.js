@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 import './Landing.css'
-import { Button } from 'react-bootstrap'
-import { Jumbotron } from 'react-bootstrap'
 import { Button} from 'react-bootstrap';
 import { Jumbotron} from 'react-bootstrap';
 import { Form} from 'react-bootstrap';
