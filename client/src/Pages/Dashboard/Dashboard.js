@@ -7,7 +7,7 @@ import './Dashboard.css'
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import { Drawer, AppBar, Toolbar, List, ListItem, ListItemIcon, ListItemText, Divider, IconButton, TextField, InputAdornment, Button, Avatar, Grid, Menu, MenuItem } from '@material-ui/core';
+import { Drawer, AppBar, Toolbar, List, ListItem, ListItemIcon, ListItemText, ListSubheader, Collapse, Divider, IconButton, TextField, InputAdornment, Button, Avatar, Grid, Menu, MenuItem } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import FolderIcon from '@material-ui/icons/Folder';
 import ChartIcon from '@material-ui/icons/ShowChart';
@@ -15,6 +15,8 @@ import KeyboardDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import SearchIcon from '@material-ui/icons/Search';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 import CreateProject from '../../Components/Modals/CreateProject'
 import AuthService from '../../Components/Auth/AuthService'
 import Tables from '../../Components/Tables/Table'
@@ -122,10 +124,40 @@ const styles = theme => ({
 class Dashboard extends Component {
 
   Auth = new AuthService();
+  user  = this.Auth.getConfirm()
 
   state = {
     draweropen: false,
+    open: true,
     anchorEl: null,
+  };
+  
+  componentDidMount() {
+    fetch(`/project/user/${this.user.user}`)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          console.log(result)
+          this.setState({
+            isLoaded: true,
+            projects: result
+          });
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error, 
+            projects: []
+          });
+        }
+      )
+  }
+
+  handleReportsClick = () => {
+    this.setState(state => ({ open: !state.open }));
   };
 
   _handleLogout = () => {
@@ -163,7 +195,7 @@ class Dashboard extends Component {
       {
         path: "/reports",
         sidebar: () => <a>Projects</a>,
-        main: () => <Projects />
+        main: () => <Projects projects={this.state.projects} />
       }
     ];
 
@@ -249,14 +281,24 @@ class Dashboard extends Component {
                     </ListItemIcon>
                     <ListItemText primary={<Button><Link to='/dashboard'>Dashboard</Link></Button>}/>
                   </ListItem>
-                  <ListItem button>
+                  <ListItem button onClick={this.handleReportsClick}>
                     <ListItemIcon>
                     <Link to='/reports'>
                       <FolderIcon />
                     </Link>
                     </ListItemIcon>
                     <ListItemText primary={<Button><Link to='/reports'>Reports</Link></Button>} />
+                    {this.state.open ? <ExpandLess /> : <ExpandMore />}
                   </ListItem>
+                  <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                    {this.state.projects && this.state.projects.map((project, index) => (
+                      <ListItem button key={index} className={classes.nested}>
+                        <ListItemText inset primary={project.name} />
+                      </ListItem>
+                  ))}
+                    </List>
+                  </Collapse>
                 </List>
               </Drawer>
 

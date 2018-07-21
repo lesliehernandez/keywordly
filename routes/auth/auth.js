@@ -16,8 +16,9 @@ router.post('/login', (req, res) => {
         if(!user) return res.json(false)
         usersController.comparePassword(password, user.password, (err, isMatch) => {
             if(err) throw err
+            
             if(isMatch){
-                let token = jwt.sign({user: user.email}, 'keyboard cat 4 ever', {expiresIn: 129600});
+                let token = jwt.sign({user: user._id}, 'keyboard cat 4 ever', {expiresIn: 129600});
                 res.json({
                     success: true,
                     err: null,
@@ -36,8 +37,6 @@ router.post('/login', (req, res) => {
 });
 
 router.post('/signup', (req, res) => {
-    console.log(req.body);
-    
     const { name, email, password } = req.body
 
     const newUser = {
@@ -48,14 +47,9 @@ router.post('/signup', (req, res) => {
 
     usersController.createUser(newUser, (err, user) => {
         if(err) throw err
-        console.log(user);            
     })
 });
 
-router.get('/logout', (req, res) => {
-    req.logout()
-    res.flash('success_msg', 'You are logged out')
-})
 
 router.get('/', jwtMW, (req, res) => {
     res.send('You are authenticated');
