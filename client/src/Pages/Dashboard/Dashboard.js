@@ -18,6 +18,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import CreateProject from '../../Components/Modals/CreateProject'
+import ViewReports from '../ViewReports'
 import AuthService from '../../Components/Auth/AuthService'
 import Tables from '../../Components/Tables/Table'
 
@@ -122,6 +123,14 @@ const styles = theme => ({
   },
 });
 
+let routes = [
+  {
+    path: "/dashboard",
+    sidebar: () => <a>Dash</a>,
+    main: () => <Client />
+  }
+];
+
 class Dashboard extends Component {
 
   Auth = new AuthService();
@@ -134,6 +143,10 @@ class Dashboard extends Component {
   };
   
   componentDidMount() {
+    this.getProjects()
+  }
+
+  getProjects = () => {
     fetch(`/project/user/${this.user.user}`)
       .then(res => res.json())
       .then(
@@ -143,6 +156,13 @@ class Dashboard extends Component {
             isLoaded: true,
             projects: result
           });
+          result.forEach(project => {
+            routes.push({
+              path: `/reports/${project._id}`,
+              sidebar: () => <a>project.client</a>,
+              main: () => <ViewReports thisProject={project} />
+            })
+          })
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -187,19 +207,6 @@ class Dashboard extends Component {
   render() {
     const { classes, theme } = this.props;
     const { anchorEl } = this.state;
-    const routes = [
-      {
-        path: "/dashboard",
-        sidebar: () => <a>Dash</a>,
-        main: () => <Client />
-      },
-      {
-        path: "/reports",
-        sidebar: () => <a>Projects</a>,
-        main: () => <Projects projects={this.state.projects} />
-      }
-    ];
-
     return (
 
       <div className={classes.root}>
@@ -227,7 +234,7 @@ class Dashboard extends Component {
                   input: classes.searchField
                 }
                 }} />
-              <CreateProject />
+              <CreateProject getProjects={this.getProjects} />
             </Grid>
             <Grid container alignItems="center">
               <Grid item sm={8} className={classes.centerText} >
@@ -282,11 +289,9 @@ class Dashboard extends Component {
                     </ListItemIcon>
                     <ListItemText primary={<Button><Link to='/dashboard'>Dashboard</Link></Button>}/>
                   </ListItem>
-                  <ListItem button onClick={this.handleReportsClick}>
+                  <ListItem button onClick={this.handleDrawerOpen}>
                     <ListItemIcon>
-                    <Link to='/reports'>
                       <FolderIcon />
-                    </Link>
                     </ListItemIcon>
                     <ListItemText primary={<Button><Link to='/reports'>Reports</Link></Button>} />
                     {this.state.open ? <ExpandLess /> : <ExpandMore />}
@@ -295,9 +300,9 @@ class Dashboard extends Component {
                     <List component="div" disablePadding>
                     {this.state.projects && this.state.projects.map((project, index) => (
                       <ListItem button key={index} className={classes.nested}>
-                        <ListItemText inset primary={project.name} />
+                      <ListItemText inset primary={<Button><Link to={`/reports/${project._id}`} >{project.name}</Link></Button>} />
                       </ListItem>
-                  ))}
+                    ))}
                     </List>
                   </Collapse>
                 </List>

@@ -42,7 +42,6 @@ class NewProject extends Component {
         domain:this.state.domain,
       }
     }
-    console.log('Creating project', newProject);
     let confirmUser = this.Auth.getConfirm();
     newProject.user = confirmUser
     console.log(newProject.user);
@@ -63,10 +62,8 @@ class NewProject extends Component {
 
     this.state.name = ''
     this.state.domain = ''
-
+    this.props.getProjects()
     this.handleClickClose()
-
-    
   }
   
   render () {

@@ -24,7 +24,11 @@ module.exports.createProject = (data, user, cb) => {
     project.save(cb)
 }
 
-module.exports.updateProject = (data, user) => {
+module.exports.updateProject = (data, projId) => {
+    Project.findById(projId)
+    .exec((err, project) => {
+           
+    })
 
 }
 
