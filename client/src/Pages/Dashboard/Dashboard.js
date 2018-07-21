@@ -7,16 +7,7 @@ import './Dashboard.css'
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
+import { Drawer, AppBar, Toolbar, List, ListItem, ListItemIcon, ListItemText, Divider, IconButton, TextField, InputAdornment, Button, Avatar, Grid, Menu, MenuItem } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import FolderIcon from '@material-ui/icons/Folder';
 import ChartIcon from '@material-ui/icons/ShowChart';
@@ -24,18 +15,8 @@ import KeyboardDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import SearchIcon from '@material-ui/icons/Search';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import TextField from '@material-ui/core/TextField'
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Button from '@material-ui/core/Button'
-import Avatar from '@material-ui/core/Avatar';
-import Grid from '@material-ui/core/Grid';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import CreateProject from '../../Components/Modals/CreateProject'
+import AuthService from '../../Components/Auth/AuthService'
 
 
 const drawerWidth = 240;
@@ -63,9 +44,6 @@ const styles = theme => ({
     background: 'rgba(255, 255, 255, 0.6)',
     width: '250px',
     margin: '0 20px'
-  },
-  searchFieldIcon: {
-    margin: '7px'
   },
   rightIcon: {
     marginLeft: theme.spacing.unit,
@@ -141,11 +119,19 @@ const styles = theme => ({
 });
 
 class Dashboard extends Component {
+
+  Auth = new AuthService();
+
   state = {
     draweropen: false,
-    dialogopen: false,
     anchorEl: null,
   };
+
+  _handleLogout = () => {
+    //include the logout() method from our AuthService helper class here.
+    this.Auth.logout();
+    window.location = '/landing';
+}
 
   handleProfileClick = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -162,14 +148,6 @@ class Dashboard extends Component {
 
   handleDrawerClose = () => {
     this.setState({ draweropen: false });
-  };
-
-  handleClickOpen = () => {
-    this.setState({ dialogopen: true });
-  };
-
-  handleClickClose = () => {
-    this.setState({ dialogopen: false });
   };
 
   render() {
@@ -203,7 +181,7 @@ class Dashboard extends Component {
             >
               <MenuIcon />
             </IconButton>
-            <Grid container md={8}>
+            <Grid container>
               <TextField id="search" placeholder="Search" type="search" className ={classes.TextField} margin='dense' 
               InputProps= {{
                 startAdornment: (<InputAdornment style={{margin: '7px'}} ><SearchIcon /></InputAdornment>),
@@ -213,53 +191,17 @@ class Dashboard extends Component {
                   input: classes.searchField
                 }
                 }} />
-              <Button variant="contained" style={{margin: '7px'}} onClick={this.handleClickOpen}>Create new Project</Button>
-              <Dialog
-                open={this.state.dialogopen}
-                onClose={this.handleClickClose}
-                aria-labelledby="form-dialog-title"
-              >
-                <DialogTitle id="form-dialog-title">Create new Project</DialogTitle>
-                <DialogContent>
-                  <DialogContentText>
-                    To subscribe to this website, please enter your email address here. We will send
-                    updates occasionally.
-                  </DialogContentText>
-                  <TextField
-                    autoFocus
-                    margin="normal"
-                    id="name"
-                    label="Name"
-                    type="text"
-                    fullWidth
-                  />
-                  <TextField
-                    margin="normal"
-                    id="domain"
-                    label="Url"
-                    type="text"
-                    fullWidth
-                  />
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={this.handleClickClose} color="primary">
-                    Cancel
-                  </Button>
-                  <Button onClick={this.handleClickClose} color="primary">
-                    Create
-                  </Button>
-                </DialogActions>
-              </Dialog>
+              <CreateProject />
             </Grid>
-            <Grid container md={4} alignItems="center">
-              <Grid item sm={6} className={classes.centerText} >
+            <Grid container alignItems="center">
+              <Grid item sm={8} className={classes.centerText} >
                 <Avatar
                   alt="Adelle Charles"
                   src="https://vignette.wikia.nocookie.net/nekoatsume/images/f/f7/Neko-atsume-rare-cats-guide-mr-meowgi_w670_h377.png/revision/latest?cb=20170227020118"
                   className={classNames(classes.avatar, classes.bigAvatar, classes.floatRight)}
                 />
               </Grid>
-              <Grid item sm={6} className={classes.centerText}>
+              <Grid item sm={4} className={classes.centerText}>
                 <Button aria-owns={anchorEl ? 'simple-menu' : null} aria-haspopup="true" onClick={this.handleProfileClick} >
                   Mr. Meow
                   <KeyboardDownIcon className={classes.rightIcon} />
@@ -272,7 +214,7 @@ class Dashboard extends Component {
                 >
                   <MenuItem onClick={this.handleProfileClose}>Profile</MenuItem>
                   <MenuItem onClick={this.handleProfileClose}>My account</MenuItem>
-                  <MenuItem onClick={this.handleProfileClose}>Logout</MenuItem>
+                  <MenuItem onClick={this.handleProfileClose}>{this.Auth.loggedIn() ? <a onClick={this._handleLogout}>Logout</a> : null}</MenuItem>
                 </Menu>
               </Grid>
             </Grid>

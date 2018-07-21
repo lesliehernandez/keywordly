@@ -1,44 +1,55 @@
 import React, { Component } from 'react'
-import ReactModal from 'react-modal'
-import Form from './Form'
 import AuthService from '../../Auth/AuthService';
+import Form from './Form'
+import { Dialog, DialogActions, DialogContent, 
+  DialogContentText, DialogTitle, Button } from '@material-ui/core';
 
+const styles = theme => ({
+  
+})
+  
 class Signup extends Component {
-  Auth = new AuthService()
-  constructor () {
-    super();
-    this.state = {
-      showModal: false
-    };
     
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
-  }
-  
-  handleOpenModal () {
-    this.setState({ showModal: true });
-  }
-  
-  handleCloseModal () {
-    this.setState({ showModal: false });
-  }
+  Auth = new AuthService()
+
+  state = {
+    dialogopen: false
+  };
+    
+  handleClickOpen = () => {
+    this.setState({ dialogopen: true });
+  };
+
+  handleClickClose = () => {
+    this.setState({ dialogopen: false });
+  };
   
   render () {
     return (
       <div>
-        {this.Auth.loggedIn() ? null : <button onClick={this.handleOpenModal}>Signup</button>}
-        <ReactModal 
-           isOpen={this.state.showModal}
-           contentLabel="onRequestClose Example"
-           onRequestClose={this.handleCloseModal}
+        {this.Auth.loggedIn() ? null : <Button variant='contained' style={{margin: '7px'}} onClick={this.handleClickOpen} >Signup</Button>}
+      
+        <Dialog
+          open={this.state.dialogopen}
+          onClose={this.handleClickClose}
+          aria-labelledby="form-dialog-title"
         >
-          <button onClick={this.handleCloseModal}>Cancel</button>
-          <div className="signup">
-            <h1 className="App-title">Welcome to Keywordly</h1>
-            <p className="App-intro">Please Signup to use the app</p>
+          <DialogTitle id="form-dialog-title">Sign Up</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Sign by entering your info below
+            </DialogContentText>
             <Form />
-          </div>
-        </ReactModal>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClickClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={this.handleClickClose} color="primary">
+              Create
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     );
   }

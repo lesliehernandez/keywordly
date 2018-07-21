@@ -4,10 +4,7 @@ import { BrowserRouter as Router, Route} from "react-router-dom";
 import App from './App';
 import Landing from './Pages/Landing';
 import Dashboard from './Pages/Dashboard';
-import ReactModal from 'react-modal';
 import registerServiceWorker from './registerServiceWorker';
-
-ReactModal.setAppElement('#root')
 
 ReactDOM.render(
 <Router>
@@ -16,6 +13,6 @@ ReactDOM.render(
         <Route path="/" component={App} />
         <Route path="/dashboard" component={Dashboard} />
     </div>
-</Router>, 
-document.getElementById('root'));
+</Router>, document.getElementById('root'));
+
 registerServiceWorker();

@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
-import AuthService from '../../Auth/AuthService';
-import Form from './Form'
-import { Dialog, DialogActions, DialogContent, 
+import { TextField, Dialog, DialogActions, DialogContent, 
   DialogContentText, DialogTitle, Button } from '@material-ui/core';
 
 const styles = theme => ({
   
 })
-  
-class Login extends Component {
-    
-  Auth = new AuthService()
+
+class NewProject extends Component {
 
   state = {
     dialogopen: false
@@ -27,19 +23,36 @@ class Login extends Component {
   render () {
     return (
       <div>
-        {this.Auth.loggedIn() ? null : <Button variant='contained' style={{margin: '7px'}} onClick={this.handleClickOpen} >Login</Button>}
-      
+        <Button variant="contained" style={{margin: '7px'}} onClick={this.handleClickOpen}>
+        Create new Project
+        </Button>
+
         <Dialog
           open={this.state.dialogopen}
           onClose={this.handleClickClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Login</DialogTitle>
+          <DialogTitle id="form-dialog-title">Create new Project</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Enter your email and password to view your reports or start a new one
+              To subscribe to this website, please enter your email address here. We will send
+              updates occasionally.
             </DialogContentText>
-            <Form />
+            <TextField
+              autoFocus
+              margin="normal"
+              id="name"
+              label="Name"
+              type="text"
+              fullWidth
+            />
+            <TextField
+              margin="normal"
+              id="domain"
+              label="Url"
+              type="text"
+              fullWidth
+            />
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClickClose} color="primary">
@@ -55,4 +68,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default NewProject
