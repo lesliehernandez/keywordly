@@ -14,86 +14,202 @@ class Landing extends Component {
       <div class="Landing">
         <Navbar />
         <div class="jumbotron">
-        <div class="row">
-        <div class="icon col-sm-8">
-
-          <h2><b>Say goodbye to spreadsheets</b></h2>
-          <p>Keywordly is an easy-to-use keyword research tool for marketers. Uncover valuable insights in a fraction of the time.</p>
-          <button class="btn btn-4 btn-4a icon-arrow-right">SIGN UP  <i class="fas fa-arrow-right"></i>
-
-</button>
-        </div>
-        </div>
+          <div class="row">
+            <div class="icon col-sm-8">
+              <h2>
+                <b>Say goodbye to spreadsheets</b>
+              </h2>
+              <p>
+                Keywordly is an easy-to-use keyword research tool for marketers.
+                Uncover valuable insights in a fraction of the time.
+              </p>
+              <button class="btn btn-lg">Sign Up</button>
+            </div>
+          </div>
         </div>
 
         <div class="services container-fluid text-center">
-          <h3>HOW KEYWORDLY WORKS</h3>
-          <br></br>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus viverra adipiscing at in. </p>
-          <br></br>
-            <br></br>
-            <br></br>
-          <div class="row">
-          
-            <div class="icon col-sm-3">
-              <h4>Ut etiam sit amet nisl purus</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus viverra adipiscing at in.</p>
+          <div id="about">
+            <h2>How Keywordly Works</h2>
+            <br />
+            <h4>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus
+              viverra adipiscing at in.{" "}
+            </h4>
+            <br />
+            <br />
+            <br />
+            <div class="row">
+              <div class="icon col-sm-3">
+                <h4>Ut etiam sit amet nisl purus</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Risus viverra adipiscing at in.
+                </p>
+              </div>
+              <div class="icon col-sm-3">
+                <h4>Ut etiam sit amet nisl purus</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Risus viverra adipiscing at in.
+                </p>
+              </div>
             </div>
-            <div class="icon col-sm-3">
-              <h4>Ut etiam sit amet nisl purus</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus viverra adipiscing at in.</p>
+            <br />
+            <br />
+            <div class="row">
+              <div class="icon col-sm-3">
+                <h4>Ut etiam sit amet nisl purus</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Risus viverra adipiscing at in.
+                </p>
+              </div>
+              <div class="icon col-sm-3">
+                <h4>Ut etiam sit amet nisl purus</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Risus viverra adipiscing at in.
+                </p>
+              </div>
             </div>
           </div>
+        </div>
+
+        <div class="pricing">
+          <div id="pricing">
+          <div class="container-fluid">
+  <div class="text-center">
+    <h2>Pricing</h2>
+    <h4>Choose a payment plan that works for you</h4>
+  </div>
+  <br></br>
+  <br></br>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h3>Basic</h3>
+        </div>
+        <div class="panel-body">
+          <p><strong>20</strong> Lorem</p>
+          <p><strong>15</strong> Ipsum</p>
+          <p><strong>5</strong> Dolor</p>
+          <p><strong>2</strong> Sit</p>
+          <p><strong>Endless</strong> Amet</p>
+        </div>
+        <div class="panel-footer">
+          <h3>$19</h3>
+          <h4>per month</h4>
+          <button class="btn btn-lg">Sign Up</button>
+        </div>
+      </div> 
+    </div> 
+    <div class="col-sm-4">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h3>Pro</h3>
+        </div>
+        <div class="panel-body">
+          <p><strong>50</strong> Lorem</p>
+          <p><strong>25</strong> Ipsum</p>
+          <p><strong>10</strong> Dolor</p>
+          <p><strong>5</strong> Sit</p>
+          <p><strong>Endless</strong> Amet</p>
+        </div>
+        <div class="panel-footer">
+          <h3>$29</h3>
+          <h4>per month</h4>
+          <button class="btn btn-lg">Sign Up</button>
+        </div>
+      </div> 
+    </div> 
+   <div class="col-sm-4">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h3>Premium</h3>
+        </div>
+        <div class="panel-body">
+          <p><strong>100</strong> Lorem</p>
+          <p><strong>50</strong> Ipsum</p>
+          <p><strong>25</strong> Dolor</p>
+          <p><strong>10</strong> Sit</p>
+          <p><strong>Endless</strong> Amet</p>
+        </div>
+        <div class="panel-footer">
+          <h3>$49</h3>
+          <h4>per month</h4>
+          <button class="btn btn-lg">Sign Up</button>
+        </div>
+      </div> 
+    </div> 
+  </div>
+</div>
+</div>
+</div>
+        <div class="cta">
+          <div id="contact">
+          <form class="contactform">
+          <h2 align="center">Contact Us</h2>
           <br></br>
           <br></br>
-          <div class="row">
-            <div class="icon col-sm-3">
-              <h4>Ut etiam sit amet nisl purus</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus viverra adipiscing at in.</p>
-            </div>
-            <div class="icon col-sm-3">
-              <h4>Ut etiam sit amet nisl purus</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus viverra adipiscing at in.</p>
-            </div>
+          <br></br>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email"></input>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Password"></input>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Email</label>
+    <input type="text" class="form-control" id="inputEmail" placeholder="janedoe@email.com"></input>
+  </div>
+  <button type="submit" class="btn">Sign in</button>
+</form>
           </div>
-        </div>
-
- <div class="cta">
-          <h3>Say goodbye to spreadsheets</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus viverra adipiscing at in.</p>
-          <button class="btn btn-4 btn-4a icon-arrow-right">GET IN TOUCH  <i class="fas fa-arrow-right"></i>
-
-</button>
-        </div>
-
-        <footer class=" ontainer-fluid text-center">
-        <div class="footerlinks">
-        <a href="#" class="footerlinks">About</a>    
-        <a href="#" class="footerlinks">Pricing</a>
-        <a href="#" class="footerlinks">Contact</a>
-        </div>
- 
-
-    <a class="socialicons">
-    <i class="fab fa-facebook"></i>
-    </a>
-    <a class="socialicons">
-    <i class="fab fa-twitter-square"></i>
+          </div>
 
 
-    </a>
-    <a class="socialicons">
-    <i class="fab fa-linkedin"></i>
-    </a>
-    <a class="socialicons">
-    <i class="fab fa-instagram"></i>
-</a>
-<br></br>
-<br></br>
-<br></br>
+        <footer class="container-fluid text-center">
+          <div class="footerlinks">
+            <a href="#about" class="footerlinks">
+              About
+            </a>
+            <a href="#pricing" class="footerlinks">
+              Pricing
+            </a>
+            <a href="#contact" class="footerlinks">
+              Contact
+            </a>
+          </div>
+
+          <a class="socialicons">
+            <i class="fab fa-facebook" />
+          </a>
+          <a class="socialicons">
+            <i class="fab fa-twitter-square" />
+          </a>
+          <a class="socialicons">
+            <i class="fab fa-linkedin" />
+          </a>
+          <a class="socialicons">
+            <i class="fab fa-instagram" />
+          </a>
+          <br />
+          <br />
+          <br />
           <p>Copyright 2018</p>
         </footer>
-      </div>
+        </div>
     );
   }
 }
