@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Bar, Pie } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import { Card, CardBody, CardColumns, CardHeader } from 'reactstrap';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import './Chart.css'
@@ -20,28 +20,6 @@ const bar = {
   ],
 };
 
-
-const pie = {
-  labels: [
-    'Branded',
-    'Unbranded',
-  ],
-  datasets: [
-    {
-      data: [300, 50],
-      backgroundColor: [
-        '#FF6384',
-        '#36A2EB',
-      ],
-      hoverBackgroundColor: [
-        '#FF6384',
-        '#36A2EB',
-      ],
-    }],
-};
-
-
-
 const options = {
   tooltips: {
     enabled: false,
@@ -50,32 +28,13 @@ const options = {
   maintainAspectRatio: false
 }
 
-class Charts extends Component {
+class OrChart extends Component {
   render() {
     return (
       <div className="animated fadeIn">
         <CardColumns className="cols-2">
-         
-
-
-                   <Card style={{height:'292px'}}>
-            <CardHeader>
-              Branded vs. Unbranded
-              <div className="card-header-actions">
-                <a href="http://www.chartjs.org" className="card-header-action">
-                  <small className="text-muted">docs</small>
-                </a>
-              </div>
-            </CardHeader>
-            <CardBody>
-              <div className="chart-wrapper">
-                <Pie data={pie} />
-              </div>
-            </CardBody>
-          </Card>
-
           
-          <Card>
+          <Card style={{ position:'absolute', height:'400px' }}>
             <CardHeader>
               Organic Position Distribution
               <div className="card-header-actions">
@@ -89,8 +48,7 @@ class Charts extends Component {
                 <Bar data={bar} options={options} />
               </div>
             </CardBody>
-          </Card>
-          
+          </Card>    
          
         </CardColumns>
       </div>
@@ -98,4 +56,4 @@ class Charts extends Component {
   }
 }
 
-export default Charts;
+export default OrChart;
