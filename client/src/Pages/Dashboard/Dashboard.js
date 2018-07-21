@@ -24,6 +24,7 @@ import Tables from '../../Components/Tables/Table'
 
 const drawerWidth = 240;
 const styles = theme => ({
+  
   root: {
     flexGrow: 1,
     height: 430,
@@ -304,7 +305,7 @@ class Dashboard extends Component {
 
               <main className={classes.content}>
                 <div className={classes.toolbar} />
-                <div style={{ display: "flex" }}>
+                <div style={{ display: "flex"}}>
                   {routes.map((route, index) => (
                       <Route
                         key={index}
@@ -327,6 +328,7 @@ class Dashboard extends Component {
 Dashboard.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
+  
 };
 
 export default compose(withRouter, withStyles(styles, { withTheme: true }))(Dashboard);
