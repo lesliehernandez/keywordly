@@ -5,12 +5,14 @@ import { Form } from 'react-bootstrap';
 import { FormGroup } from 'react-bootstrap';
 import { ControlLabel } from 'react-bootstrap';
 import { FormControl } from 'react-bootstrap';
+import UserNavbar from '../../Components/Nav';
 
 
 class Landing extends Component {
   render() {
     return (
       <div className="Landing">
+        <UserNavbar />
 
         <Jumbotron>
           <h1>Say Goodbye to Spreadsheets</h1>

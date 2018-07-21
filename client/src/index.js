@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route} from "react-router-dom";
-import UserNavbar from './Components/Nav';
 import App from './App';
 import Landing from './Pages/Landing';
 import Dashboard from './Pages/Dashboard';
@@ -13,7 +12,6 @@ ReactModal.setAppElement('#root')
 ReactDOM.render(
 <Router>
     <div>
-        <UserNavbar />
         <Route exact path="/landing" component={Landing} />
         <Route path="/" component={App} />
         <Route path="/dashboard" component={Dashboard} />
