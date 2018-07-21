@@ -1,0 +1,82 @@
+/* Add an orange color to all icons and set the font-size */
+
+h2 {
+    font-size: 35px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+.logo-small {
+    color: #534FC3;
+    font-size: 50px;
+}
+
+.logo {
+    color: #534FC3;
+    font-size: 200px;
+}
+
+.jumbotron { 
+    background-color: #534FC3; 
+    color: #ffffff;
+    margin: 0;
+    padding: 150px 50px;
+}
+
+.services {
+padding: 50px;
+}
+
+.icon {
+    text-align: left;
+}
+
+.cta {
+padding-top: 100px;
+padding-bottom: 100px;
+text-align: center;
+background-color: #534FC3; 
+color: #ffffff;
+
+}
+
+.btn {
+background-color: white;
+width: 150px;
+height: 35px;
+color: #534FC3;
+font-weight: 700;
+font-size: 12px;
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+display: inline-block;
+border-radius: 4px;
+border: none;
+text-align: center;
+transition: all 0.5s;
+cursor: pointer;
+margin: 5px;
+}
+
+.btn:hover {
+}
+
+
+footer {
+    bottom: 0;
+    width: 100%;
+    color: darkslategray;
+    text-align: center;
+    padding: 40px;
+}
+
+.footerlinks {
+   float: left;
+   padding-right: 30px;
+}
+
+.socialicons {
+    float: right;
+    padding-right: 20px;
+}

@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import Login from '../Modals/Login';
 import Signup from '../Modals/Signup';
 import AuthService from '../Auth/AuthService'
+import './Navbar.css'
 
 
-class UserNavbar extends Component {
+class Navbar extends Component {
 
     Auth = new AuthService();
 
@@ -17,19 +18,13 @@ class UserNavbar extends Component {
     render() {
         return (
             <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Keywordly</a>
-                    </div>
-                    <ul class="nav navbar-nav">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><Login /></li>
-                        <li><Signup /></li>
+                        <a class="navbar-brand" href="#"><img src="http://via.placeholder.com/100x50" alt=""></img></a>
+                        <a href="./About">About</a>
+                        <a href="./Pricing">Pricing</a>
+                        <a href="./Contact">Contact</a>
+                        <Login />
+                        <Signup />
                         {this.Auth.loggedIn() ? <a onClick={this._handleLogout}>Logout</a> : null}
-                    </ul>
-                </div>
             </nav>
 
 
@@ -41,4 +36,4 @@ class UserNavbar extends Component {
 
 
 
-export default UserNavbar;
+export default Navbar;
