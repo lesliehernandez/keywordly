@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { TextField, Dialog, DialogActions, DialogContent, 
   DialogContentText, DialogTitle, Button } from '@material-ui/core';
+import AuthService from '../../Auth/AuthService'
 
 const styles = theme => ({
   
@@ -8,8 +9,12 @@ const styles = theme => ({
 
 class NewProject extends Component {
 
+  Auth = new AuthService();
+
   state = {
-    dialogopen: false
+    dialogopen: false,
+    name: '',
+    domain: ''
   };
     
   handleClickOpen = () => {
@@ -19,6 +24,50 @@ class NewProject extends Component {
   handleClickClose = () => {
     this.setState({ dialogopen: false });
   };
+
+  handleChange = (e) => {
+    this.setState(
+      {
+          [e.target.name]: e.target.value
+      }
+    )
+  }
+
+  handleFormSubmit = (e) => {
+    e.preventDefault()
+    let newProject = {
+      user: null,
+      info: {
+        name:this.state.name,
+        domain:this.state.domain,
+      }
+    }
+    console.log('Creating project', newProject);
+    let confirmUser = this.Auth.getConfirm();
+    newProject.user = confirmUser
+    console.log(newProject.user);
+    
+
+    const headers = new Headers()
+    headers.append('Content-Type', 'application/json')
+    const options = {
+      method: 'POST',
+      headers,
+      body:JSON.stringify(newProject)
+    }
+
+    fetch('/project/new', options)
+    .then((data) => {
+      console.log(data);
+    })
+
+    this.state.name = ''
+    this.state.domain = ''
+
+    this.handleClickClose()
+
+    
+  }
   
   render () {
     return (
@@ -39,16 +88,20 @@ class NewProject extends Component {
               updates occasionally.
             </DialogContentText>
             <TextField
+              onChange={this.handleChange}
               autoFocus
               margin="normal"
               id="name"
+              name="name"
               label="Name"
               type="text"
               fullWidth
             />
             <TextField
+              onChange={this.handleChange}
               margin="normal"
               id="domain"
+              name="domain"
               label="Url"
               type="text"
               fullWidth
@@ -58,7 +111,7 @@ class NewProject extends Component {
             <Button onClick={this.handleClickClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleClickClose} color="primary">
+            <Button onClick={this.handleFormSubmit} color="primary">
               Create
             </Button>
           </DialogActions>

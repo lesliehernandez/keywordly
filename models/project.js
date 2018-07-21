@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
+    , Schema = mongoose.Schema
 
 const ProjectSchema = mongoose.Schema({
     name: {
@@ -6,6 +7,7 @@ const ProjectSchema = mongoose.Schema({
         required: true,
         unique: true
     },
+    created_by:{type: Schema.Types.ObjectId, ref: 'User'},
     client: {
         info: {
             domain: {

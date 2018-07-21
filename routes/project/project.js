@@ -1,22 +1,32 @@
 const router = require("express").Router();
 const ProjectsController = require('../../controllers/projectsController')
+const UserController = require('../../controllers/usersController')
 
-checkAuth = (req, res, next) => {
-    console.log(req);
-    console.log(res.locals);
-    
-    console.log('Checking auth');
-    
-    if(req.isAuthenticated()) return next();
-    else {
-        req.flash('error_msg', 'Your are not logged in')
-        res.json(res);
-    }
-}
 
-router.post('/new', checkAuth, (req, res) => {
-    ProjectsController.createProject(req.body, req.user)
+
+router.post('/new', (req, res) => {
+    let user = req.body.user.user
+    let info = req.body.info
+    UserController.getUserById(user, (err, u) => {
+        console.log(u); 
+        if(err) throw err
+        ProjectsController.createProject(info, u._id, (err, project) => {
+            if(err) throw err
+            console.log(project)
+            res.send(res.status)
+        })
+    })
+    
 });
+
+router.get('/user/:id', (req, res) => {
+    console.log(req.params.id);
+    ProjectsController.getProjects(req.params.id, (err, projects) => {
+        if(err) throw err
+        console.log(projects);
+        res.json(projects)
+    })
+})
 
 router.post('/update', (req, res) => {
     res.send({ express: 'Hello From Express' });
