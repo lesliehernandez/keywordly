@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
 import { compose } from 'recompose'
 import Client from '../Client'
-import Projects from '../Projects'
 import './Dashboard.css'
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -20,8 +19,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import CreateProject from '../../Components/Modals/CreateProject'
 import ViewReports from '../ViewReports'
 import AuthService from '../../Components/Auth/AuthService'
-import Tables from '../../Components/Tables/Table'
-import Cards from '../../Components/Cards/Card'
+
 
 
 
@@ -180,7 +178,7 @@ class Dashboard extends Component {
       )
   }
 
-  handleReportsClick = () => {
+  handleClick = () => {
     this.setState(state => ({ open: !state.open }));
   };
 
@@ -292,11 +290,11 @@ class Dashboard extends Component {
                     </ListItemIcon>
                     <ListItemText primary={<Button><Link to='/dashboard'>Dashboard</Link></Button>}/>
                   </ListItem>
-                  <ListItem button onClick={this.handleDrawerOpen}>
-                    <ListItemIcon>
+                  <ListItem button  onClick={this.handleClick}>
+                    <ListItemIcon onClick={this.handleDrawerOpen} >
                       <FolderIcon />
                     </ListItemIcon>
-                    <ListItemText primary={<Button><Link to='/reports'>Reports</Link></Button>} />
+                    <ListItemText primary={<Button>Reports</Button>} />
                     {this.state.open ? <ExpandLess /> : <ExpandMore />}
                   </ListItem>
                   <Collapse in={this.state.open} timeout="auto" unmountOnExit>
