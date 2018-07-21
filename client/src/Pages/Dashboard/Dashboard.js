@@ -17,6 +17,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import CreateProject from '../../Components/Modals/CreateProject'
 import AuthService from '../../Components/Auth/AuthService'
+import Tables from '../../Components/Tables/Table'
 
 
 const drawerWidth = 240;
@@ -167,7 +168,9 @@ class Dashboard extends Component {
     ];
 
     return (
+
       <div className={classes.root}>
+        
         <AppBar
           position="absolute"
           className={classNames(classes.appBar, this.state.draweropen && classes.appBarShift)}
@@ -220,6 +223,8 @@ class Dashboard extends Component {
             </Grid>
           </Toolbar>
         </AppBar>
+
+
         <Router>
           <div>
               <Drawer
@@ -254,6 +259,7 @@ class Dashboard extends Component {
                   </ListItem>
                 </List>
               </Drawer>
+
               <main className={classes.content}>
                 <div className={classes.toolbar} />
                 <div style={{ display: "flex" }}>
@@ -265,10 +271,12 @@ class Dashboard extends Component {
                         component={route.main}
                       />
                   ))}
+
                 </div>
             </main>
           </div>
       </Router>
+      
     </div>
     );
   }
