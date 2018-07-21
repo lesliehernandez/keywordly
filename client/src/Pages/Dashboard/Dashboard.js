@@ -20,6 +20,8 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import CreateProject from '../../Components/Modals/CreateProject'
 import AuthService from '../../Components/Auth/AuthService'
 import Tables from '../../Components/Tables/Table'
+import Cards from '../../Components/Cards/Card'
+
 
 
 const drawerWidth = 240;
@@ -120,6 +122,7 @@ const styles = theme => ({
     top: '0',
     left: '73px'
   },
+ 
 });
 
 class Dashboard extends Component {
@@ -202,7 +205,7 @@ class Dashboard extends Component {
 
     return (
 
-      <div className={classes.root}>
+      <div className={classes.root} style={{height:'100vh'}}>
         
         <AppBar
           position="absolute"
@@ -303,7 +306,9 @@ class Dashboard extends Component {
                 </List>
               </Drawer>
 
-              <main className={classes.content}>
+
+
+              <main className={classes.content} style={{height:'100vh', width: '95vw'}}>
                 <div className={classes.toolbar} />
                 <div style={{ display: "flex"}}>
                   {routes.map((route, index) => (

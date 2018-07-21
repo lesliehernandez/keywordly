@@ -12,10 +12,7 @@ const styles = theme => ({
   root: {
     width: '100%',
     marginTop: theme.spacing.unit * 3,
-    overflowX: 'auto',
-  },
-  table: {
-    minWidth: 700,
+    overflowX: 'auto',  
   },
 });
 
@@ -39,17 +36,17 @@ function SimpleTable(props) {
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
+        <TableHead style={{height:'33px'}}>
+          <TableRow style={{height:'33px'}}>
             <TableCell>Date</TableCell>
-            <TableCell numeric>Report Type</TableCell>
-            <TableCell numeric>Report Name</TableCell>
+            <TableCell numeric >Report Type</TableCell>
+            <TableCell numeric >Report Name</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map(n => {
             return (
-              <TableRow key={n.id}>
+              <TableRow key={n.id} style={{height:'33px'}}>
                 <TableCell component="th" scope="row">
                   {n.name}
                 </TableCell>
