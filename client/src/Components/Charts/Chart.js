@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Bar, Pie } from 'react-chartjs-2';
 import { Card, CardBody, CardColumns, CardHeader } from 'reactstrap';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import './Chart.css'
 
 
 const bar = {
@@ -57,7 +58,7 @@ class Charts extends Component {
          
 
 
-                   <Card>
+                   <Card style={{height:'292px'}}>
             <CardHeader>
               Branded vs. Unbranded
               <div className="card-header-actions">

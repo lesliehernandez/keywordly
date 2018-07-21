@@ -8,8 +8,8 @@ class Projects extends Component {
         <div className="Projects">
             <h1 className="App-title">Here are your projects</h1>
 
-<Tables />
-            <p className="App-intro">...</p>
+        <div className="Tables" style={{width: '90vw', height: '100vh', display: 'inline-block'}}><Tables/></div>
+
         </div>
     );
   }
