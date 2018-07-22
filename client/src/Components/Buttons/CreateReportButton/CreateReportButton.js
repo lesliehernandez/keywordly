@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Route, Redirect } from 'react-router'
 import { Button } from '@material-ui/core';
+
 
 
 class CreateReportButton extends Component {
@@ -11,7 +13,8 @@ class CreateReportButton extends Component {
         fetch(`/project/data/${this.props.projectDomain}/${this.props.projectId}`)
         .then(res => res.json())
         .then(results => {
-            console.log(results);            
+            console.log(results);          
+            <Redirect to="/dashboard" />
         })
         
         

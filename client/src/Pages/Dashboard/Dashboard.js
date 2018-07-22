@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
-import { compose } from 'recompose'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Client from '../Client'
 import './Dashboard.css'
 import PropTypes from 'prop-types';
@@ -339,6 +338,6 @@ Dashboard.propTypes = {
   
 };
 
-export default compose(withRouter, withStyles(styles, { withTheme: true }))(Dashboard);
+export default withStyles(styles, { withTheme: true })(Dashboard);
 
 

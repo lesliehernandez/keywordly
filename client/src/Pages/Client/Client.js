@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Client.css'
-import Tables from '../../Components/Tables/Table'
+import Tables from '../../Components/Tables/'
 import BrandedChart from '../../Components/BrandedChart'
 import OrChart from '../../Components/OrChart'
 import TrafficCard from '../../Components/TrafficCard'
