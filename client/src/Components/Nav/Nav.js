@@ -19,9 +19,9 @@ class Navbar extends Component {
         return (
             <nav class="navbar">
                         <a class="navbar-brand" href="#"><img src="http://via.placeholder.com/100x50" alt=""></img></a>
-                        <a href="#about" class="toplinks">About</a>
-                        <a href="#pricing" class="toplinks">Pricing</a>
-                        <a href="#contact" class="toplinks">Contact</a>
+                        <a href="#about" class="toplinks">ABOUT</a>
+                        <a href="#pricing" class="toplinks">PRICING</a>
+                        <a href="#contact" class="toplinks">CONTACT</a>
                         <Login/>
                         <Signup />
                         {this.Auth.loggedIn() ? <a onClick={this._handleLogout}>Logout</a> : null}

@@ -7,6 +7,7 @@ import { ControlLabel } from "react-bootstrap";
 import { FormControl } from "react-bootstrap";
 import Navbar from "../../Components/Nav";
 import "./Landing.css";
+import Signup from "../../Components/Modals/Signup";
 
 class Landing extends Component {
   render() {
@@ -16,14 +17,15 @@ class Landing extends Component {
         <div class="jumbotron">
           <div class="row">
             <div class="icon col-sm-8">
-              <h2>
-                <b>Say goodbye to spreadsheets</b>
-              </h2>
-              <p>
-                Keywordly is an easy-to-use keyword research tool for marketers.
-                Uncover valuable insights in a fraction of the time.
+              <h1>
+                Say goodbye to spreadsheets
+              </h1>
+              <p class="herotext">
+               <b> Keywordly is an easy-to-use keyword research tool for marketers.
+                Uncover valuable insights in a fraction of the time.</b>
               </p>
-              <button class="btn btn-lg">Sign Up</button>
+              <Signup />
+
             </div>
           </div>
         </div>
@@ -35,13 +37,9 @@ class Landing extends Component {
             <br></br>
             <br></br>
             <br></br>
-            <br></br>
-            <br />
-            <br />
-            <br />
             <div class="row">
               <div class="icon col-sm-3">
-                <h4>Ut etiam sit amet nisl purus</h4>
+                <h4>Traffic Overview</h4>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -49,7 +47,7 @@ class Landing extends Component {
                 </p>
               </div>
               <div class="icon col-sm-3">
-                <h4>Ut etiam sit amet nisl purus</h4>
+                <h4>Keyword Resarch</h4>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -61,7 +59,7 @@ class Landing extends Component {
             <br />
             <div class="row">
               <div class="icon col-sm-3">
-                <h4>Ut etiam sit amet nisl purus</h4>
+                <h4>Competitor Data</h4>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -69,7 +67,7 @@ class Landing extends Component {
                 </p>
               </div>
               <div class="icon col-sm-3">
-                <h4>Ut etiam sit amet nisl purus</h4>
+                <h4>Content Audit</h4>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -85,11 +83,12 @@ class Landing extends Component {
           <div class="container-fluid">
   <div class="text-center">
     <h2>Pricing</h2>
-    <h4>Choose a payment plan that works for you</h4>
+    <br></br>
+    <p class="pricingtext">Choose a payment plan that works for you</p>
   </div>
   <br></br>
   <br></br>
-  <div class="row">
+  <div class="pricingrow row">
     <div class="col-sm-4">
       <div class="panel panel-default text-center">
         <div class="panel-heading">
@@ -154,25 +153,25 @@ class Landing extends Component {
         <div class="cta">
           <div id="contact">
           <form class="contactform">
-          <h2 align="center">Contact Us</h2>
+          <h2 class="contactheading" align="center">Contact Us</h2>
           <br></br>
           <br></br>
           <br></br>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email"></input>
+      <label for="inputEmail4" class="label">First Name</label><br></br>
+      <input type="text" class="form-control" id="inputEmail4" placeholder="Jane"></input>
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Password"></input>
+      <label for="inputPassword4" class="label">Last Name</label><br></br>
+      <input type="text" class="form-control" id="inputPassword4" placeholder="Doe"></input>
     </div>
   </div>
   <div class="form-group">
-    <label for="inputAddress">Email</label>
+    <label for="inputAddress" class="label">Email</label><br></br>
     <input type="text" class="form-control" id="inputEmail" placeholder="janedoe@email.com"></input>
   </div>
-  <button type="submit" class="btn">Sign in</button>
+  <button type="submit" class="contact-btn">Submit</button>
 </form>
           </div>
           </div>
@@ -191,17 +190,17 @@ class Landing extends Component {
             </a>
           </div>
 
-          <a class="socialicons">
-            <i class="fab fa-facebook" />
+          <a href="#">
+            <i class="socialicons fab fa-facebook" />
           </a>
-          <a class="socialicons">
-            <i class="fab fa-twitter-square" />
+          <a href="#">
+            <i class="socialicons fab fa-twitter-square" />
           </a>
-          <a class="socialicons">
-            <i class="fab fa-linkedin" />
+          <a href="#">
+            <i class="socialicons fab fa-linkedin" />
           </a>
-          <a class="socialicons">
-            <i class="fab fa-instagram" />
+          <a href="#">
+            <i class="socialicons fab fa-instagram" />
           </a>
           <br />
           <br />

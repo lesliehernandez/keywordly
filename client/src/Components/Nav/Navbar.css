@@ -2,17 +2,25 @@
     margin: 0;
     justify-content: unset;
     width:100%;
-    background-color: #F3F2F7;
+    background-color: #534FC3;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    color: white;
+    font-size: 13px;
 }
 
 a {
-    color: darkslategray;
-    font-size: 13px;
+    color: white;
+    font-size: 11px;
+    text-transform: capitalize;
+    font-weight: 400;
 }
 
 a:hover {
-    color: darkslategray;
-    font-size: 13px;
+    color: white;
+    font-size: 11px;
+    text-transform: capitalize;
+    font-weight: bold;
     text-decoration: none;
 }
 
@@ -38,4 +46,9 @@ a:hover {
         transition: all 0.5s;
         cursor: pointer;
         margin: 5px;
+}
+.authenticationbuttons:hover {
+border: 1px solid #46E4C4;
+background-color: #fff !important;
+color: #534FC3;
 }
