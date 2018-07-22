@@ -3,7 +3,8 @@ const bcrypt = require('bcrypt');
 
 module.exports.createUser = (newUser, cb) => {
     const user = new User({
-        name: newUser.name,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
         email: newUser.email,
         password: newUser.password
     })

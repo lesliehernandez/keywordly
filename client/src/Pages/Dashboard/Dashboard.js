@@ -145,6 +145,11 @@ class Dashboard extends Component {
   componentDidMount() {
     this.getProjects()
   }
+  componentDidUpdate(prevProps){
+    
+    console.log('Component Rerendered')
+    console.log(prevProps)
+  }
 
   getProjects = () => {
     fetch(`/project/user/${this.user.user}`)

@@ -37,16 +37,18 @@ router.post('/login', (req, res) => {
 });
 
 router.post('/signup', (req, res) => {
-    const { name, email, password } = req.body
+    const { firstName, lastName, email, password } = req.body
 
     const newUser = {
-        name: name,
+        firstName: firstName,
+        lastName: lastName,
         email: email,
         password: password
     }
 
     usersController.createUser(newUser, (err, user) => {
         if(err) throw err
+        res.json(user)
     })
 });
 
