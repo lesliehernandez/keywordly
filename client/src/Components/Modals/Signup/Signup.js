@@ -27,7 +27,7 @@ class Signup extends Component {
   render () {
     return (
       <div>
-        {this.Auth.loggedIn() ? null : <Button variant='contained' style={{margin: '7px'}} onClick={this.handleClickOpen} >Signup</Button>}
+        {this.Auth.loggedIn() ? null : <Button class="authenticationbuttons" onClick={this.handleClickOpen} >Signup</Button>}
       
         <Dialog
           open={this.state.dialogopen}

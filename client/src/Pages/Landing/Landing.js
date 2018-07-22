@@ -31,12 +31,11 @@ class Landing extends Component {
         <div class="services container-fluid text-center">
           <div id="about">
             <h2>How Keywordly Works</h2>
-            <br />
-            <h4>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus
-              viverra adipiscing at in.{" "}
-            </h4>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <br />
             <br />
             <br />
