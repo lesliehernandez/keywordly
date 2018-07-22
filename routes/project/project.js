@@ -20,11 +20,20 @@ router.post('/new', (req, res) => {
 });
 
 router.get('/user/:id', (req, res) => {
-    console.log(req.params.id);
     ProjectsController.getProjects(req.params.id, (err, projects) => {
         if(err) throw err
         console.log(projects);
         res.json(projects)
+    })
+})
+
+router.get('/data/:domain/:projectId', (req, res) => {
+    console.log(req.params.domain);
+    console.log(req.params.projectId);
+    ProjectsController.getData(req.params.domain, req.params.projectId, (err, data) => {
+        if(err) throw err
+        console.log(data);
+        res.json(data);
     })
 })
 

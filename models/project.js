@@ -23,7 +23,12 @@ const ProjectSchema = mongoose.Schema({
                 include:{type: Boolean}
             }],
         },
-        organic_research: [{}]
+        data: {
+            type: Object
+        }
+    },
+    competitors: {
+        type: Object
     }
 })
 
