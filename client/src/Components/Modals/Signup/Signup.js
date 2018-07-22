@@ -36,9 +36,6 @@ class Signup extends Component {
         >
           <DialogTitle id="form-dialog-title">Sign Up</DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              Sign by entering your info below
-            </DialogContentText>
             <Form />
           </DialogContent>
           <DialogActions>
@@ -46,7 +43,7 @@ class Signup extends Component {
               Cancel
             </Button>
             <Button onClick={this.handleClickClose} color="primary">
-              Create
+              Submit
             </Button>
           </DialogActions>
         </Dialog>

@@ -3,10 +3,11 @@ import AuthService from '../../Auth/AuthService';
 import Form from './Form'
 import { Dialog, DialogActions, DialogContent, 
   DialogContentText, DialogTitle, Button } from '@material-ui/core';
+import './Login.css'
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
-  
-})
+});
   
 class Login extends Component {
     
@@ -27,26 +28,20 @@ class Login extends Component {
   render () {
     return (
       <div>
-        {this.Auth.loggedIn() ? null : <Button class="authenticationbuttons"onClick={this.handleClickOpen} >Login</Button>}
+        {this.Auth.loggedIn() ? null : <Button class="authenticationbuttons"onClick={this.handleClickOpen}>Login</Button>}
       
         <Dialog
           open={this.state.dialogopen}
           onClose={this.handleClickClose}
-          aria-labelledby="form-dialog-title"
-        >
+          aria-labelledby="form-dialog-title">
+
           <DialogTitle id="form-dialog-title">Login</DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              Enter your email and password to view your reports or start a new one
-            </DialogContentText>
             <Form />
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClickClose} color="primary">
               Cancel
-            </Button>
-            <Button onClick={this.handleClickClose} color="primary">
-              Create
             </Button>
           </DialogActions>
         </Dialog>

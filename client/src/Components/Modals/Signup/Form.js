@@ -46,16 +46,35 @@ class Form extends Component {
     return (
         <div className="signup_form">
             <form onSubmit={this.handleFormSubmit} >
-              <label>Name</label>
-              <input ref="name" name="name" placeholder="John Smith" type="text" onChange={this._handleChange} />
-              <label>Email</label>
+              <div class="row">
+              <div class="form-group">
+              <label>First Name</label><br></br>
+              <input ref="name" name="name" placeholder="Jane" type="text" onChange={this._handleChange} />
+              </div>
+              <div class="form-group">
+              <label>Last Name</label><br></br>
+              <input ref="lastname" name="lastname" placeholder="Doe" type="text" onChange={this._handleChange} />
+              </div>
+              </div>
+              <div class="row">
+              <div class="form-group">
+              <label>Email</label><br></br>
               <input ref="email" name="email" placeholder="johnsmith@example.com" type="email" onChange={this._handleChange} />
-              <label>Password</label>
+              </div>
+              </div>
+              <div class="row">
+              <div class="form-group">
+              <label>Password</label><br></br>
               <input ref="password" name="password" placeholder="Password" type="password" onChange={this._handleChange} />
-              <label>Confirm Password</label>
+              </div>
+              </div>
+              <div class="row">
+              <div class="form-group">
+              <label>Confirm Password</label><br></br>
               <input ref="passwordMatch" name="passwordMatch" placeholder="Password Confirm" type="password" />
-              <button type="submit">Signup</button>
-            </form>
+              </div>
+              </div>
+             </form>
         </div>
     );
   }

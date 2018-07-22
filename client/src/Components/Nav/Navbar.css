@@ -7,6 +7,8 @@
     letter-spacing: 1px;
     color: white;
     font-size: 13px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 a {
@@ -14,6 +16,7 @@ a {
     font-size: 11px;
     text-transform: capitalize;
     font-weight: 400;
+    padding: 30px;
 }
 
 a:hover {
@@ -27,10 +30,6 @@ a:hover {
 .navbar-brand {
     float: left;
     padding-top: 0;
-}
-
-.toplinks {
-    padding: 30px;
 }
 
 .authenticationbuttons {
@@ -51,4 +50,14 @@ a:hover {
 border: 1px solid #46E4C4;
 background-color: #fff !important;
 color: #534FC3;
+}
+
+.toplinks {
+    padding-top: 20px;
+}
+
+.navbar-brand {
+    padding-left: 0;
+    margin-left: 0;
+    padding-top: 10px;
 }
