@@ -17,6 +17,13 @@ class Landing extends Component {
         <div class="jumbotron">
           <div class="row">
             <div class="icon col-sm-8">
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
               <h1>
                 Say goodbye to spreadsheets
               </h1>
@@ -30,53 +37,72 @@ class Landing extends Component {
           </div>
         </div>
 
+
         <div class="services container-fluid text-center">
           <div id="about">
+          <div class="col-md-12">
             <h2>How Keywordly Works</h2>
             <br></br>
             <br></br>
             <br></br>
             <br></br>
-            <div class="row">
-              <div class="icon col-sm-3">
+            <div class="col-md-3">
+            <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
                 <h4>Traffic Overview</h4>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Risus viverra adipiscing at in.
                 </p>
-              </div>
-              <div class="icon col-sm-3">
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+          
+
                 <h4>Keyword Resarch</h4>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Risus viverra adipiscing at in.
                 </p>
-              </div>
-            </div>
-            <br />
-            <br />
-            <div class="row">
-              <div class="icon col-sm-3">
+                </div>
+                <div class="col-md-3">
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
                 <h4>Competitor Data</h4>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Risus viverra adipiscing at in.
                 </p>
-              </div>
-              <div class="icon col-sm-3">
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+
                 <h4>Content Audit</h4>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Risus viverra adipiscing at in.
                 </p>
-              </div>
-            </div>
-          </div>
-        </div>
+                </div>
+                <div class="col-md-6">
+                <img src="http://via.placeholder.com/500x350"></img>
+                </div>
+</div>
+</div>
+</div>
 
         <div class="pricing">
           <div id="pricing">
