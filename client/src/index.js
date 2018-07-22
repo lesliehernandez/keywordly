@@ -11,9 +11,9 @@ ReactDOM.render(
 <Router>
     <div>
         <Route exact path="/landing" component={Landing} />
-        <Route path="/" component={App} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/reportsBuilder" component={ReportsBuilder} />
+        <Route exact path="/" component={App} />
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/reportsBuilder" component={ReportsBuilder} />
     </div>
 </Router>, document.getElementById('root'));
 

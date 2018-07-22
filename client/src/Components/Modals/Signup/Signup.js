@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import AuthService from '../../Auth/AuthService';
-import Form from './Form'
 import { Dialog, DialogActions, DialogContent, 
   DialogContentText, DialogTitle, Button } from '@material-ui/core';
 
@@ -13,7 +12,11 @@ class Signup extends Component {
   Auth = new AuthService()
 
   state = {
-    dialogopen: false
+    dialogopen: false,
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
   };
     
   handleClickOpen = () => {
@@ -23,6 +26,40 @@ class Signup extends Component {
   handleClickClose = () => {
     this.setState({ dialogopen: false });
   };
+
+  _handleChange = (e) => {
+    this.setState(
+        {
+            [e.target.name]: e.target.value
+        }
+    )
+  }
+
+  handleFormSubmit = (e) => {
+    e.preventDefault()
+    /* For the sake of simplicity, we will put our axios call to the /signup route here. This will send the server our username and password. Then we should get back some data telling us the result. */
+    const newUser = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      password: this.state.password
+    }
+
+    const headers = new Headers()
+    headers.append('Content-Type', 'application/json')
+    const options = {
+      method: 'POST',
+      headers,
+      body:JSON.stringify(newUser)
+    }
+
+    fetch('/auth/signup', options)
+    .then(res => res.json())
+    .then(user => {
+      console.log(user);
+      this.handleClickClose()
+    })
+  }
   
   render () {
     return (
@@ -36,13 +73,44 @@ class Signup extends Component {
         >
           <DialogTitle id="form-dialog-title">Sign Up</DialogTitle>
           <DialogContent>
-            <Form />
+          <div className="signup_form">
+            <form >
+              <div class="row">
+              <div class="form-group">
+              <label>First Name</label><br></br>
+              <input ref="name" name="firstName" placeholder="Jane" type="text" onChange={this._handleChange} />
+              </div>
+              <div class="form-group">
+              <label>Last Name</label><br></br>
+              <input ref="lastname" name="lastName" placeholder="Doe" type="text" onChange={this._handleChange} />
+              </div>
+              </div>
+              <div class="row">
+              <div class="form-group">
+              <label>Email</label><br></br>
+              <input ref="email" name="email" placeholder="johnsmith@example.com" type="email" onChange={this._handleChange} />
+              </div>
+              </div>
+              <div class="row">
+              <div class="form-group">
+              <label>Password</label><br></br>
+              <input ref="password" name="password" placeholder="Password" type="password" onChange={this._handleChange} />
+              </div>
+              </div>
+              <div class="row">
+              <div class="form-group">
+              <label>Confirm Password</label><br></br>
+              <input ref="passwordMatch" name="passwordMatch" placeholder="Password Confirm" type="password" />
+              </div>
+              </div>
+             </form>
+        </div>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClickClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleClickClose} color="primary">
+            <Button onClick={this.handleFormSubmit} color="primary">
               Submit
             </Button>
           </DialogActions>
