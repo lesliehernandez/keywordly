@@ -1,11 +1,42 @@
-/* Add an orange color to all icons and set the font-size */
 
-h2 {
-    font-size: 35px;
+h1 {
+    font-family: 'Work Sans', sans-serif;
+    letter-spacing: 1px;
 }
 
 h3 {
     font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+h2 {
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #534FC3;
+    letter-spacing: 1px;
+
+}
+
+h4 {
+    font-family: 'Montserrat', sans-serif;  
+    color: #534FC3;
+    font-size: 17px;
+    
+    
+}
+
+p {
+    color: #9291AB;   
+    font-size: 13px;
+}
+
+.herotext {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;  
+    width: 700px;
+    color: white;
 }
 
 .logo-small {
@@ -22,11 +53,14 @@ h3 {
     background-color: #534FC3; 
     color: #ffffff;
     margin: 0;
-    padding: 150px 50px;
+    padding: 150px 80px;
 }
 
 .services {
-padding: 100px;
+padding-top: 80px;
+padding-bottom: 100px;
+padding-left: 80px;
+padding-right: 80px;
 background-color: #F3F2F7; 
 
 }
@@ -51,6 +85,13 @@ padding: 40px;
     
     }
 
+.pricingtext {
+    color: #9291AB;   
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;  
+    font-weight: 500;
+}
+
 h2 {
    font-size: 30px;
 }
@@ -73,9 +114,6 @@ cursor: pointer;
 margin: 5px;
 }
 
-.btn:hover {
-}
-
 footer {
     bottom: 0;
     width: 100%;
@@ -88,11 +126,24 @@ footer {
 .footerlinks {
    float: left;
    padding-left: 30px;
+   color: #534FC3;
+   font-size: 12px;
 }
+
+.footerlinks:hover {
+    float: left;
+    padding-left: 30px;
+    color: #534FC3;
+    font-size: 12px;
+    font-weight: bold;
+ }
 
 .socialicons {
     float: right;
-    padding-right: 30px;
+    padding-right: 20px;
+    color: #534FC3;
+    font-size: 20px;
+
 }
 
 .contactform {
@@ -101,3 +152,98 @@ footer {
     padding-top: 30px;
     padding-bottom: 30px;
 }
+
+.panel {
+    border: 1px solid #534FC3; 
+    border-radius:0;
+    transition: box-shadow 0.5s;
+}
+
+.panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+
+.panel-footer .btn:hover {
+    border: 1px solid #534FC3;
+    background-color: #fff !important;
+    color: #534FC3;
+}
+
+
+.panel-heading {
+    color: white;
+    background-color: #534FC3;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.panel > .panel-heading {
+    background-image: none;
+    background-color: #534FC3;
+    color: white;
+
+}
+
+.panel-footer {
+    background-color: #fff !important;
+}
+
+.panel-footer h3 {
+    font-size: 32px;
+}
+
+.panel-footer h4 {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.panel-footer .btn {
+    margin: 15px 0;
+    background-color: #534FC3;
+    color: #fff;
+}
+
+.contactheading {
+    color: white;
+}
+
+.label {
+    font-size: 12px;
+    text-align: left;
+    padding-left: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contact-btn {
+    background-color: #46E4C4;
+        width: 800px;
+        height: 35px;
+        color: white;
+        font-weight: 700;
+        font-size: 12px;
+        border-radius: 4px;
+        border: none;
+        text-align: center;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 0;
+    }
+
+    .contact-btn:hover {
+        border: 1px solid #46E4C4;
+        background-color: #fff !important;
+        color: #534FC3;
+        }
+
+        .form-control {
+            font-size: 12px;
+        }
+
+        .pricingrow {
+            padding-left: 100px;
+            padding-right: 100px;
+        }
