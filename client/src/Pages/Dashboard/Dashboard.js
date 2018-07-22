@@ -216,7 +216,7 @@ class Dashboard extends Component {
           position="absolute"
           className={classNames(classes.appBar, this.state.draweropen && classes.appBarShift)}
         >
-          <Toolbar disableGutters={!this.state.open}>
+          <Toolbar disableGutters={!this.state.draweropen}>
             <IconButton
               color="inherit"
               aria-label="Open drawer"

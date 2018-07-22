@@ -1,5 +1,6 @@
 const Project = require('../models/project')
 const User = require('../models/user')
+const reportsBuilder = require('../reportsBuilder/getData')
 
 
 module.exports.getProjects = (user, cb) => {
@@ -8,7 +9,23 @@ module.exports.getProjects = (user, cb) => {
         if(err) throw err
         cb(null, projects)
     })
+}
+
+module.exports.getData = (domain, projectId, cb) => {
+    let domainArr = []
+    domainArr.push(domain)
     
+    let domainData = reportsBuilder(domainArr)
+    .then(siteData => {
+        Project.findByIdAndUpdate(projectId, {
+            client:{
+                data: siteData
+        }}, (err, result) => {
+            if(err) throw err
+            console.log(result);
+            cb(null, siteData)
+        })
+    })
 }
 
 module.exports.createProject = (data, user, cb) => {
