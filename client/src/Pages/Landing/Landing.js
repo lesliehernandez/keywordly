@@ -16,7 +16,7 @@ class Landing extends Component {
         <Navbar />
         <div class="jumbotron">
           <div class="row">
-            <div class="icon col-sm-8">
+          <div class="col-md-12">
             <br></br>
             <br></br>
             <br></br>
@@ -24,6 +24,7 @@ class Landing extends Component {
             <br></br>
             <br></br>
             <br></br>
+            <div class="col-md-6">
               <h1>
                 Say goodbye to spreadsheets
               </h1>
@@ -32,9 +33,14 @@ class Landing extends Component {
                 Uncover valuable insights in a fraction of the time.</b>
               </p>
               <Signup />
+              </div>
+              <div class="col-md-6">
+              <div class="tablet"><img src="images/dashboard.png" display="inline-block" width="700" height="450"></img>
+              </div>
 
             </div>
           </div>
+        </div>
         </div>
 
 
