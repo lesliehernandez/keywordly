@@ -35,10 +35,10 @@ function SimpleTable(props) {
 
   return (
     <Paper className={classes.root}>
-      <Table className={classes.table}>
       <CardHeader style= {{backgroundColor: 'white', border: 'none', fontSize: '14px', fontFamily: 'Montserrat', fontWeight: '500'}}>
               SERP Features
             </CardHeader>
+      <Table className={classes.table}>
         <TableBody>
           {data.map(n => {
             return (

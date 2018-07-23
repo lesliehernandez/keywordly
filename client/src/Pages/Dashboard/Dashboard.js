@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Client from "../Client";
+import ReportsBuilder from '../ReportsBuilder'
 import "./Dashboard.css";
 import PropTypes from "prop-types";
 import classNames from "classnames";
@@ -138,8 +139,7 @@ const styles = theme => ({
 
 let routes = [
   {
-    path: "/dashboard",
-    sidebar: () => <a>Dash</a>,
+    path: `/dashboard`,
     main: () => <Client />
   }
 ];
@@ -178,6 +178,16 @@ class Dashboard extends Component {
               path: `/reports/${project._id}`,
               sidebar: () => <a>project.client</a>,
               main: () => <ViewReports thisProject={project} />
+            });
+            routes.push({
+              path: `/client/${project._id}`,
+              sidebar: () => <a>project.client</a>,
+              main: () => <Client thisProject={project} />
+            });
+            routes.push({
+              path: `/reportsBuilder/${project._id}`,
+              sidebar: () => <a>project.client</a>,
+              main: () => <ReportsBuilder thisProject={project} />
             });
           });
         },
@@ -341,9 +351,7 @@ class Dashboard extends Component {
                   </ListItemIcon>
                   <ListItemText
                     primary={
-                      <Button>
-                        <a
-                          href="/dashboard"
+                      <Button
                           style={{
                             color: "rgba(0, 0, 0, 0.87)",
                             fontSize: "1rem",
@@ -358,7 +366,6 @@ class Dashboard extends Component {
                           }}
                         >
                           Dashboard
-                        </a>
                       </Button>
                     }
                   />
@@ -372,7 +379,25 @@ class Dashboard extends Component {
                           <ListItemText
                             inset
                             primary={
-                              project.client.info.domain
+                              <Button>
+                                <Link
+                                  to={`/client/${project._id}`}
+                                  style={{
+                                    color: "rgba(0, 0, 0, 0.87)",
+                                    fontSize: "1rem",
+                                    fontWeight: 400,
+                                    fontFamily: "Roboto",
+                                    lineHeight: "1.5em",
+                                    textTransform: "lowercase",
+                                    flex: "1 1 auto",
+                                    padding: "0px",
+                                    minWidth: "0",
+                                    float: "left"
+                                  }}
+                                >
+                                  {project.client.info.domain}
+                                </Link>
+                              </Button>
                             }
                           />
                         </ListItem>
@@ -394,7 +419,7 @@ class Dashboard extends Component {
                           lineHeight: "1.5em",
                           textTransform: "uppercase",
                           flex: "1 1 auto",
-                          padding: "0 16px",
+                          padding: "0",
                           minWidth: "0"
                         }}
                       >
@@ -412,7 +437,25 @@ class Dashboard extends Component {
                           <ListItemText
                             inset
                             primary={
-                              project.name
+                              <Button>
+                                <Link
+                                  to={`/reports/${project._id}`}
+                                  style={{
+                                    color: "rgba(0, 0, 0, 0.87)",
+                                    fontSize: "1rem",
+                                    fontWeight: 400,
+                                    fontFamily: "Roboto",
+                                    lineHeight: "1.5em",
+                                    textTransform: "lowercase",
+                                    flex: "1 1 auto",
+                                    padding: "0px",
+                                    minWidth: "0",
+                                    float: "left"
+                                  }}
+                                >
+                                  {project.name}
+                                </Link>
+                              </Button>
                             }
                           />
                         </ListItem>
