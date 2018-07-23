@@ -44,7 +44,7 @@ class ViewReports extends Component {
         return(
             <div className="Reports">
                 <h1 className="App-title">{this.props.thisProject.name}</h1>
-                <CreateReportButton projectId={this.props.thisProject._id} projectName={this.props.thisProject.name} projectDomain={this.props.thisProject.client.info.domain} />
+                <CreateReportButton projectId={this.props.thisProject._id} projectName={this.props.thisProject.name} projectDomain={this.props.thisProject.clientInfo.domain} />
                 <div>
                 <Paper className={classes.root}>
                     <Table className={classes.table}>
