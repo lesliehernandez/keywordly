@@ -11,10 +11,12 @@ import SerpChart from '../../Components/SerpChart'
 
 class Client extends Component {
   render() {
+    console.log(this.props);
+    
     return (
         <Grid container className='client' item xs={12} >
           <Grid item xs={12} style={{marginTop: '50px', marginBottom: '20px'}}>  
-            <h1 className="App-title">Dashboard</h1>
+            <h1 className="App-title">{this.props.thisProject ? (this.props.thisProject.client.info.domain) : 'Overview' }</h1>
           </Grid>
           <Grid container style={{justifyContent: 'space-evenly'}}>
           <Grid item xs={4} style={{position: 'relative'}}>

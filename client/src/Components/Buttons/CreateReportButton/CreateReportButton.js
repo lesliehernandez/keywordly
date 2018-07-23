@@ -14,7 +14,7 @@ class CreateReportButton extends Component {
         .then(res => res.json())
         .then(results => {
             console.log(results);          
-            <Redirect to="/dashboard" />
+            <Redirect to={`/reportsBuilder/${this.props.projectId}`} />
         })
         
         
