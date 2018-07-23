@@ -13,7 +13,7 @@ import { TableHeader } from 'material-ui';
 const styles = theme => ({
   root: {
     width: '695px',
-    height: '400px',
+    height: '300px',
   },
 });
 
@@ -42,7 +42,7 @@ function SimpleTable(props) {
         <TableBody>
           {data.map(n => {
             return (
-              <TableRow key={n.id} style={{height:'70px'}}>
+              <TableRow key={n.id} style={{height:'65px'}}>
                 <TableCell component="th" scope="row" style={{fontSize: '12px'}}>{n.name}</TableCell>
                 <TableCell numeric style={{fontSize: '12px'}}>{n.calories}</TableCell>
               </TableRow>
