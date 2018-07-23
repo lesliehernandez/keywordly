@@ -380,7 +380,7 @@ class Dashboard extends Component {
                           minWidth: "0"
                         }}
                       >
-                        Reports
+                        Projects
                       </Button>
                     }
                   />

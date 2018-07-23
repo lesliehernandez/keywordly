@@ -34,7 +34,7 @@ class OrChart extends Component {
       <div className="animated fadeIn">
         <CardColumns className="cols-2">
           
-          <Card style={{ position:'absolute', height:'400px', width:'695px' }}>
+          <Card style={{ position:'absolute', height:'300px', width:'695px' }}>
             <CardHeader style={{ backgroundColor: 'white', border: 'none', fontSize: '14px',  fontFamily: 'Montserrat', fontWeight: '500'}}>
               Organic Position Distribution
               <div className="card-header-actions">
