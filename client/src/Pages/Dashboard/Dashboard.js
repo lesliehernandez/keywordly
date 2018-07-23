@@ -13,7 +13,6 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  ListSubheader,
   Collapse,
   Divider,
   IconButton,
@@ -151,7 +150,8 @@ class Dashboard extends Component {
 
   state = {
     draweropen: false,
-    open: true,
+    domainCollapseOpen: false,
+    reportsCollapseOpen: false,
     anchorEl: null
   };
 
@@ -194,8 +194,12 @@ class Dashboard extends Component {
       );
   };
 
-  handleClick = () => {
-    this.setState(state => ({ open: !state.open }));
+  handledDomainClick = () => {
+    this.setState(state => ({ domainCollapseOpen: !state.domainCollapseOpen }));
+  };
+
+  handleReportsClick = () => {
+    this.setState(state => ({ reportsCollapseOpen: !state.reportsCollapseOpen }));
   };
 
   _handleLogout = () => {
@@ -331,11 +335,9 @@ class Dashboard extends Component {
               </div>
               <Divider />
               <List>
-                <ListItem button>
-                  <ListItemIcon>
-                    <a href="/dashboard" style={{ padding: "0" }}>
+                <ListItem button onClick={this.handledDomainClick}>
+                  <ListItemIcon onClick={this.handleDrawerOpen}>
                       <ChartIcon />
-                    </a>
                   </ListItemIcon>
                   <ListItemText
                     primary={
@@ -360,8 +362,24 @@ class Dashboard extends Component {
                       </Button>
                     }
                   />
+                  {this.state.domainCollapseOpen ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
-                <ListItem button onClick={this.handleClick}>
+                <Collapse in={this.state.domainCollapseOpen} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                    {this.state.projects &&
+                      this.state.projects.map((project, index) => (
+                        <ListItem button key={index} className={classes.nested}>
+                          <ListItemText
+                            inset
+                            primary={
+                              project.client.info.domain
+                            }
+                          />
+                        </ListItem>
+                      ))}
+                  </List>
+                </Collapse>
+                <ListItem button onClick={this.handleReportsClick}>
                   <ListItemIcon onClick={this.handleDrawerOpen}>
                     <FolderIcon />
                   </ListItemIcon>
@@ -384,9 +402,9 @@ class Dashboard extends Component {
                       </Button>
                     }
                   />
-                  {this.state.open ? <ExpandLess /> : <ExpandMore />}
+                  {this.state.reportsCollapseOpen ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
-                <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+                <Collapse in={this.state.reportsCollapseOpen} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
                     {this.state.projects &&
                       this.state.projects.map((project, index) => (
@@ -394,11 +412,7 @@ class Dashboard extends Component {
                           <ListItemText
                             inset
                             primary={
-                              <Button>
-                                <Link to={`/reports/${project._id}`}>
-                                  {project.name}
-                                </Link>
-                              </Button>
+                              project.name
                             }
                           />
                         </ListItem>
