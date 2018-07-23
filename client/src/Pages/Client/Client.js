@@ -6,28 +6,33 @@ import OrChart from '../../Components/OrChart'
 import TrafficCard from '../../Components/TrafficCard'
 import SimpleCard from '../../Components/SimpleCard'
 import { Grid } from '@material-ui/core'
+import SerpChart from '../../Components/SerpChart'
 
 
 class Client extends Component {
   render() {
     return (
-        <Grid container className='client' >
-          <Grid item md={12} style={{marginTop: '50px', marginBottom: '50px', justifyContent: 'space-evenly'}}>  
-            <h1 className="App-title">Heres your client overview</h1>
+        <Grid container className='client' item xs={12} >
+          <Grid item xs={12} style={{marginTop: '50px', marginBottom: '20px'}}>  
+            <h1 className="App-title">Dashboard</h1>
           </Grid>
-          <Grid item md={12} style={{marginBottom: '50px'}} >
-            <Grid container style={{justifyContent: 'space-evenly'}}>
-              <TrafficCard />
-              <SimpleCard/>
-              <div className="Tables" style={{width: '310px', height: '100px', display: 'inline-block'}}><Tables/></div>
+          <Grid container style={{justifyContent: 'space-evenly'}}>
+          <Grid item xs={4} style={{position: 'relative'}}>
+              <TrafficCard/>
+              </Grid>
+              <Grid item xs={4} style={{position: 'relative'}}>
+              <BrandedChart/>
+              </Grid>
+              <Grid item xs={4} style={{position: 'relative'}}>
+              <Tables/>
             </Grid>
           </Grid>
           <Grid item md={12}>
             <Grid container style={{justifyContent: 'space-evenly'}}>
-              <Grid item md={5} style={{position: 'relative'}}>
-                <BrandedChart/>
+              <Grid item xs={6} style={{position: 'relative'}}>
+              <SerpChart/>
               </Grid>
-              <Grid item md={5} style={{position: 'relative'}}>
+              <Grid item xs={6} style={{position: 'relative'}}>
                 <OrChart/>
               </Grid>
             </Grid>

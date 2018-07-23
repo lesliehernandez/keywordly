@@ -12,8 +12,8 @@ import { TableHeader } from 'material-ui';
 
 const styles = theme => ({
   root: {
-    width: '450px',
-    height: '250px',
+    width: '695px',
+    height: '400px',
   },
 });
 
@@ -24,11 +24,10 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 const data = [
-  createData('Total Backlinks', 3200),
-  createData('Referring Domains', 326),
-  createData('Referring IPs', 262),
-  createData('Authority Score', 305),
-  createData('Overall Toxic Score', 'High'),
+  createData('Sitelinks', 0.6),
+  createData('Knowledge Panel', 15.62),
+  createData('Local Pack', 6.67),
+  createData('Images', 57.66)
 ];
 
 function SimpleTable(props) {
@@ -38,12 +37,12 @@ function SimpleTable(props) {
     <Paper className={classes.root}>
       <Table className={classes.table}>
       <CardHeader style= {{backgroundColor: 'white', border: 'none', fontSize: '14px', fontFamily: 'Montserrat', fontWeight: '500'}}>
-              Backlink Overview
+              SERP Features
             </CardHeader>
         <TableBody>
           {data.map(n => {
             return (
-              <TableRow key={n.id} style={{height:'42px'}}>
+              <TableRow key={n.id} style={{height:'70px'}}>
                 <TableCell component="th" scope="row" style={{fontSize: '12px'}}>{n.name}</TableCell>
                 <TableCell numeric style={{fontSize: '12px'}}>{n.calories}</TableCell>
               </TableRow>

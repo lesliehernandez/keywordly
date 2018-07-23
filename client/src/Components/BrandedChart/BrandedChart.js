@@ -31,20 +31,15 @@ class BrandedChart extends Component {
       <div className="animated fadeIn">
         <CardColumns className="cols-2">
 
-          <Card style={{ position:'absolute', height:'400px' }}>
-            <CardHeader>
+          <Card style={{width: '450px', height:'250px' }}>
+          <CardHeader style= {{backgroundColor: 'white', border:'none', paddingBottom: '0', marginBottom: '0', fontSize: '14px', fontFamily: 'Montserrat', fontWeight: '500'}}>
               Branded vs. Unbranded
-              <div className="card-header-actions">
-                <a href="http://www.chartjs.org" className="card-header-action">
-                  <small className="text-muted">docs</small>
-                </a>
-              </div>
-            </CardHeader>
-            <CardBody>
+            </ CardHeader>
+            <CardBody style={{marginTop: '0', paddingTop: '0'}}>
               <div className="chart-wrapper">
-                <Pie data={pie} />
+                <Pie data={pie}/>
               </div>
-            </CardBody>
+            </CardBody >
           </Card>
          
         </CardColumns>
