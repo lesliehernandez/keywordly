@@ -247,3 +247,28 @@ footer {
             padding-left: 100px;
             padding-right: 100px;
         }
+
+        .tablet{
+
+            position:relative;
+            animation-delay: 5s;
+            animation:animateright 2s;
+        }
+            @keyframes animateright{
+                from{right:-300px;opacity:0
+                } to{
+                    right:0;opacity:1}
+                }
+
+
+    .abouttext {
+        width: 400px;
+        align-content: center;
+    }
+
+    .abouttitle {
+        width: 400px;
+        align-content: center;
+    }
+
+    
