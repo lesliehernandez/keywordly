@@ -59,32 +59,33 @@ class Login extends Component {
         <Dialog
           open={this.state.dialogopen}
           onClose={this.handleClickClose}
-          aria-labelledby="form-dialog-title">
+          aria-labelledby="form-dialog-title"
+          >
 
-          <DialogTitle id="form-dialog-title">Login</DialogTitle>
+          <DialogTitle id="form-dialog-title" style={{ width: '400px', height: '50px'}} >Login</DialogTitle>
           <DialogContent>
-          <div className="login_form">
-            <form >
+          <div className="login_form" style={{ width: '400px', height: '150px', padding: '30px'}}>
+            <form>
             <div clas="row">
             <div class="form-group">
-              <label>Email</label><br></br>
-              <input ref="email" name="email" type="email" onChange={this._handleChange}/>
+              <label style={{ fontSize: '12px'}}>Email</label><br></br>
+              <input ref="email" name="email" type="email" onChange={this._handleChange} style={{ width: '350px', height: '25px'}}/>
               </div>
               </div>
-              <div class="row">
+              <div class="row" style={{ marginLeft: '0'}}>
               <div class="form-group">
-              <label>Password</label><br></br>
-              <input ref="password" name="password" type="password" onChange={this._handleChange}/>
+              <label style={{ fontSize: '12px'}}>Password</label><br></br>
+              <input ref="password" name="password" type="password" onChange={this._handleChange} style={{ width: '350px', height: '25px'}}/>
               </div>
               </div>
             </form>
         </div>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleFormSubmit} color="primary">
+            <Button onClick={this.handleFormSubmit} color="primary" style={{ fontSize: '12px'}}>
               Login
             </Button>
-            <Button onClick={this.handleClickClose} color="primary">
+            <Button onClick={this.handleClickClose} color="primary" style={{ fontSize: '12px'}}>
               Cancel
             </Button>
           </DialogActions>

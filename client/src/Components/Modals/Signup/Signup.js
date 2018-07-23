@@ -71,46 +71,46 @@ class Signup extends Component {
           onClose={this.handleClickClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Sign Up</DialogTitle>
+          <DialogTitle id="form-dialog-title" style={{ width: '400px', height: '20px'}}>Sign Up</DialogTitle>
           <DialogContent>
-          <div className="signup_form">
+          <div className="signup_form" style={{ width: '400px', height: '220px', padding: '20px'}}>
             <form >
               <div class="row">
               <div class="form-group">
-              <label>First Name</label><br></br>
-              <input ref="name" name="firstName" placeholder="Jane" type="text" onChange={this._handleChange} />
+              <label style={{ fontSize: '12px'}}>First Name</label><br></br>
+              <input ref="name" name="firstName" placeholder="Jane" type="text" onChange={this._handleChange} style={{ width: '165px', height: '25px', marginRight: '20px', fontSize: '12px'}}/>
               </div>
               <div class="form-group">
-              <label>Last Name</label><br></br>
-              <input ref="lastname" name="lastName" placeholder="Doe" type="text" onChange={this._handleChange} />
+              <label style={{ fontSize: '12px'}}>Last Name</label><br></br>
+              <input ref="lastname" name="lastName" placeholder="Doe" type="text" onChange={this._handleChange} style={{ width: '165px', height: '25px', fontSize: '12px'}}/>
               </div>
               </div>
               <div class="row">
               <div class="form-group">
-              <label>Email</label><br></br>
-              <input ref="email" name="email" placeholder="johnsmith@example.com" type="email" onChange={this._handleChange} />
+              <label style={{ fontSize: '12px'}}>Email</label><br></br>
+              <input ref="email" name="email" placeholder="johnsmith@example.com" type="email" onChange={this._handleChange} style={{ width: '350px', height: '25px', fontSize: '12px'}}/>
               </div>
               </div>
               <div class="row">
               <div class="form-group">
-              <label>Password</label><br></br>
-              <input ref="password" name="password" placeholder="Password" type="password" onChange={this._handleChange} />
+              <label style={{ fontSize: '12px'}}>Password</label><br></br>
+              <input ref="password" name="password" placeholder="Password" type="password" onChange={this._handleChange} style={{ width: '350px', height: '25px', fontSize: '12px'}}/>
               </div>
               </div>
               <div class="row">
               <div class="form-group">
-              <label>Confirm Password</label><br></br>
-              <input ref="passwordMatch" name="passwordMatch" placeholder="Password Confirm" type="password" />
+              <label style={{ fontSize: '12px'}}>Confirm Password</label><br></br>
+              <input ref="passwordMatch" name="passwordMatch" placeholder="Password Confirm" type="password" style={{ width: '350px', height: '25px', fontSize: '12px'}}/>
               </div>
               </div>
              </form>
         </div>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClickClose} color="primary">
+            <Button onClick={this.handleClickClose} color="primary" style={{ fontSize: '12px'}}>
               Cancel
             </Button>
-            <Button onClick={this.handleFormSubmit} color="primary">
+            <Button onClick={this.handleFormSubmit} color="primary" style={{ fontSize: '12px'}}>
               Submit
             </Button>
           </DialogActions>
