@@ -69,13 +69,13 @@ class Login extends Component {
             <div clas="row">
             <div class="form-group">
               <label style={{ fontSize: '12px'}}>Email</label><br></br>
-              <input ref="email" name="email" type="email" onChange={this._handleChange} style={{ width: '350px', height: '25px'}}/>
+              <input ref="email" name="email" type="email" onChange={this._handleChange} style={{ width: '350px', height: '25px', fontSize: '12px'}}/>
               </div>
               </div>
               <div class="row" style={{ marginLeft: '0'}}>
               <div class="form-group">
               <label style={{ fontSize: '12px'}}>Password</label><br></br>
-              <input ref="password" name="password" type="password" onChange={this._handleChange} style={{ width: '350px', height: '25px'}}/>
+              <input ref="password" name="password" type="password" onChange={this._handleChange} style={{ width: '350px', height: '25px', fontSize: '12px'}}/>
               </div>
               </div>
             </form>

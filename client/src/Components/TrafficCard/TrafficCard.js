@@ -9,8 +9,9 @@ import Grid from '@material-ui/core/Grid';
 
 const styles = {
   card: {
-    width: '350px',
-    height: '200px',
+    paddingTop: '23px',
+    width: '450px',
+    height: '250px',
     display: 'inline-block',
   },
   bullet: {
