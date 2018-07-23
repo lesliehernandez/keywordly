@@ -141,7 +141,7 @@ let routes = [
   {
     path: `/dashboard`,
     main: () => <Client />
-  }
+  },
 ];
 
 class Dashboard extends Component {
@@ -177,7 +177,13 @@ class Dashboard extends Component {
             routes.push({
               path: `/reports/${project._id}`,
               sidebar: () => <a>project.client</a>,
-              main: () => <ViewReports thisProject={project} />
+              main: () => <ViewReports thisProject={project} />,
+              routes: [
+                {
+                  path: `/reports/reportsBuilder`,
+                  component: <ReportsBuilder thisProject={project} />
+                }
+              ]
             });
             routes.push({
               path: `/client/${project._id}`,
@@ -185,7 +191,7 @@ class Dashboard extends Component {
               main: () => <Client thisProject={project} />
             });
             routes.push({
-              path: `/reportsBuilder/${project._id}`,
+              path: `/reports/reportsBuilder/${project._id}`,
               sidebar: () => <a>project.client</a>,
               main: () => <ReportsBuilder thisProject={project} />
             });

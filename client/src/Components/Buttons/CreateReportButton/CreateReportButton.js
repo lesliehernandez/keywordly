@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router'
+import { Route, Redirect, Link } from 'react-router-dom'
 import { Button } from '@material-ui/core';
 
 
@@ -14,7 +14,6 @@ class CreateReportButton extends Component {
         .then(res => res.json())
         .then(results => {
             console.log(results);          
-            <Redirect to={`/reportsBuilder/${this.props.projectId}`} />
         })
         
         
@@ -24,7 +23,9 @@ class CreateReportButton extends Component {
     render(){
         return(
             <Button variant="contained" onClick={this.reportBuilderHandler} style={{margin: '7px'}}>
+                <Link to={`/reports/reportsBuilder/${this.props.projectId}`}>
                 Create Reports
+                </Link>
             </Button>
         )
     }
