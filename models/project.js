@@ -8,24 +8,22 @@ const ProjectSchema = mongoose.Schema({
         unique: true
     },
     created_by:{type: Schema.Types.ObjectId, ref: 'User'},
-    client: {
-        info: {
-            domain: {
-                type: String,
-                required: true
-            },
-            branded: [{
-                word:{type: String},
-                include:{type: Boolean}
-            }],
-            Keyword: [{
-                word:{type: String},
-                include:{type: Boolean}
-            }],
+    clientInfo: {
+        domain: {
+            type: String,
+            required: true
         },
-        data: {
-            type: Object
-        }
+        branded: [{
+            word:{type: String},
+            include:{type: Boolean}
+        }],
+        Keyword: [{
+            word:{type: String},
+            include:{type: Boolean}
+        }]
+    },
+    clientData: {
+        type: Object
     },
     competitors: {
         type: Object

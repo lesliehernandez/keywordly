@@ -401,7 +401,7 @@ class Dashboard extends Component {
                                     float: "left"
                                   }}
                                 >
-                                  {project.client.info.domain}
+                                  {project.clientInfo.domain}
                                 </Link>
                               </Button>
                             }

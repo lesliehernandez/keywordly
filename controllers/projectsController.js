@@ -17,9 +17,8 @@ module.exports.getData = (domain, projectId, cb) => {
     
     let domainData = reportsBuilder(domainArr)
     .then(siteData => {
-        Project.findByIdAndUpdate(projectId, {
-            client:{
-                data: siteData
+        Project.findByIdAndUpdate(projectId, { $set:{
+            clientData: siteData
         }}, (err, result) => {
             if(err) throw err
             console.log(result);
@@ -32,10 +31,8 @@ module.exports.createProject = (data, user, cb) => {
     const project = new Project({
         name: data.name,
         created_by: user,
-        client: {
-           info: {
-               domain: data.domain
-           } 
+        clientInfo: {
+            domain: data.domain
         }
     })
     project.save(cb)
