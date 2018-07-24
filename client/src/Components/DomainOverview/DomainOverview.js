@@ -4,19 +4,21 @@ import TrafficCard from '../../Components/TrafficCard'
 import SerpChart from '../SerpChart'
 import { Grid } from '@material-ui/core'
 
-
 class DomainOverview extends Component {
   render() {
     const { thisProject } = this.props
+    
+    
     return (
-        <Grid container className='client' >
-          <Grid item md={4} style={{marginBottom: '50px'}} >
+      
+        <Grid container className='client'>
+          <Grid item md={4} style={{marginBottom: '50px'}} style={{height: this.props.height}}>
             <TrafficCard thisProject={thisProject} />
           </Grid>
           <Grid item md={4} style={{marginBottom: '50px'}} >
-            <SerpChart width='450px' thisProject={thisProject} />
+            <SerpChart width='450px' thisProject={thisProject} style={{height: this.props.height}}/>
           </Grid>
-          <Grid item md={4} style={{marginBottom: '50px'}} >
+          <Grid item md={4} style={{marginBottom: '50px', height: this.props.height}} >
             <Tables thisProject={thisProject}/>
           </Grid>
         </Grid>

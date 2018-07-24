@@ -69,7 +69,7 @@ class NewProject extends Component {
   render () {
     return (
       <div>
-        <Button variant="contained" onClick={this.handleClickOpen} style={{margin: '7px'}}>
+        <Button variant="contained" onClick={this.handleClickOpen} style={{margin: '7px', backgroundColor: '#46E4C4'}}>
         Create new Project
         </Button>
 

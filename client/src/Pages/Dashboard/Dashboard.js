@@ -305,6 +305,7 @@ class Dashboard extends Component {
                   aria-owns={anchorEl ? "simple-menu" : null}
                   aria-haspopup="true"
                   onClick={this.handleProfileClick}
+                  style={{color: 'white', fontSize: '14px'}}
                 >
                   Mr. Meow
                   <KeyboardDownIcon className={classes.rightIcon} />
@@ -314,14 +315,15 @@ class Dashboard extends Component {
                   anchorEl={anchorEl}
                   open={Boolean(anchorEl)}
                   onClose={this.handleProfileClose}
+                  style={{width: '200px'}}
                 >
-                  <MenuItem onClick={this.handleProfileClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleProfileClose}>
+                  <MenuItem onClick={this.handleProfileClose}  style={{width: '200px', fontSize: '12px'}}>Profile</MenuItem>
+                  <MenuItem onClick={this.handleProfileClose}  style={{width: '200px', fontSize: '12px'}}>
                     My account
                   </MenuItem>
-                  <MenuItem onClick={this.handleProfileClose}>
+                  <MenuItem onClick={this.handleProfileClose}  style={{width: '200px', fontSize: '12px'}}>
                     {this.Auth.loggedIn() ? (
-                      <a onClick={this._handleLogout}>Logout</a>
+                      <a onClick={this._handleLogout} style={{fontSize: '12px', padding: '0'}}>Logout</a>
                     ) : null}
                   </MenuItem>
                 </Menu>

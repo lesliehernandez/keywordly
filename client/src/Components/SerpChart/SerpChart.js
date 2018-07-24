@@ -27,19 +27,19 @@ function SimpleTable(props) {
             </CardHeader>
       <Table className={classes.table}>
         <TableBody>
-              <TableRow style={{height:'65px'}}>
+              <TableRow style={{height:'67px'}}>
                 <TableCell component="th" scope="row" style={{fontSize: '12px'}}>Sitelinks</TableCell>
                 <TableCell numeric style={{fontSize: '12px'}}>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].serp.siteLinks) : '287' }</TableCell>
               </TableRow>
-              <TableRow style={{height:'65px'}}>
+              <TableRow style={{height:'67px'}}>
                 <TableCell component="th" scope="row" style={{fontSize: '12px'}}>Knowledge Panel</TableCell>
                 <TableCell numeric style={{fontSize: '12px'}}>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].serp.knowledgePanel) : '287' }</TableCell>
               </TableRow>
-              <TableRow style={{height:'65px'}}>
+              <TableRow style={{height:'67px'}}>
                 <TableCell component="th" scope="row" style={{fontSize: '12px'}}>Local Pack</TableCell>
                 <TableCell numeric style={{fontSize: '12px'}}>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].serp.localPack) : '287' }</TableCell>
               </TableRow>
-              <TableRow style={{height:'65px'}}>
+              <TableRow style={{height:'67px'}}>
                 <TableCell component="th" scope="row" style={{fontSize: '12px'}}>Images</TableCell>
                 <TableCell numeric style={{fontSize: '12px'}}>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].serp.images) : '287' }</TableCell>
               </TableRow>

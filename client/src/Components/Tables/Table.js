@@ -31,23 +31,23 @@ function SimpleTable(props) {
             </CardHeader>
       <Table className={classes.table}>
         <TableBody>
-            <TableRow style={{height:'42px'}}>
+            <TableRow style={{height:'43px'}}>
               <TableCell component="th" scope="row" style={{fontSize: '12px'}}>Total Backlinks</TableCell>
               <TableCell numeric style={{fontSize: '12px'}}>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].backlinks.total) : '287' }</TableCell>
             </TableRow>
-            <TableRow style={{height:'42px'}}>
+            <TableRow style={{height:'43px'}}>
               <TableCell component="th" scope="row" style={{fontSize: '12px'}}>Referring Domains</TableCell>
               <TableCell numeric style={{fontSize: '12px'}}>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].backlinks.domains) : '287' }</TableCell>
             </TableRow>
-            <TableRow style={{height:'42px'}}>
+            <TableRow style={{height:'43px'}}>
               <TableCell component="th" scope="row" style={{fontSize: '12px'}}>Referring IPs</TableCell>
               <TableCell numeric style={{fontSize: '12px'}}>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].backlinks.ip) : '287' }</TableCell>
             </TableRow>
-            <TableRow style={{height:'42px'}}>
+            <TableRow style={{height:'43px'}}>
               <TableCell component="th" scope="row" style={{fontSize: '12px'}}>Authority Score</TableCell>
               <TableCell numeric style={{fontSize: '12px'}}>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].backlinks.authorityScore) : '287' }</TableCell>
             </TableRow>
-            <TableRow style={{height:'42px'}}>
+            <TableRow style={{height:'43px'}}>
               <TableCell component="th" scope="row" style={{fontSize: '12px'}}>Overall Toxic Score</TableCell>
               <TableCell numeric style={{fontSize: '12px'}}>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].backlinks.toxicScore) : 'Need 2 Get' }</TableCell>
             </TableRow>

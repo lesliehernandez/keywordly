@@ -37,7 +37,7 @@ function trafficCard(props) {
         <CardContent>
           <Grid container spacing={24}> 
             <Grid item xs={6}>
-            <h4>Index</h4>
+            <h4>Pages Indexed</h4>
             <h1>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].traffic.keywords) : '287' }</h1>
           </Grid>
           <Grid item xs={6}>
