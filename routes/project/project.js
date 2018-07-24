@@ -7,11 +7,11 @@ router.post('/new/:userId', (req, res) => {
     let user = req.params.userId
     let info = req.body
     UserController.getUserById(user, (err, u) => {
-        if(err) throw err
+        if(err) res.json(err)
         ProjectsController.createProject(info, u._id, (err, project) => {
-            if(err) throw err
+            if(err) res.json(err)
             ProjectsController.getData(project.clientInfo.domain, project._id, (err, data) => {
-                if(err) throw err
+                if(err) res.json(err)
                 console.log(data);
                 res.json(project)
             })
@@ -31,7 +31,7 @@ router.post('/branded/:projectId', (req, res) => {
 
 router.get('/user/:id', (req, res) => {
     ProjectsController.getProjects(req.params.id, (err, projects) => {
-        if(err) throw err
+        if(err) res.end(err)
         console.log('Getting all projects for you');
         console.log('------------------------------');
         console.log(projects);

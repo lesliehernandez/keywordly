@@ -85,92 +85,86 @@ class ReportsBuilder extends Component {
     this.handleBrandedClickClose()
   }
       
-  componentDidMount(){
-            
-  }
-        
-        
-
-      render() {
-        console.log(this.state);
-        
-        const { classes, thisProject } = this.props;
-        const { value } = this.state;
     
-        return (
-          <div className={classes.root}>
-            <AppBar position="static" color="default">
-              <Tabs
-                value={this.state.value}
-                onChange={this.handleChange}
-                indicatorColor="primary"
-                textColor="primary"
-                centered
-              >
-                <Tab value='one' label="Domain Overview" />
-                <Tab value='two' label="Keyword Overview" />
-                <Tab value='three' label="Content Overview" />
-              </Tabs>
-            </AppBar>
+  render() {
+    console.log(this.state);
+    
+    const { classes, thisProject } = this.props;
+    const { value } = this.state;
 
-
-
-            {value === 'one' && <TabContainer dir={'ltr'}>
-              <DomainOverview thisProject={thisProject} style={{height: this.props.height}}/>
-              
-              <Dialog
-       open={this.state.brandedDialogOpen}
-       onClose={this.handleBrandedClickClose}
-       aria-labelledby="form-dialog-title"
+    return (
+      <div className={classes.root}>
+        <AppBar position="static" color="default">
+          <Tabs
+            value={this.state.value}
+            onChange={this.handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            centered
           >
+            <Tab value='one' label="Domain Overview" />
+            <Tab value='two' label="Keyword Overview" />
+            <Tab value='three' label="Content Overview" />
+          </Tabs>
+        </AppBar>
 
-          <DialogTitle id="form-dialog-title" style={{ width: '400px', height: '50px'}} >Enter Branded Keywords</DialogTitle>
-          <DialogContent>
-          <div className="login_form" style={{ width: '400px', height: '150px', paddingBottom: '10px'}}>
-          <DialogContentText style={{fontSize:'12px'}}>
+
+
+        {value === 'one' && <TabContainer dir={'ltr'}>
+          <DomainOverview thisProject={thisProject} style={{height: this.props.height}}/>
+          <Dialog
+            open={this.state.brandedDialogOpen}
+            onClose={this.handleBrandedClickClose}
+            aria-labelledby="form-dialog-title"
+          >
+            <DialogTitle id="form-dialog-title" style={{ width: '400px', height: '50px'}} >Enter Branded Keywords</DialogTitle>
+            <DialogContent>
+              <div className="login_form" style={{ width: '400px', height: '150px', paddingBottom: '10px'}}>
+                <DialogContentText style={{fontSize:'12px'}}>
                   Enter your branded keywords separated by a comma.
-                  </DialogContentText>
-                  <br></br><br></br>
-            <form>
-            <div clas="row">
-            <div class="form-group">
-              <label style={{ fontSize: '12px'}}>Branded Keywords</label><br></br>
-              <input ref="branded" name="branded" type="branded" onChange={this.handleBrandedChange} style={{ width: '350px', height: '25px', fontSize: '12px'}}/>
+                </DialogContentText>
+                <br></br><br></br>
+                <form>
+                  <div clas="row">
+                    <div class="form-group">
+                      <label style={{ fontSize: '12px'}}>Branded Keywords</label><br></br>
+                      <input ref="branded" name="branded" type="branded" onChange={this.handleBrandedChange} style={{ width: '350px', height: '25px', fontSize: '12px'}}/>
+                    </div>
+                  </div>
+                </form>
               </div>
-              </div>
-            </form>
-        </div>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleBrandedClickClose} color="primary" style={{ fontSize: '12px'}}>
-              Cancel
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.handleBrandedClickClose} color="primary" style={{ fontSize: '12px'}}>
+                Cancel
+              </Button>
+              <Button onClick={this.handleBrandedFormSubmit}  color="primary" style={{ fontSize: '12px'}}>
+                Submit
+              </Button>
+            </DialogActions>
+          </Dialog>
+          
+          <Tabs
+            value={this.state.value}
+            onChange={this.handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            centered
+          >
+            <Button onClick={this.handleBrandedClickOpen} style={{margin: '7px', backgroundColor: '#46E4C4'}}>
+              Enter Branded Keywords
             </Button>
-            <Button onClick={this.handleBrandedFormSubmit}  color="primary" style={{ fontSize: '12px'}}>
-              Submit
-            </Button>
-          </DialogActions>
-        </Dialog>
-              
-                <Tabs
-                  value={this.state.value}
-                  onChange={this.handleChange}
-                  indicatorColor="primary"
-                  textColor="primary"
-                  centered>
-                <Button onClick={this.handleBrandedClickOpen} style={{margin: '7px', backgroundColor: '#46E4C4'}}>
-                Enter Branded Keywords
-                </Button>
-                <Tab value='two' label="Save and Continue" style={{margin: '7px', backgroundColor: '#46E4C4', borderRadius: '4px',  padding: '8px 16px', minWidth: '64px', minHeight: '36px', fontWeight: '500',  color: 'rgba(0, 0, 0, 0.87)'}}/>
-                </Tabs>
-            </TabContainer>}
+            <Tab value='two' label="Save and Continue" style={{margin: '7px', backgroundColor: '#46E4C4', borderRadius: '4px',  padding: '8px 16px', minWidth: '64px', minHeight: '36px', fontWeight: '500',  color: 'rgba(0, 0, 0, 0.87)'}}/>
+          </Tabs>
+        </TabContainer>}
 
 
 
-            {value === 'two' && <TabContainer dir={'ltr'}><KeywordOverview /></TabContainer>}
-            {value === 'three' && <TabContainer dir={'ltr'}><ContentOverview /></TabContainer>}
-          </div>
-        );
-      }
+        {value === 'two' && <TabContainer dir={'ltr'}><KeywordOverview /></TabContainer>}
+        {value === 'three' && <TabContainer dir={'ltr'}><ContentOverview /></TabContainer>}
+      </div>
+    );
+  }
 }
 
 ReportsBuilder.propTypes = {

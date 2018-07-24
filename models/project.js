@@ -27,7 +27,14 @@ const ProjectSchema = mongoose.Schema({
     },
     competitors: {
         type: Object
-    }
+    },
+    reports:[ {
+        name: {
+            type: String
+        },
+        organicResearch: {type:Object},
+        keywordOverview: {type:Object}
+    }]
 })
 
 // const ProjectSchema = mongoose.Schema({
