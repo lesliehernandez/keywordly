@@ -19,7 +19,7 @@ class Navbar extends Component {
         return (
             <nav class="col-md-12 navbar">
             <div class="col-md-8 logolinks">
-                        <a class="navbar-brand" href="#" style={{padding: '20px'}}><img src="https://image.ibb.co/nOfmyd/keywordlylogo.png" width="150px" height="18px"></img></a>
+                        <a class="navbar-brand" href="/landing" style={{padding: '20px'}}><img alt="" src="https://image.ibb.co/nOfmyd/keywordlylogo.png" width="150px" height="18px"></img></a>
                         <div class="toplinks">
                         <a href="#about" >ABOUT</a>
                         <a href="#pricing" >PRICING</a>
