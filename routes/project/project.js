@@ -5,12 +5,16 @@ const UserController = require('../../controllers/usersController')
 
 
 router.post('/new', (req, res) => {
-    let user = req.body.user
+    let user = req.body.user.user
     let info = req.body.info
-    ProjectsController.createProject(info, user, (err, project) => {
+    UserController.getUserById(user, (err, u) => {
+        console.log(u); 
         if(err) throw err
-        console.log(project)
-        res.send(res.status)
+        ProjectsController.createProject(info, u._id, (err, project) => {
+            if(err) throw err
+            console.log(project)
+            res.send(res.status)
+        })
     })
     
 });
