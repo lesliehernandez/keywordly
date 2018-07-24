@@ -99,48 +99,51 @@ class ReportsBuilder extends Component {
 
 
             {value === 'one' && <TabContainer dir={'ltr'}>
-              <DomainOverview thisProject={thisProject} />
+              <DomainOverview thisProject={thisProject} style={{height: this.props.height}}/>
+              
               <Dialog
-                open={this.state.brandedDialogOpen}
-                onClose={this.handleBrandedClickClose}
-                aria-labelledby="form-dialog-title"
-              >
-                <DialogTitle id="form-dialog-title">Enter Branded Keyword</DialogTitle>
-                <DialogContent>
-                  <DialogContentText>
-                  Enter a keyword that represents your brand name
+       open={this.state.brandedDialogOpen}
+       onClose={this.handleBrandedClickClose}
+       aria-labelledby="form-dialog-title"
+          >
+
+          <DialogTitle id="form-dialog-title" style={{ width: '400px', height: '50px'}} >Enter Branded Keywords</DialogTitle>
+          <DialogContent>
+          <div className="login_form" style={{ width: '400px', height: '150px', paddingBottom: '10px'}}>
+          <DialogContentText style={{fontSize:'12px'}}>
+                  Enter your branded keywords separated by a comma.
                   </DialogContentText>
-                  <TextField
-                    onChange={this.handleBrandedChange}
-                    autoFocus
-                    margin="normal"
-                    id="branded"
-                    name="branded"
-                    label="branded"
-                    type="text"
-                    fullWidth
-                  />
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={this.handleBrandedClickClose} color="primary">
-                    Cancel
-                  </Button>
-                  <Button onClick={this.handleBrandedFormSubmit} color="primary">
-                    Save
-                  </Button>
-                </DialogActions>
-              </Dialog>
-                <Button onClick={this.handleBrandedClickOpen}>
-                Update Brand
-                </Button>
+                  <br></br><br></br>
+            <form>
+            <div clas="row">
+            <div class="form-group">
+              <label style={{ fontSize: '12px'}}>Branded Keywords</label><br></br>
+              <input ref="branded" name="branded" type="branded" onChange={this.handleBrandedChange} style={{ width: '350px', height: '25px', fontSize: '12px'}}/>
+              </div>
+              </div>
+            </form>
+        </div>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleBrandedClickClose} color="primary" style={{ fontSize: '12px'}}>
+              Cancel
+            </Button>
+            <Button onClick={this.handleBrandedFormSubmit}  color="primary" style={{ fontSize: '12px'}}>
+              Submit
+            </Button>
+          </DialogActions>
+        </Dialog>
+              
                 <Tabs
                   value={this.state.value}
                   onChange={this.handleChange}
                   indicatorColor="primary"
                   textColor="primary"
-                  centered
-                >
-                  <Tab value='two' label="Save and Continue" />
+                  centered>
+                <Button onClick={this.handleBrandedClickOpen} style={{margin: '7px', backgroundColor: '#46E4C4'}}>
+                Enter Branded Keywords
+                </Button>
+                <Tab value='two' label="Save and Continue" style={{margin: '7px', backgroundColor: '#46E4C4', borderRadius: '4px',  padding: '8px 16px', minWidth: '64px', minHeight: '36px', fontWeight: '500',  color: 'rgba(0, 0, 0, 0.87)'}}/>
                 </Tabs>
             </TabContainer>}
 
