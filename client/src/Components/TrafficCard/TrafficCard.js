@@ -29,7 +29,7 @@ const styles = {
 };
 
 function trafficCard(props) {
-  const { classes } = props;
+  const { classes } = props; 
 
   return (
     <div>
@@ -38,11 +38,11 @@ function trafficCard(props) {
           <Grid container spacing={24}> 
             <Grid item xs={6}>
             <h4>Index</h4>
-            <h1>287</h1>
+            <h1>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].traffic.keywords) : '287' }</h1>
           </Grid>
           <Grid item xs={6}>
           <h4>Traffic</h4>
-          <h1>287</h1>
+          <h1>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].traffic.total) : '287' }</h1>
           </Grid>
           </Grid>
           </CardContent>
@@ -50,11 +50,11 @@ function trafficCard(props) {
           <Grid container spacing={24}> 
           <Grid item xs={6}>
           <h4>Keywords</h4>
-          <h1>287</h1>
+          <h1>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].traffic.keywords) : '287' }</h1>
           </Grid>
           <Grid item xs={6}>
           <h4>Traffic Cost</h4>
-          <h1>287</h1>
+          <h1>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].traffic.costs) : '287' }</h1>
           </Grid>
           </Grid>
         </CardContent>

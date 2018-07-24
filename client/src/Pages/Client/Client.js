@@ -11,8 +11,6 @@ import SerpChart from '../../Components/SerpChart'
 
 class Client extends Component {
   render() {
-    console.log(this.props);
-    
     return (
         <Grid container className='client' item xs={12} >
           <Grid item xs={12} style={{marginTop: '50px', marginBottom: '20px'}}>  
@@ -20,19 +18,19 @@ class Client extends Component {
           </Grid>
           <Grid container style={{justifyContent: 'space-evenly'}}>
           <Grid item xs={4} style={{position: 'relative'}}>
-              <TrafficCard/>
+              <TrafficCard thisProject={this.props.thisProject} />
               </Grid>
               <Grid item xs={4} style={{position: 'relative'}}>
               <BrandedChart/>
               </Grid>
               <Grid item xs={4} style={{position: 'relative'}}>
-              <Tables/>
+              <Tables thisProject={this.props.thisProject} />
             </Grid>
           </Grid>
           <Grid item md={12}>
             <Grid container style={{justifyContent: 'space-evenly'}}>
               <Grid item xs={6} style={{position: 'relative'}}>
-              <SerpChart/>
+              <SerpChart thisProject={this.props.thisProject} />
               </Grid>
               <Grid item xs={6} style={{position: 'relative'}}>
                 <OrChart/>

@@ -17,19 +17,6 @@ const styles = theme => ({
   },
 });
 
-let id = 0;
-function createData(name, calories, fat, carbs, protein) {
-  id += 1;
-  return { id, name, calories, fat, carbs, protein };
-}
-
-const data = [
-  createData('Sitelinks', 0.6),
-  createData('Knowledge Panel', 15.62),
-  createData('Local Pack', 6.67),
-  createData('Images', 57.66)
-];
-
 function SimpleTable(props) {
   const { classes } = props;
 
@@ -40,14 +27,22 @@ function SimpleTable(props) {
             </CardHeader>
       <Table className={classes.table}>
         <TableBody>
-          {data.map(n => {
-            return (
-              <TableRow key={n.id} style={{height:'65px'}}>
-                <TableCell component="th" scope="row" style={{fontSize: '12px'}}>{n.name}</TableCell>
-                <TableCell numeric style={{fontSize: '12px'}}>{n.calories}</TableCell>
+              <TableRow style={{height:'65px'}}>
+                <TableCell component="th" scope="row" style={{fontSize: '12px'}}>Sitelinks</TableCell>
+                <TableCell numeric style={{fontSize: '12px'}}>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].serp.siteLinks) : '287' }</TableCell>
               </TableRow>
-            );
-          })}
+              <TableRow style={{height:'65px'}}>
+                <TableCell component="th" scope="row" style={{fontSize: '12px'}}>Knowledge Panel</TableCell>
+                <TableCell numeric style={{fontSize: '12px'}}>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].serp.knowledgePanel) : '287' }</TableCell>
+              </TableRow>
+              <TableRow style={{height:'65px'}}>
+                <TableCell component="th" scope="row" style={{fontSize: '12px'}}>Local Pack</TableCell>
+                <TableCell numeric style={{fontSize: '12px'}}>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].serp.localPack) : '287' }</TableCell>
+              </TableRow>
+              <TableRow style={{height:'65px'}}>
+                <TableCell component="th" scope="row" style={{fontSize: '12px'}}>Images</TableCell>
+                <TableCell numeric style={{fontSize: '12px'}}>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].serp.images) : '287' }</TableCell>
+              </TableRow>
         </TableBody>
       </Table>
     </Paper>
