@@ -1,10 +1,4 @@
 import React, { Component } from "react";
-import { Jumbotron } from "react-bootstrap";
-import { Button } from "react-bootstrap";
-import { Form } from "react-bootstrap";
-import { FormGroup } from "react-bootstrap";
-import { ControlLabel } from "react-bootstrap";
-import { FormControl } from "react-bootstrap";
 import Navbar from "../../Components/Nav";
 import "./Landing.css";
 import Signup from "../../Components/Modals/Signup";
@@ -35,7 +29,7 @@ class Landing extends Component {
               <Signup />
               </div>
               <div class="col-md-6">
-              <div class="tablet"><img src="images/dashboard.png" display="inline-block" width="700" height="450"></img>
+              <div class="tablet"><img alt="" src="images/dashboard.png" display="inline-block" width="700" height="450"></img>
               </div>
 
             </div>
@@ -104,7 +98,7 @@ class Landing extends Component {
                 </p>
                 </div>
                 <div class="col-md-6">
-                <img src="http://via.placeholder.com/500x350"></img>
+                <img alt="" src="http://via.placeholder.com/500x350"></img>
                 </div>
 </div>
 </div>

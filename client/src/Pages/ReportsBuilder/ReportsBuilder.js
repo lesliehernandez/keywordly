@@ -69,9 +69,8 @@ class ReportsBuilder extends Component {
       componentDidMount(){
         const overview = fetch(`/project/data/${this.props.thisProject.clientInfo.domain}/${this.props.thisProject._id}`)
           .then(res => res.json())
-          .then(results => {
-              console.log(results);          
-          })
+          .then(results => {return results})
+          console.log(overview);          
       }
         
         

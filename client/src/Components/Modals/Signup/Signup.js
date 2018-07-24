@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import AuthService from '../../Auth/AuthService';
-import { Dialog, DialogActions, DialogContent, 
-  DialogContentText, DialogTitle, Button } from '@material-ui/core';
+import { Dialog, DialogActions, DialogContent, DialogTitle, Button } from '@material-ui/core';
 
-const styles = theme => ({
-  
-})
   
 class Signup extends Component {
     
