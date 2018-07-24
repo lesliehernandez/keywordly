@@ -32,12 +32,11 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-  { id: 'label', numeric: false, disablePadding: true, label: '' },
-  { id: 'rankcount', numeric: true, disablePadding: false, label: 'Rank Count' },
-  { id: 'svsum', numeric: true, disablePadding: false, label: 'Search Volume Sum' },
-  { id: 'avgcompetition', numeric: true, disablePadding: false, label: 'Average Competition' },
-  { id: 'uniqueurldensity', numeric: true, disablePadding: false, label: 'Unique URL Density' },
-  { id: 'trafficpercentage', numeric: true, disablePadding: false, label: 'Traffic %' },
+  { id: 'name', numeric: false, disablePadding: true, label: 'Dessert (100g serving)' },
+  { id: 'calories', numeric: true, disablePadding: false, label: 'Calories' },
+  { id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)' },
+  { id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
+  { id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' },
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -51,13 +50,34 @@ class EnhancedTableHead extends React.Component {
     return (
       <TableHead>
         <TableRow>
+          <TableCell padding="checkbox">
+            <Checkbox
+              indeterminate={numSelected > 0 && numSelected < rowCount}
+              checked={numSelected === rowCount}
+              onChange={onSelectAllClick}
+            />
+          </TableCell>
           {columnData.map(column => {
             return (
               <TableCell
                 key={column.id}
                 numeric={column.numeric}
-                padding={column.disablePadding ? '5px' : 'default'}
+                padding={column.disablePadding ? 'none' : 'default'}
+                sortDirection={orderBy === column.id ? order : false}
               >
+                <Tooltip
+                  title="Sort"
+                  placement={column.numeric ? 'bottom-end' : 'bottom-start'}
+                  enterDelay={300}
+                >
+                  <TableSortLabel
+                    active={orderBy === column.id}
+                    direction={order}
+                    onClick={this.createSortHandler(column.id)}
+                  >
+                    {column.label}
+                  </TableSortLabel>
+                </Tooltip>
               </TableCell>
             );
           }, this)}
@@ -117,11 +137,26 @@ let EnhancedTableToolbar = props => {
           </Typography>
         ) : (
           <Typography variant="title" id="tableTitle">
-Purple Rock Scissors          </Typography>
+            Nutrition
+          </Typography>
         )}
       </div>
       <div className={classes.spacer} />
-      
+      <div className={classes.actions}>
+        {numSelected > 0 ? (
+          <Tooltip title="Delete">
+            <IconButton aria-label="Delete">
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        ) : (
+          <Tooltip title="Filter list">
+            <IconButton aria-label="Filter list">
+              <FilterListIcon />
+            </IconButton>
+          </Tooltip>
+        )}
+      </div>
     </Toolbar>
   );
 };
@@ -151,20 +186,26 @@ class KeywordOverview extends React.Component {
     super(props);
 
     this.state = {
+      order: 'asc',
+      orderBy: 'calories',
       selected: [],
       data: [
-        createData('Totals', 305, 3.7, 67, 4.3, 187),
-        createData('Avg.', 452, 25.0, 51, 4.9), .1233,
-        createData('Top 3 Totals', 262, 16.0, 24, 6.0, .8856),
-        createData('4-10 Totals', 159, 6.0, 24, 4.0, .02),
-        createData('11-20 Totals', 356, 16.0, 49, 3.9, .0235),
-        createData('21-50 Totals', 408, 3.2, 87, 6.5, .0674),
-        createData('51-100 Totals', 237, 9.0, 37, 4.3, .0012),
-        createData('Unbranded', 375, 0.0, 94, 0.0, .1156),
-        createData('Branded', 518, 26.0, 65, 7.0, .8821),
+        createData('Cupcake', 305, 3.7, 67, 4.3),
+        createData('Donut', 452, 25.0, 51, 4.9),
+        createData('Eclair', 262, 16.0, 24, 6.0),
+        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+        createData('Gingerbread', 356, 16.0, 49, 3.9),
+        createData('Honeycomb', 408, 3.2, 87, 6.5),
+        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+        createData('Jelly Bean', 375, 0.0, 94, 0.0),
+        createData('KitKat', 518, 26.0, 65, 7.0),
+        createData('Lollipop', 392, 0.2, 98, 0.0),
+        createData('Marshmallow', 318, 0, 81, 2.0),
+        createData('Nougat', 360, 19.0, 9, 37.0),
+        createData('Oreo', 437, 18.0, 63, 4.0),
       ],
       page: 0,
-      rowsPerPage: 9,
+      rowsPerPage: 5,
     };
   }
 
@@ -252,13 +293,15 @@ class KeywordOverview extends React.Component {
                       key={n.id}
                       selected={isSelected}
                     >
+                      <TableCell padding="checkbox">
+                        <Checkbox checked={isSelected} />
+                      </TableCell>
                       <TableCell component="th" scope="row" padding="none">
                         {n.name}
                       </TableCell>
                       <TableCell numeric>{n.calories}</TableCell>
                       <TableCell numeric>{n.fat}</TableCell>
                       <TableCell numeric>{n.carbs}</TableCell>
-                      <TableCell numeric>{n.protein}</TableCell>
                       <TableCell numeric>{n.protein}</TableCell>
                     </TableRow>
                   );
@@ -271,6 +314,20 @@ class KeywordOverview extends React.Component {
             </TableBody>
           </Table>
         </div>
+        <TablePagination
+          component="div"
+          count={data.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          backIconButtonProps={{
+            'aria-label': 'Previous Page',
+          }}
+          nextIconButtonProps={{
+            'aria-label': 'Next Page',
+          }}
+          onChangePage={this.handleChangePage}
+          onChangeRowsPerPage={this.handleChangeRowsPerPage}
+        />
       </Paper>
     );
   }
