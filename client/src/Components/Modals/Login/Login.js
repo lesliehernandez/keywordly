@@ -82,11 +82,11 @@ class Login extends Component {
         </div>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleFormSubmit} color="primary" style={{ fontSize: '12px'}}>
-              Login
-            </Button>
             <Button onClick={this.handleClickClose} color="primary" style={{ fontSize: '12px'}}>
               Cancel
+            </Button>
+            <Button onClick={this.handleFormSubmit} color="primary" style={{ fontSize: '12px'}}>
+              Login
             </Button>
           </DialogActions>
         </Dialog>

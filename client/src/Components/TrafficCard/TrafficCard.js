@@ -54,7 +54,7 @@ function trafficCard(props) {
           </Grid>
           <Grid item xs={6}>
           <h4>Traffic Cost</h4>
-          <h1>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].traffic.costs) : '287' }</h1>
+          <h1>${props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].traffic.costs) : '287' }</h1>
           </Grid>
           </Grid>
         </CardContent>

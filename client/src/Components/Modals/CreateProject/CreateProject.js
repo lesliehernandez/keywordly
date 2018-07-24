@@ -69,7 +69,7 @@ class NewProject extends Component {
   render () {
     return (
       <div>
-        <Button variant="contained" style={{margin: '7px'}} onClick={this.handleClickOpen}>
+        <Button variant="contained" onClick={this.handleClickOpen} style={{margin: '7px'}}>
         Create new Project
         </Button>
 
@@ -78,37 +78,30 @@ class NewProject extends Component {
           onClose={this.handleClickClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Create new Project</DialogTitle>
+           <DialogTitle id="form-dialog-title" style={{ width: '400px', height: '50px'}} >Create New Project</DialogTitle><br></br><br></br>
           <DialogContent>
-            <DialogContentText>
-              To subscribe to this website, please enter your email address here. We will send
-              updates occasionally.
-            </DialogContentText>
-            <TextField
-              onChange={this.handleChange}
-              autoFocus
-              margin="normal"
-              id="name"
-              name="name"
-              label="Name"
-              type="text"
-              fullWidth
-            />
-            <TextField
-              onChange={this.handleChange}
-              margin="normal"
-              id="domain"
-              name="domain"
-              label="Url"
-              type="text"
-              fullWidth
-            />
+
+          <form>
+            <div clas="row">
+            <div class="form-group">
+              <label style={{ fontSize: '12px'}}>Project Name</label><br></br>
+              <input ref="name" name="name" type="name" onChange={this.handleChange} style={{ width: '350px', height: '25px', fontSize: '12px'}}/>
+              </div>
+              </div>
+              <div class="row" style={{ marginLeft: '0'}}>
+              <div class="form-group">
+              <label style={{ fontSize: '12px'}}>Project Domain</label><br></br>
+              <input ref="domain" name="domain" type="domain" onChange={this.handleChange} style={{ width: '350px', height: '25px', fontSize: '12px'}}/>
+              </div>
+              </div>
+            </form>
+
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClickClose} color="primary">
+            <Button onClick={this.handleClickClose} color="primary" style={{ fontSize: '12px'}}>
               Cancel
             </Button>
-            <Button onClick={this.handleFormSubmit} color="primary">
+            <Button onClick={this.handleFormSubmit} color="primary" style={{ fontSize: '12px'}}>
               Create
             </Button>
           </DialogActions>
