@@ -45,7 +45,7 @@ function SimpleTable(props) {
             </TableRow>
             <TableRow style={{height:'42px'}}>
               <TableCell component="th" scope="row" style={{fontSize: '12px'}}>Authority Score</TableCell>
-              <TableCell numeric style={{fontSize: '12px'}}>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].backlinks.athorityScore) : 'Need 2 Get' }</TableCell>
+              <TableCell numeric style={{fontSize: '12px'}}>{props.thisProject ? (props.thisProject.clientData[props.thisProject.clientInfo.domain].backlinks.authorityScore) : '287' }</TableCell>
             </TableRow>
             <TableRow style={{height:'42px'}}>
               <TableCell component="th" scope="row" style={{fontSize: '12px'}}>Overall Toxic Score</TableCell>
