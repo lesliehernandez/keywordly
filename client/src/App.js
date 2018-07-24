@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Redirect} from "react-router-dom";
-import withAuth from './Components/Auth/withAuth';
 
 function App(props){
     return (
@@ -10,4 +9,4 @@ function App(props){
     );
 }
 
-export default withAuth(App);
+export default App;

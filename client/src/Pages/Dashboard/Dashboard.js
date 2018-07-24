@@ -6,6 +6,7 @@ import "./Dashboard.css";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
+import { compose } from 'recompose';
 import {
   Drawer,
   AppBar,
@@ -36,6 +37,7 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import CreateProject from "../../Components/Modals/CreateProject";
 import ViewReports from "../ViewReports";
+import withAuth from "../../Components/Auth/withAuth";
 import AuthService from "../../Components/Auth/AuthService";
 
 const drawerWidth = 240;
@@ -145,26 +147,53 @@ let routes = [
 ];
 
 class Dashboard extends Component {
-  Auth = new AuthService();
-  user = this.Auth.getConfirm();
+  constructor(props){
+    super(props)
+    this.state = {
+      draweropen: false,
+      domainCollapseOpen: false,
+      reportsCollapseOpen: false,
+      anchorEl: null,
+    }
+  }
 
-  state = {
-    draweropen: false,
-    domainCollapseOpen: false,
-    reportsCollapseOpen: false,
-    anchorEl: null
-  };
+  Auth = new AuthService()
 
   componentDidMount() {
-    this.getProjects();
+    this.getProjects()
   }
-  componentDidUpdate(prevProps) {
-    console.log("Component Rerendered");
-    console.log(prevProps);
+
+  componentDidUpdate() {
+  }
+
+  buildRoutes = () => {
+    this.state.projects.forEach(project => {
+      routes.push({
+        path: `/reports/${project._id}`,
+        sidebar: () => <a>project.client</a>,
+        main: () => <ViewReports thisProject={project} />,
+        routes: [
+          {
+            path: `/reports/reportsBuilder`,
+            component: <ReportsBuilder thisProject={project} />
+          }
+        ]
+      });
+      routes.push({
+        path: `/client/${project._id}`,
+        sidebar: () => <a>project.client</a>,
+        main: () => <Client thisProject={project} />
+      });
+      routes.push({
+        path: `/reports/reportsBuilder/${project._id}`,
+        sidebar: () => <a>project.client</a>,
+        main: () => <ReportsBuilder thisProject={project} />
+      });
+    });
   }
 
   getProjects = () => {
-    fetch(`/project/user/${this.user.user}`)
+    fetch(`/project/user/${this.props.confirm.user}`)
       .then(res => res.json())
       .then(
         result => {
@@ -172,40 +201,8 @@ class Dashboard extends Component {
           this.setState({
             isLoaded: true,
             projects: result
-          });
-          result.forEach(project => {
-            routes.push({
-              path: `/reports/${project._id}`,
-              sidebar: () => <a>project.client</a>,
-              main: () => <ViewReports thisProject={project} />,
-              routes: [
-                {
-                  path: `/reports/reportsBuilder`,
-                  component: <ReportsBuilder thisProject={project} />
-                }
-              ]
-            });
-            routes.push({
-              path: `/client/${project._id}`,
-              sidebar: () => <a>project.client</a>,
-              main: () => <Client thisProject={project} />
-            });
-            routes.push({
-              path: `/reports/reportsBuilder/${project._id}`,
-              sidebar: () => <a>project.client</a>,
-              main: () => <ReportsBuilder thisProject={project} />
-            });
-          });
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        error => {
-          this.setState({
-            isLoaded: true,
-            error,
-            projects: []
-          });
+          })
+          this.buildRoutes()
         }
       );
   };
@@ -241,8 +238,6 @@ class Dashboard extends Component {
   };
 
   render() {
-    console.log(this.state.projects);
-    
     const { classes, theme } = this.props;
     const { anchorEl } = this.state;
     return (
@@ -286,7 +281,7 @@ class Dashboard extends Component {
                   }
                 }}
               />
-              <CreateProject getProjects={this.getProjects} />
+              <CreateProject user={this.props.confirm.user} />
             </Grid>
             <Grid container alignItems="center">
               <Grid item sm={8} className={classes.centerText}>
@@ -501,4 +496,4 @@ Dashboard.propTypes = {
   theme: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(Dashboard);
+export default compose(withAuth, withStyles(styles, { withTheme: true }))(Dashboard);
