@@ -4,7 +4,6 @@ import Tables from '../../Components/Tables/'
 import BrandedChart from '../../Components/BrandedChart'
 import OrChart from '../../Components/OrChart'
 import TrafficCard from '../../Components/TrafficCard'
-import SimpleCard from '../../Components/SimpleCard'
 import { Grid } from '@material-ui/core'
 import SerpChart from '../../Components/SerpChart'
 

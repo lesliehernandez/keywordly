@@ -74,7 +74,8 @@ function getDataForDomains(a){
                         backlinks: {
                             domains: backlinkData.data.domains,
                             total: backlinkData.data.total,
-                            ip: backlinkData.data.ip
+                            ip: backlinkData.data.ip,
+                            authorityScore: backlinkData.data.ascore
                         },
                         organicResearch: organicResearchData
                     }
