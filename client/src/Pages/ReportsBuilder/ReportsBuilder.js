@@ -12,7 +12,7 @@ import KeywordOverview from '../../Components/KeywordOverview'
 
 function TabContainer({ children, dir }) {
     return (
-      <div component="div" dir={dir} style={{ padding: 8 * 3, height: '100vh' }}>
+      <div component="div" style={{ padding: 8 * 3, height: '100vh' }}>
         {children}
       </div>
     );

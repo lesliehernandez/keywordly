@@ -241,6 +241,8 @@ class Dashboard extends Component {
   };
 
   render() {
+    console.log(this.state.projects);
+    
     const { classes, theme } = this.props;
     const { anchorEl } = this.state;
     return (
