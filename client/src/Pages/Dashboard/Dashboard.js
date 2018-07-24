@@ -373,7 +373,7 @@ class Dashboard extends Component {
                             float: "left"
                           }}
                         >
-                          Dashboard
+                          Dashboards
                       </Button>
                     }
                   />
