@@ -28,14 +28,16 @@ class NewProject extends Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault()
-    let newProject = {
-      user: this.props.user,
-      info: {
-        name:this.state.name,
-        domain:this.state.domain,
-      }
-    }    
 
+    let userId = this.props.user
+
+    let newProject = {
+        name:this.state.name,
+        domain:this.state.domain
+    }   
+
+    console.log(newProject);
+    
     const headers = new Headers()
     headers.append('Content-Type', 'application/json')
     const options = {
@@ -44,15 +46,24 @@ class NewProject extends Component {
       body:JSON.stringify(newProject)
     }
 
-    fetch('/project/new', options)
+    fetch(`/project/new/${userId}`, options)
     .then((data) => {
       console.log(data);
     })
     this.handleClickClose()
   }
+
+  // reportBuilderHandler = () => {
+  //   console.log('Building Report');
+  //   fetch(`/project/data/${this.props.projectDomain}/${this.props.projectId}`)
+  //   .then(res => res.json())
+  //   .then(results => {
+  //       console.log(results);          
+  //   })
+  // }
   
+
   render () {
-    
     return (
       <div>
         <Button variant="contained" onClick={this.handleClickOpen} style={{margin: '7px', backgroundColor: '#46E4C4'}}>
