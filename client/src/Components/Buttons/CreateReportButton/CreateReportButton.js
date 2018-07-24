@@ -22,7 +22,7 @@ class CreateReportButton extends Component {
 
     render(){
         return(
-            <Button variant="contained" onClick={this.reportBuilderHandler} style={{margin: '7px'}}>
+            <Button variant="contained"  style={{margin: '7px'}}>
                 <Link to={`/reports/reportsBuilder/${this.props.projectId}`}>
                 Create Reports
                 </Link>

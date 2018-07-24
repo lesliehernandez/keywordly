@@ -21,7 +21,7 @@ function SimpleTable(props) {
   const { classes } = props;
 
   return (
-    <Paper className={classes.root}>
+    <Paper className={classes.root} style={{width: props.width}}>
       <CardHeader style= {{backgroundColor: 'white', border: 'none', fontSize: '14px', fontFamily: 'Montserrat', fontWeight: '500'}}>
               SERP Features
             </CardHeader>
