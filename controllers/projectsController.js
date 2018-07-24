@@ -27,6 +27,23 @@ module.exports.getData = (domain, projectId, cb) => {
     })
 }
 
+module.exports.summaryBuilder = (projectId, query, cb) => {
+    console.log(query);
+    
+    Project.findByIdAndUpdate(projectId, {$push : {
+        'clientInfo.branded': {
+            word: query.word,
+            include: query.include
+        }
+    }}, (err, results) => {
+        if(err) throw err
+        Project.findById(projectId, (err, project) => {
+            if(err) throw err
+            cb(null, project)
+        })
+    })
+}
+
 module.exports.createProject = (data, user, cb) => {
     const project = new Project({
         name: data.name,
