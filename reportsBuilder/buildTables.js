@@ -1,8 +1,3 @@
-const getData = require('./getData')
-//const d3 = require('d3')
-const d3 = require('d3-collection')
-const fs = require('fs')
-
 // Database 
 // pulls cliet and competitors
 
@@ -708,5 +703,5 @@ function getAvg(x, key){
 
  
 
-
+module.exports.branded = branded
 

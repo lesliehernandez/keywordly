@@ -1,6 +1,7 @@
 const Project = require('../models/project')
 const User = require('../models/user')
 const reportsBuilder = require('../reportsBuilder/getData')
+const tableBuilder = require('../reportsBuilder/buildTables')
 
 
 module.exports.getProjects = (user, cb) => {
@@ -39,7 +40,18 @@ module.exports.summaryBuilder = (projectId, query, cb) => {
         if(err) throw err
         Project.findById(projectId, (err, project) => {
             if(err) throw err
-            cb(null, project)
+            let words = []
+            let orData = project.clientData[project.clientInfo.domain].organicResearch
+            project.clientInfo.branded.forEach(term => {
+                word = term.word.replace(/\s/g,'')
+                words.push(word.split(','))
+            })
+            tableBuilder.branded(orData, words[0])
+            .then(brandedSummary => {
+                console.log(brandedSummary);
+                cb(null, {projects, brandedSummary})
+                
+            })
         })
     })
 }
