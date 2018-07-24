@@ -8,71 +8,92 @@ import KeywordOverview from '../../Components/KeywordOverview'
 
 
 function TabContainer({ children, dir }) {
-    return (
-      <div component="div" style={{ padding: 8 * 3, height: '100%' }}>
-        {children}
-      </div>
-    );
-  }
+  return (
+    <div component="div" style={{ padding: 8 * 3, height: '100%' }}>
+      {children}
+    </div>
+  );
+}
   
-  TabContainer.propTypes = {
-    children: PropTypes.node.isRequired,
-    dir: PropTypes.string.isRequired,
-  };
+TabContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+  dir: PropTypes.string.isRequired,
+};
   
-  const styles = theme => ({
-    root: {
-      backgroundColor: theme.palette.background.paper,
-      width: '100%',
-      height: '100%'
-    },
-  });
+const styles = theme => ({
+  root: {
+    backgroundColor: theme.palette.background.paper,
+    width: '100%',
+    height: '100%'
+  },
+});
 
 class ReportsBuilder extends Component {
+  constructor(props){
+    super(props)
+    this.state= {
+      value: 'one',
+      brandedDialogOpen: false,
+      branded: '',
+      thisProject: props.thisProject
+    }
+  }
 
-      state = {
-        value: 'one',
-        brandedDialogOpen: false,
-        branded: '',
-      };
     
-      handleChange = (event, value) => {
-        this.setState({ value });
-      };
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
     
-      handleBrandedClickOpen = () => {
-        this.setState({ brandedDialogOpen: true });
-      };
-    
-      handleBrandedClickClose = () => {
-        this.setState({ brandedDialogOpen: false });
-      };
+  handleBrandedClickOpen = () => {
+    this.setState({ brandedDialogOpen: true });
+  };
 
-      handleBrandedChange = (e) => {
-        this.setState(
-          {
-              [e.target.name]: e.target.value
-          }
-        )
+  handleBrandedClickClose = () => {
+    this.setState({ brandedDialogOpen: false });
+  };
+
+  handleBrandedChange = (e) => {
+    this.setState(
+      {
+          [e.target.name]: e.target.value
       }
+    )
+  }
 
+  handleBrandedFormSubmit = (e) => {
+    e.preventDefault()
+    console.log('You hit the Branded Submit Handler');
+    console.log(this.state.branded);
+    let query = {
+      word: this.state.branded,
+      include: true
+    }
+    const headers = new Headers()
+    headers.append('Content-Type', 'application/json')
+    const options = {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(query)
+    }
+    fetch(`/project/branded/${this.props.thisProject._id}`, options)
+    .then(res => res.json())
+    .then(result => {
+      this.setState({
+        thisProject: result
+      })
+    })
+    this.handleBrandedClickClose()
+  }
       
-      handleBrandedFormSubmit = (e) => {
-
-        console.log(this.state);
-        
-        this.handleBrandedClickClose()
-      }
-      
-      
-
-      componentDidMount(){
-               
-      }
+  componentDidMount(){
+            
+  }
         
         
 
       render() {
+        console.log(this.state);
+        
         const { classes, thisProject } = this.props;
         const { value } = this.state;
     

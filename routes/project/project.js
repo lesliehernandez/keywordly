@@ -17,12 +17,23 @@ router.post('/new/:userId', (req, res) => {
             })
         })
     })
-    
+});
+
+router.post('/branded/:projectId', (req, res) => {
+    console.log('You hit the Branded Route');
+    console.log('------------------------------');
+    ProjectsController.summaryBuilder(req.params.projectId, req.body, (err, results) => {
+        if(err) throw err
+        console.log(results);
+        res.json(results)
+    })
 });
 
 router.get('/user/:id', (req, res) => {
     ProjectsController.getProjects(req.params.id, (err, projects) => {
         if(err) throw err
+        console.log('Getting all projects for you');
+        console.log('------------------------------');
         console.log(projects);
         res.json(projects)
     })
@@ -37,6 +48,8 @@ router.get('/data/:domain/:projectId', (req, res) => {
         res.json(data);
     })
 })
+
+
 
 router.post('/update', (req, res) => {
     res.send({ express: 'Hello From Express' });
