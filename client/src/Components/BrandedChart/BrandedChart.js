@@ -14,12 +14,12 @@ const pie = {
     {
       data: [300, 50],
       backgroundColor: [
-        '#FF6384',
-        '#36A2EB',
+        '#46E4C4',
+        '#5370FB',
       ],
       hoverBackgroundColor: [
-        '#FF6384',
-        '#36A2EB',
+        '#46E4C4',
+        '#5370FB',
       ],
     }],
 };

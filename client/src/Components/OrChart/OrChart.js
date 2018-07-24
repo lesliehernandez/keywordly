@@ -10,11 +10,11 @@ const bar = {
   datasets: [
     {
       label: 'Organic Keywords',
-      backgroundColor: 'rgba(255,99,132,0.2)',
-      borderColor: 'rgba(255,99,132,1)',
+      backgroundColor: '#46E4C4',
+      borderColor: '#46E4C4',
       borderWidth: 1,
-      hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-      hoverBorderColor: 'rgba(255,99,132,1)',
+      hoverBackgroundColor: '#46E4C4',
+      hoverBorderColor: '#46E4C4',
       data: [65, 59, 80, 81, 56, 55,72,42,91,60,18],
     },
   ],
