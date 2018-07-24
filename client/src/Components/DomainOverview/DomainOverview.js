@@ -12,13 +12,13 @@ class DomainOverview extends Component {
     return (
       
         <Grid container className='client'>
-          <Grid item md={4} style={{marginBottom: '50px'}} style={{height: this.props.height}}>
+          <Grid item md={4} style={{marginBottom: '50px'}} >
             <TrafficCard thisProject={thisProject} />
           </Grid>
           <Grid item md={4} style={{marginBottom: '50px'}} >
-            <SerpChart width='450px' thisProject={thisProject} style={{height: this.props.height}}/>
+            <SerpChart width='450px' thisProject={thisProject} />
           </Grid>
-          <Grid item md={4} style={{marginBottom: '50px', height: this.props.height}} >
+          <Grid item md={4} style={{marginBottom: '50px'}} >
             <Tables thisProject={thisProject}/>
           </Grid>
         </Grid>
