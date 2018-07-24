@@ -3,17 +3,18 @@ const ProjectsController = require('../../controllers/projectsController')
 const UserController = require('../../controllers/usersController')
 
 
-
-router.post('/new', (req, res) => {
-    let user = req.body.user.user
-    let info = req.body.info
+router.post('/new/:userId', (req, res) => {
+    let user = req.params.userId
+    let info = req.body
     UserController.getUserById(user, (err, u) => {
-        console.log(u); 
         if(err) throw err
         ProjectsController.createProject(info, u._id, (err, project) => {
             if(err) throw err
-            console.log(project)
-            res.send(res.status)
+            ProjectsController.getData(project.clientInfo.domain, project._id, (err, data) => {
+                if(err) throw err
+                console.log(data);
+                res.json(project)
+            })
         })
     })
     
