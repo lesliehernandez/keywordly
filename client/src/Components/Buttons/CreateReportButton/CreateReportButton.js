@@ -15,17 +15,16 @@ const CreateReportButton = withRouter(({ history, ...props }) => (
         margin: '0', 
         float: 'right', 
         backgroundColor: '#46E4C4',
-        height: '15px',
-        padding: '0',
+        height: '40px',
+        padding: '10px',
         color: 'rgba(0, 0, 0, 0.87)', 
         fontSize: '0.875rem', 
         minWidth: '150px',
-        minHeight: '25px',
+        minHeight: '45px',
         fontFamily: 'Roboto', 
         borderRadius: '4px', 
         textTransform: 'uppercase', 
-        verticalAlign: 'middle', 
-        paddingTop: '7px', 
+        verticalAlign: 'middle',  
         backgroundColor: '#46E4C4'
     }}
   >
