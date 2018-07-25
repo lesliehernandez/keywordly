@@ -32,7 +32,7 @@ function trafficCard(props) {
 
   return (
     <div>
-      <Card className={classes.card} display="inline-block" align="center">
+      <Card className={classes.card} display="inline-block" align="center" style={{width: props.width, height: props.height, padding: '10px'}}>
         <CardContent>
           <Grid container spacing={24}> 
             <Grid item xs={6}>
