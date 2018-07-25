@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import Login from '../Modals/Login';
 import Signup from '../Modals/Signup';
 import AuthService from '../Auth/AuthService'
@@ -31,6 +32,7 @@ class Navbar extends Component {
             <div class="btn-group float-right mt-2" role="group">
                 <Login/>
                 <Signup />
+                        {this.Auth.loggedIn() ? <Link to="/dashboard">Dashboard</Link> : null}
                         {this.Auth.loggedIn() ? <a onClick={this._handleLogout}>Logout</a> : null}
                         </div>
                         </div>

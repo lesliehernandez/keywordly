@@ -8,7 +8,7 @@ router.post('/new/:userId', (req, res) => {
     let info = req.body
     UserController.getUserById(user, (err, u) => {
         if(err) res.json(err)
-        ProjectsController.createProject(info, u._id, (err, project) => {
+        ProjectsController.createProject(info, user, (err, project) => {
             if(err) res.json(err)
             ProjectsController.getData(project.clientInfo.domain, project._id, (err, data) => {
                 if(err) res.json(err)

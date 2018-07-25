@@ -33,7 +33,8 @@ const ProjectSchema = mongoose.Schema({
             type: String
         },
         organicResearch: {type:Object},
-        keywordOverview: {type:Object}
+        keywordSummary: {type:Object},
+        brandedSummary: {type:Object}
     }]
 })
 
