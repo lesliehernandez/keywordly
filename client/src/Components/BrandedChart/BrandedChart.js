@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Card, CardBody, CardColumns, CardHeader } from 'reactstrap';
-import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import './Chart.css'
 
 
@@ -17,7 +16,7 @@ function BrandedChart(props) {
     ],
     datasets: [
       {
-        data: [300, 50],
+        data: [props.thisProject.reports[0].brandedSummary.branded[0] || 50, props.thisProject.reports[0].brandedSummary.unbranded[0] || 50],
         backgroundColor: [
           '#46E4C4',
           '#5370FB',

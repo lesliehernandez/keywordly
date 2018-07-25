@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button } from '@material-ui/core';
 import { withRouter } from 'react-router-dom'
 
@@ -24,8 +24,7 @@ const CreateReportButton = withRouter(({ history, ...props }) => (
         fontFamily: 'Roboto', 
         borderRadius: '4px', 
         textTransform: 'uppercase', 
-        verticalAlign: 'middle',  
-        backgroundColor: '#46E4C4'
+        verticalAlign: 'middle'
     }}
   >
     Create Report

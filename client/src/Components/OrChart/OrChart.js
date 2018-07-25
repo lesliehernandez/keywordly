@@ -5,20 +5,6 @@ import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import './Chart.css'
 
 
-const bar = {
-  labels: ['1-3', '4-10', '11-20', '21-30', '31-40', '41-50', '51-60', '61-70', '71-80','81-90','91-100'],
-  datasets: [
-    {
-      label: 'Organic Keywords',
-      backgroundColor: '#46E4C4',
-      borderColor: '#46E4C4',
-      borderWidth: 1,
-      hoverBackgroundColor: '#46E4C4',
-      hoverBorderColor: '#46E4C4',
-      data: [65, 59, 80, 81, 56, 55,72,42,91,60,18],
-    },
-  ],
-};
 
 const options = {
   tooltips: {
@@ -29,7 +15,31 @@ const options = {
 }
 
 class OrChart extends Component {
+  
   render() {
+
+    const bar = {
+      labels: ['1-3', '4-10', '11-20', '21-50', '51-100'],
+      datasets: [
+        {
+          label: 'Organic Keywords',
+          backgroundColor: '#46E4C4',
+          borderColor: '#46E4C4',
+          borderWidth: 1,
+          hoverBackgroundColor: '#46E4C4',
+          hoverBorderColor: '#46E4C4',
+          data: [
+            this.props.thisProject.reports[0].keywordSummary.top3[0] || 24,
+            this.props.thisProject.reports[0].keywordSummary.top410[0] || 34,
+            this.props.thisProject.reports[0].keywordSummary.top1120[0] || 76,
+            this.props.thisProject.reports[0].keywordSummary.top2150[0] || 12,
+            this.props.thisProject.reports[0].keywordSummary.top51100[0] || 42,
+          ],
+        },
+      ],
+    };
+
+    console.log(this.props);
     return (
       <div className="animated fadeIn">
         <CardColumns className="cols-2">

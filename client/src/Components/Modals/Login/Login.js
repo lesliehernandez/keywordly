@@ -62,7 +62,7 @@ class Login extends Component {
           <DialogContent>
           <div className="login_form" style={{ width: '400px', height: '150px', padding: '30px'}}>
             <form>
-            <div clas="row">
+            <div class="row">
             <div class="form-group">
               <label style={{ fontSize: '12px'}}>Email</label><br></br>
               <input ref="email" name="email" type="email" onChange={this._handleChange} style={{ width: '350px', height: '25px', fontSize: '12px'}}/>

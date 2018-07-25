@@ -33,7 +33,7 @@ class Client extends Component {
               <SerpChart thisProject={this.props.location.state.thisProject} />
               </Grid>
               <Grid item xs={6} style={{position: 'relative'}}>
-                <OrChart/>
+                <OrChart thisProject={this.props.location.state.thisProject} />
               </Grid>
             </Grid>
           </Grid>
