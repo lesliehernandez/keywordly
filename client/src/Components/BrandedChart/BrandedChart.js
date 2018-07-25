@@ -7,6 +7,7 @@ import './Chart.css'
 
 
 
+
 function BrandedChart(props) {    
 
   const pie = {
