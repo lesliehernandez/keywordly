@@ -5,6 +5,7 @@ import { Dialog, DialogTitle, DialogActions, DialogContent, DialogContentText, T
 import DomainOverview from '../../Components/DomainOverview'
 import ContentOverview from '../../Components/ContentOverview'
 import KeywordOverview from '../../Components/KeywordOverview'
+import { Grid } from '@material-ui/core'
 
 
 function TabContainer({ children, dir }) {
@@ -93,6 +94,8 @@ class ReportsBuilder extends Component {
     const { value } = this.state;
 
     return (
+      <div id="reportbuilder">
+        <br></br><br></br><h1>Report Builder</h1><br></br><br></br>
       <div className={classes.root}>
         <AppBar position="static" color="default">
           <Tabs
@@ -109,9 +112,10 @@ class ReportsBuilder extends Component {
         </AppBar>
 
 
-
         {value === 'one' && <TabContainer dir={'ltr'}>
-          <DomainOverview thisProject={thisProject} style={{height: this.props.height}}/>
+          <DomainOverview thisProject={thisProject} style={{height: this.props.height, width: this.props.width}}/>
+          
+          
           <Dialog
             open={this.state.brandedDialogOpen}
             onClose={this.handleBrandedClickClose}
@@ -160,9 +164,11 @@ class ReportsBuilder extends Component {
 
 
 
-        {value === 'two' && <TabContainer dir={'ltr'}><KeywordOverview /></TabContainer>}
-        {value === 'three' && <TabContainer dir={'ltr'}><ContentOverview /></TabContainer>}
+        {value === 'two' && <TabContainer dir={'ltr'}><KeywordOverview/></TabContainer>}
+        {value === 'three' && <TabContainer dir={'ltr'}><ContentOverview/></TabContainer>}
       </div>
+      </div>
+
     );
   }
 }
