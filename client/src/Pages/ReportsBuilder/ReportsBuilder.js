@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Dialog, DialogTitle, DialogActions, DialogContent, DialogContentText, TextField, Tab, Tabs, AppBar, Button } from '@material-ui/core';
+import { Dialog, DialogTitle, DialogActions, DialogContent, DialogContentText, Tab, Tabs, AppBar, Button } from '@material-ui/core';
 import DomainOverview from '../../Components/DomainOverview'
 import ContentOverview from '../../Components/ContentOverview'
 import KeywordOverview from '../../Components/KeywordOverview'
-import { Grid } from '@material-ui/core'
 
 
 function TabContainer({ children, dir }) {
@@ -36,7 +35,6 @@ class ReportsBuilder extends Component {
       value: 'one',
       brandedDialogOpen: false,
       branded: '',
-      thisProject: props.thisProject
     }
   }
 
@@ -76,7 +74,7 @@ class ReportsBuilder extends Component {
       headers,
       body: JSON.stringify(query)
     }
-    fetch(`/project/branded/${this.props.thisProject._id}`, options)
+    fetch(`/project/branded/${this.props.match.params.id}`, options)
     .then(res => res.json())
     .then(result => {
       this.setState({
@@ -89,6 +87,7 @@ class ReportsBuilder extends Component {
     
   render() {
     console.log(this.state);
+    console.log(this.props);
     
     const { classes, thisProject } = this.props;
     const { value } = this.state;
@@ -149,7 +148,6 @@ class ReportsBuilder extends Component {
           </Dialog>
           
           <Tabs
-            value={this.state.value}
             onChange={this.handleChange}
             indicatorColor="primary"
             textColor="primary"

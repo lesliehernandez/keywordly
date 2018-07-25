@@ -18,25 +18,24 @@ class Navbar extends Component {
 
     render() {
         return (
-            <nav class="col-md-12 navbar">
-            <div class="col-md-8 logolinks">
-                        <a class="navbar-brand" href="/landing" style={{padding: '20px'}}><img alt="" src="https://image.ibb.co/nOfmyd/keywordlylogo.png" width="150px" height="18px"></img></a>
-                        <div class="toplinks">
+            <nav className="col-md-12 navbar">
+                <div className="col-md-8 logolinks">
+                    <a className="navbar-brand" href="/landing" style={{padding: '20px'}}><img alt="" src="https://image.ibb.co/nOfmyd/keywordlylogo.png" width="150px" height="18px"></img></a>
+                    <div className="toplinks">
                         <a href="#about" >ABOUT</a>
                         <a href="#pricing" >PRICING</a>
                         <a href="#contact">CONTACT</a>
-                        </div>
-                        </div>
+                    </div>
+                </div>
                         
-                        <div class="col-md-4">
-            <div class="btn-group float-right mt-2" role="group">
-                <Login/>
-                <Signup />
+                <div className="col-md-4">
+                    <div className="btn-group float-right mt-2" role="group">
+                        <Login/>
+                        <Signup />
                         {this.Auth.loggedIn() ? <Link to="/dashboard">Dashboard</Link> : null}
                         {this.Auth.loggedIn() ? <a onClick={this._handleLogout}>Logout</a> : null}
-                        </div>
-                        </div>
-                       
+                    </div>
+                </div>       
             </nav>
 
 
