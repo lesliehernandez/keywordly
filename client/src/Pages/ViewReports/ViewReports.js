@@ -29,8 +29,8 @@ class ViewReports extends Component {
         const { classes } = this.props;
         return(
             <div className="Reports" style={{paddingTop: '50px'}}>
-                <h1 className="App-title" style={{position: 'fixed'}}>{this.props.thisProject.name}</h1>
-                <CreateReportButton projectId={this.props.thisProject._id} projectDomain={this.props.thisProject.clientInfo.domain} projectName={this.props.thisProject.name}/><br></br><br></br><br></br>
+                <h1 className="App-title" style={{position: 'fixed'}}>{this.props.location.state.thisProject.name}</h1>
+                <CreateReportButton projectId={this.props.location.state.thisProject._id} projectDomain={this.props.location.state.thisProject.clientInfo.domain} projectName={this.props.location.state.thisProject.name}/><br></br><br></br><br></br>
                 <div>
                 <Paper className={classes.root}>
                     <Table className={classes.table} style={{textAlign: 'none', width: '90vw', marginTop: '15px'}}>

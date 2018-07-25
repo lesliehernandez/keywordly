@@ -139,12 +139,20 @@ const styles = theme => ({
   }
 });
 
-let routes = [
-  {
-    path: `/dashboard`,
-    main: () => <Client />
-  },
-];
+// let routes = [
+//   {
+//     path: `/dashboard`,
+//     main: () => <Client />
+//   },
+//   {
+//     path: `/dashboard/reports/:id`,
+//     main: () => <ViewReports />
+//   },
+//   {
+//     path: `/dashboard/client/:id`,
+//     main: () => <Client />
+//   },
+// ];
 
 class Dashboard extends Component {
   constructor(props){
@@ -166,31 +174,31 @@ class Dashboard extends Component {
   componentDidUpdate() {
   }
 
-  buildRoutes = () => {
-    this.state.projects.forEach(project => {
-      routes.push({
-        path: `/reports/${project._id}`,
-        sidebar: () => <a>project.client</a>,
-        main: () => <ViewReports thisProject={project} />,
-        routes: [
-          {
-            path: `/reports/reportsBuilder`,
-            component: <ReportsBuilder thisProject={project} />
-          }
-        ]
-      });
-      routes.push({
-        path: `/client/${project._id}`,
-        sidebar: () => <a>project.client</a>,
-        main: () => <Client thisProject={project} />
-      });
-      routes.push({
-        path: `/reports/reportsBuilder/${project._id}`,
-        sidebar: () => <a>project.client</a>,
-        main: () => <ReportsBuilder thisProject={project} />
-      });
-    });
-  }
+  // buildRoutes = () => {
+  //   this.state.projects.forEach(project => {
+  //     routes.push({
+  //       path: `/reports/${project._id}`,
+  //       sidebar: () => <a>project.client</a>,
+  //       main: () => <ViewReports thisProject={project} />,
+  //       routes: [
+  //         {
+  //           path: `/reports/reportsBuilder`,
+  //           component: <ReportsBuilder thisProject={project} />
+  //         }
+  //       ]
+  //     });
+  //     routes.push({
+  //       path: `dashboard/client/${project._id}`,
+  //       sidebar: () => <a>project.client</a>,
+  //       main: () => <Client thisProject={project} />
+  //     });
+  //     routes.push({
+  //       path: `dashboard/reports/reportsBuilder/${project._id}`,
+  //       sidebar: () => <a>project.client</a>,
+  //       main: () => <ReportsBuilder thisProject={project} />
+  //     });
+  //   });
+  // }
 
   getProjects = () => {
     fetch(`/project/user/${this.props.confirm.user}`)
@@ -202,7 +210,7 @@ class Dashboard extends Component {
             isLoaded: true,
             projects: result
           })
-          this.buildRoutes()
+          //this.buildRoutes()
         }
       );
   };
@@ -326,8 +334,6 @@ class Dashboard extends Component {
             </Grid>
           </Toolbar>
         </AppBar>
-
-        <Router>
           <div>
             <Drawer
               variant="permanent"
@@ -378,7 +384,7 @@ class Dashboard extends Component {
                 </ListItem>
                 <Collapse in={this.state.domainCollapseOpen} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
-                    {this.state.projects &&
+                  {this.state.projects &&
                       this.state.projects.map((project, index) => (
                         <ListItem button key={index} className={classes.nested}>
                           <ListItemText
@@ -386,7 +392,8 @@ class Dashboard extends Component {
                             primary={
                               <Button>
                                 <Link
-                                  to={`/client/${project._id}`}
+                                  to={{pathname: `/dashboard/client/${project._id}`,
+                                  state: {thisProject: project}}}
                                   style={{
                                     color: "rgba(0, 0, 0, 0.87)",
                                     fontSize: "1rem",
@@ -400,7 +407,7 @@ class Dashboard extends Component {
                                     float: "left"
                                   }}
                                 >
-                                  {project.clientInfo.domain}
+                                  {project.name}
                                 </Link>
                               </Button>
                             }
@@ -444,7 +451,8 @@ class Dashboard extends Component {
                             primary={
                               <Button>
                                 <Link
-                                  to={`/reports/${project._id}`}
+                                  to={{pathname: `/dashboard/reports/${project._id}`,
+                                  state: {thisProject: project}}}
                                   style={{
                                     color: "rgba(0, 0, 0, 0.87)",
                                     fontSize: "1rem",
@@ -476,18 +484,14 @@ class Dashboard extends Component {
             >
               <div className={classes.toolbar} />
               <div style={{ display: "flex" }}>
-                {routes.map((route, index) => (
-                  <Route
-                    key={index}
-                    path={route.path}
-                    exact={route.exact}
-                    component={route.main}
-                  />
-                ))}
+              <Route path="/dashboard/client/:id" component={Client} />
+              <Route path="/dashboard/reports/:id" component={ViewReports} />
+              <Route path="/dashboard/buildreport/:id" component={ReportsBuilder} />
+                 
+              
               </div>
             </main>
           </div>
-        </Router>
       </div>
     );
   }
