@@ -1,6 +1,7 @@
 const Project = require('../models/project')
 const User = require('../models/user')
 const reportsBuilder = require('../reportsBuilder/getData')
+const tableBuilder = require('../reportsBuilder/buildTables')
 
 
 module.exports.getProjects = (user, cb) => {
@@ -23,6 +24,56 @@ module.exports.getData = (domain, projectId, cb) => {
             if(err) throw err
             console.log(result);
             cb(null, siteData)
+        })
+    })
+}
+
+module.exports.summaryBuilder = (projectId, query, cb) => {
+    console.log(query);
+    
+    Project.findByIdAndUpdate(projectId, {$push : {
+        'clientInfo.branded': {
+            word: query.word,
+            include: query.include
+        }
+    }}, (err, results) => {
+        if(err) throw err
+        Project.findById(projectId, (err, project) => {
+            if(err) throw err
+            let words = []
+            let orData = project.clientData[project.clientInfo.domain].organicResearch
+            project.clientInfo.branded.forEach(term => {
+                words.push(term.word.split(','))
+            })
+            console.log(words[0]);
+            tableBuilder.summary(orData)
+            .then(OrSummary => {
+                tableBuilder.branded(orData, words[0])
+                .then(brandedSummary => {
+                    OrSummary.unbranded = brandedSummary.unbranded
+                    OrSummary.branded = brandedSummary.branded
+                    console.log(OrSummary);
+                    console.log(brandedSummary);
+                    Project.findByIdAndUpdate(projectId, {
+                        $push: {
+                            'reports': {
+                                name: project.name + Date.now(),
+                                organicResearch: orData,
+                                keywordSummary: OrSummary,
+                                brandedSummary: brandedSummary
+                            }
+                        } 
+                    }, (err, results) => {
+                        if(err) throw err
+                        Project.findById(projectId, (err, project) => {
+                            if(err) throw err
+                            cb(null, project)
+                        })
+                    })
+                })
+            })
+            
+            
         })
     })
 }

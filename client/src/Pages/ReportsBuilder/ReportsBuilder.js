@@ -5,155 +5,172 @@ import { Dialog, DialogTitle, DialogActions, DialogContent, DialogContentText, T
 import DomainOverview from '../../Components/DomainOverview'
 import ContentOverview from '../../Components/ContentOverview'
 import KeywordOverview from '../../Components/KeywordOverview'
+import { Grid } from '@material-ui/core'
 
 
 function TabContainer({ children, dir }) {
-    return (
-      <div component="div" style={{ padding: 8 * 3, height: '100%' }}>
-        {children}
-      </div>
-    );
-  }
+  return (
+    <div component="div" style={{ padding: 8 * 3, height: '100%' }}>
+      {children}
+    </div>
+  );
+}
   
-  TabContainer.propTypes = {
-    children: PropTypes.node.isRequired,
-    dir: PropTypes.string.isRequired,
-  };
+TabContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+  dir: PropTypes.string.isRequired,
+};
   
-  const styles = theme => ({
-    root: {
-      backgroundColor: theme.palette.background.paper,
-      width: '100%',
-      height: '100%'
-    },
-  });
+const styles = theme => ({
+  root: {
+    backgroundColor: theme.palette.background.paper,
+    width: '100%',
+    height: '100%'
+  },
+});
 
 class ReportsBuilder extends Component {
+  constructor(props){
+    super(props)
+    this.state= {
+      value: 'one',
+      brandedDialogOpen: false,
+      branded: '',
+      thisProject: props.thisProject
+    }
+  }
 
-      state = {
-        value: 'one',
-        brandedDialogOpen: false,
-        branded: '',
-      };
     
-      handleChange = (event, value) => {
-        this.setState({ value });
-      };
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
     
-      handleBrandedClickOpen = () => {
-        this.setState({ brandedDialogOpen: true });
-      };
-    
-      handleBrandedClickClose = () => {
-        this.setState({ brandedDialogOpen: false });
-      };
+  handleBrandedClickOpen = () => {
+    this.setState({ brandedDialogOpen: true });
+  };
 
-      handleBrandedChange = (e) => {
-        this.setState(
-          {
-              [e.target.name]: e.target.value
-          }
-        )
+  handleBrandedClickClose = () => {
+    this.setState({ brandedDialogOpen: false });
+  };
+
+  handleBrandedChange = (e) => {
+    this.setState(
+      {
+          [e.target.name]: e.target.value
       }
+    )
+  }
 
+  handleBrandedFormSubmit = (e) => {
+    e.preventDefault()
+    console.log('You hit the Branded Submit Handler');
+    console.log(this.state.branded);
+    let query = {
+      word: this.state.branded,
+      include: true
+    }
+    const headers = new Headers()
+    headers.append('Content-Type', 'application/json')
+    const options = {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(query)
+    }
+    fetch(`/project/branded/${this.props.thisProject._id}`, options)
+    .then(res => res.json())
+    .then(result => {
+      this.setState({
+        thisProject: result
+      })
+    })
+    this.handleBrandedClickClose()
+  }
       
-      handleBrandedFormSubmit = (e) => {
-
-        console.log(this.state);
-        
-        this.handleBrandedClickClose()
-      }
-      
-      
-
-      componentDidMount(){
-        const overview = fetch(`/project/data/${this.props.thisProject.clientInfo.domain}/${this.props.thisProject._id}`)
-          .then(res => res.json())
-          .then(results => {
-              console.log(results);          
-          })
-      }
-        
-        
-
-      render() {
-        const { classes, thisProject } = this.props;
-        const { value } = this.state;
     
-        return (
-          <div className={classes.root}>
-            <AppBar position="static" color="default">
-              <Tabs
-                value={this.state.value}
-                onChange={this.handleChange}
-                indicatorColor="primary"
-                textColor="primary"
-                centered
-              >
-                <Tab value='one' label="Domain Overview" />
-                <Tab value='two' label="Keyword Overview" />
-                <Tab value='three' label="Content Overview" />
-              </Tabs>
-            </AppBar>
+  render() {
+    console.log(this.state);
+    
+    const { classes, thisProject } = this.props;
+    const { value } = this.state;
 
-
-
-            {value === 'one' && <TabContainer dir={'ltr'}>
-              <DomainOverview thisProject={thisProject} style={{height: this.props.height}}/>
-              
-              <Dialog
-       open={this.state.brandedDialogOpen}
-       onClose={this.handleBrandedClickClose}
-       aria-labelledby="form-dialog-title"
+    return (
+      <div id="reportbuilder">
+        <br></br><br></br><h1>Report Builder</h1><br></br><br></br>
+      <div className={classes.root}>
+        <AppBar position="static" color="default">
+          <Tabs
+            value={this.state.value}
+            onChange={this.handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            centered
           >
+            <Tab value='one' label="Domain Overview" />
+            <Tab value='two' label="Keyword Overview" />
+            <Tab value='three' label="Content Overview" />
+          </Tabs>
+        </AppBar>
 
-          <DialogTitle id="form-dialog-title" style={{ width: '400px', height: '50px'}} >Enter Branded Keywords</DialogTitle>
-          <DialogContent>
-          <div className="login_form" style={{ width: '400px', height: '150px', paddingBottom: '10px'}}>
-          <DialogContentText style={{fontSize:'12px'}}>
+
+        {value === 'one' && <TabContainer dir={'ltr'}>
+          <DomainOverview thisProject={thisProject} style={{height: this.props.height, width: this.props.width}}/>
+          
+          
+          <Dialog
+            open={this.state.brandedDialogOpen}
+            onClose={this.handleBrandedClickClose}
+            aria-labelledby="form-dialog-title"
+          >
+            <DialogTitle id="form-dialog-title" style={{ width: '400px', height: '50px'}} >Enter Branded Keywords</DialogTitle>
+            <DialogContent>
+              <div className="login_form" style={{ width: '400px', height: '150px', paddingBottom: '10px'}}>
+                <DialogContentText style={{fontSize:'12px'}}>
                   Enter your branded keywords separated by a comma.
-                  </DialogContentText>
-                  <br></br><br></br>
-            <form>
-            <div clas="row">
-            <div class="form-group">
-              <label style={{ fontSize: '12px'}}>Branded Keywords</label><br></br>
-              <input ref="branded" name="branded" type="branded" onChange={this.handleBrandedChange} style={{ width: '350px', height: '25px', fontSize: '12px'}}/>
+                </DialogContentText>
+                <br></br><br></br>
+                <form>
+                  <div clas="row">
+                    <div class="form-group">
+                      <label style={{ fontSize: '12px'}}>Branded Keywords</label><br></br>
+                      <input ref="branded" name="branded" type="branded" onChange={this.handleBrandedChange} style={{ width: '350px', height: '25px', fontSize: '12px'}}/>
+                    </div>
+                  </div>
+                </form>
               </div>
-              </div>
-            </form>
-        </div>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleBrandedClickClose} color="primary" style={{ fontSize: '12px'}}>
-              Cancel
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.handleBrandedClickClose} color="primary" style={{ fontSize: '12px'}}>
+                Cancel
+              </Button>
+              <Button onClick={this.handleBrandedFormSubmit}  color="primary" style={{ fontSize: '12px'}}>
+                Submit
+              </Button>
+            </DialogActions>
+          </Dialog>
+          
+          <Tabs
+            value={this.state.value}
+            onChange={this.handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            centered
+          >
+            <Button onClick={this.handleBrandedClickOpen} style={{margin: '7px', backgroundColor: '#46E4C4'}}>
+              Enter Branded Keywords
             </Button>
-            <Button onClick={this.handleBrandedFormSubmit}  color="primary" style={{ fontSize: '12px'}}>
-              Submit
-            </Button>
-          </DialogActions>
-        </Dialog>
-              
-                <Tabs
-                  value={this.state.value}
-                  onChange={this.handleChange}
-                  indicatorColor="primary"
-                  textColor="primary"
-                  centered>
-                <Button onClick={this.handleBrandedClickOpen} style={{margin: '7px', backgroundColor: '#46E4C4'}}>
-                Enter Branded Keywords
-                </Button>
-                <Tab value='two' label="Save and Continue" style={{margin: '7px', backgroundColor: '#46E4C4', borderRadius: '4px',  padding: '8px 16px', minWidth: '64px', minHeight: '36px', fontWeight: '500',  color: 'rgba(0, 0, 0, 0.87)'}}/>
-                </Tabs>
-            </TabContainer>}
+            <Tab value='two' label="Save and Continue" style={{margin: '7px', backgroundColor: '#46E4C4', borderRadius: '4px',  padding: '8px 16px', minWidth: '64px', minHeight: '36px', fontWeight: '500',  color: 'rgba(0, 0, 0, 0.87)'}}/>
+          </Tabs>
+        </TabContainer>}
 
 
 
-            {value === 'two' && <TabContainer dir={'ltr'}><KeywordOverview /></TabContainer>}
-            {value === 'three' && <TabContainer dir={'ltr'}><ContentOverview /></TabContainer>}
-          </div>
-        );
-      }
+        {value === 'two' && <TabContainer dir={'ltr'}><KeywordOverview/></TabContainer>}
+        {value === 'three' && <TabContainer dir={'ltr'}><ContentOverview/></TabContainer>}
+      </div>
+      </div>
+
+    );
+  }
 }
 
 ReportsBuilder.propTypes = {

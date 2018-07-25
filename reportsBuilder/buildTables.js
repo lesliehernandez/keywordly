@@ -1,8 +1,3 @@
-const getData = require('./getData')
-//const d3 = require('d3')
-const d3 = require('d3-collection')
-const fs = require('fs')
-
 // Database 
 // pulls cliet and competitors
 
@@ -369,13 +364,19 @@ function branded(data, words){
         tempArr.push(key)
     })
     words.forEach(word => {
+        let trim = word.trim().toLowerCase() 
+        console.log('Trimmmmmmmeddd');
+        console.log(trim);
+        
         tempArr.forEach(item => {
-            if((new RegExp(word)).test(item.Ph)){
+            if((new RegExp(trim)).test(item.Ph)){
                 branded.push(item)
                 tempArr.pop(item)
             }
         })
     })
+    console.log(branded);
+    
     branded.forEach(key => {
         if(parseInt(key.Po) < 4){
             a.push(key)
@@ -708,5 +709,6 @@ function getAvg(x, key){
 
  
 
-
+module.exports.branded = branded
+module.exports.summary = summary
 

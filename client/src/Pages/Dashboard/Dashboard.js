@@ -6,6 +6,7 @@ import "./Dashboard.css";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
+import { compose } from 'recompose';
 import {
   Drawer,
   AppBar,
@@ -36,6 +37,7 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import CreateProject from "../../Components/Modals/CreateProject";
 import ViewReports from "../ViewReports";
+import withAuth from "../../Components/Auth/withAuth";
 import AuthService from "../../Components/Auth/AuthService";
 
 const drawerWidth = 240;
@@ -137,34 +139,69 @@ const styles = theme => ({
   }
 });
 
-let routes = [
-  {
-    path: `/dashboard`,
-    main: () => <Client />
-  },
-];
+// let routes = [
+//   {
+//     path: `/dashboard`,
+//     main: () => <Client />
+//   },
+//   {
+//     path: `/dashboard/reports/:id`,
+//     main: () => <ViewReports />
+//   },
+//   {
+//     path: `/dashboard/client/:id`,
+//     main: () => <Client />
+//   },
+// ];
 
 class Dashboard extends Component {
-  Auth = new AuthService();
-  user = this.Auth.getConfirm();
+  constructor(props){
+    super(props)
+    this.state = {
+      draweropen: false,
+      domainCollapseOpen: false,
+      reportsCollapseOpen: false,
+      anchorEl: null,
+    }
+  }
 
-  state = {
-    draweropen: false,
-    domainCollapseOpen: false,
-    reportsCollapseOpen: false,
-    anchorEl: null
-  };
+  Auth = new AuthService()
 
   componentDidMount() {
-    this.getProjects();
-  }
-  componentDidUpdate(prevProps) {
-    console.log("Component Rerendered");
-    console.log(prevProps);
+    this.getProjects()
   }
 
+  componentDidUpdate() {
+  }
+
+  // buildRoutes = () => {
+  //   this.state.projects.forEach(project => {
+  //     routes.push({
+  //       path: `/reports/${project._id}`,
+  //       sidebar: () => <a>project.client</a>,
+  //       main: () => <ViewReports thisProject={project} />,
+  //       routes: [
+  //         {
+  //           path: `/reports/reportsBuilder`,
+  //           component: <ReportsBuilder thisProject={project} />
+  //         }
+  //       ]
+  //     });
+  //     routes.push({
+  //       path: `dashboard/client/${project._id}`,
+  //       sidebar: () => <a>project.client</a>,
+  //       main: () => <Client thisProject={project} />
+  //     });
+  //     routes.push({
+  //       path: `dashboard/reports/reportsBuilder/${project._id}`,
+  //       sidebar: () => <a>project.client</a>,
+  //       main: () => <ReportsBuilder thisProject={project} />
+  //     });
+  //   });
+  // }
+
   getProjects = () => {
-    fetch(`/project/user/${this.user.user}`)
+    fetch(`/project/user/${this.props.confirm.user}`)
       .then(res => res.json())
       .then(
         result => {
@@ -172,40 +209,8 @@ class Dashboard extends Component {
           this.setState({
             isLoaded: true,
             projects: result
-          });
-          result.forEach(project => {
-            routes.push({
-              path: `/reports/${project._id}`,
-              sidebar: () => <a>project.client</a>,
-              main: () => <ViewReports thisProject={project} />,
-              routes: [
-                {
-                  path: `/reports/reportsBuilder`,
-                  component: <ReportsBuilder thisProject={project} />
-                }
-              ]
-            });
-            routes.push({
-              path: `/client/${project._id}`,
-              sidebar: () => <a>project.client</a>,
-              main: () => <Client thisProject={project} />
-            });
-            routes.push({
-              path: `/reports/reportsBuilder/${project._id}`,
-              sidebar: () => <a>project.client</a>,
-              main: () => <ReportsBuilder thisProject={project} />
-            });
-          });
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        error => {
-          this.setState({
-            isLoaded: true,
-            error,
-            projects: []
-          });
+          })
+          //this.buildRoutes()
         }
       );
   };
@@ -241,8 +246,6 @@ class Dashboard extends Component {
   };
 
   render() {
-    console.log(this.state.projects);
-    
     const { classes, theme } = this.props;
     const { anchorEl } = this.state;
     return (
@@ -286,7 +289,7 @@ class Dashboard extends Component {
                   }
                 }}
               />
-              <CreateProject getProjects={this.getProjects} />
+              <CreateProject user={this.props.confirm.user} />
             </Grid>
             <Grid container alignItems="center">
               <Grid item sm={8} className={classes.centerText}>
@@ -331,8 +334,6 @@ class Dashboard extends Component {
             </Grid>
           </Toolbar>
         </AppBar>
-
-        <Router>
           <div>
             <Drawer
               variant="permanent"
@@ -383,7 +384,7 @@ class Dashboard extends Component {
                 </ListItem>
                 <Collapse in={this.state.domainCollapseOpen} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
-                    {this.state.projects &&
+                  {this.state.projects &&
                       this.state.projects.map((project, index) => (
                         <ListItem button key={index} className={classes.nested}>
                           <ListItemText
@@ -391,7 +392,8 @@ class Dashboard extends Component {
                             primary={
                               <Button>
                                 <Link
-                                  to={`/client/${project._id}`}
+                                  to={{pathname: `/dashboard/client/${project._id}`,
+                                  state: {thisProject: project}}}
                                   style={{
                                     color: "rgba(0, 0, 0, 0.87)",
                                     fontSize: "1rem",
@@ -405,7 +407,7 @@ class Dashboard extends Component {
                                     float: "left"
                                   }}
                                 >
-                                  {project.clientInfo.domain}
+                                  {project.name}
                                 </Link>
                               </Button>
                             }
@@ -449,7 +451,8 @@ class Dashboard extends Component {
                             primary={
                               <Button>
                                 <Link
-                                  to={`/reports/${project._id}`}
+                                  to={{pathname: `/dashboard/reports/${project._id}`,
+                                  state: {thisProject: project}}}
                                   style={{
                                     color: "rgba(0, 0, 0, 0.87)",
                                     fontSize: "1rem",
@@ -481,18 +484,14 @@ class Dashboard extends Component {
             >
               <div className={classes.toolbar} />
               <div style={{ display: "flex" }}>
-                {routes.map((route, index) => (
-                  <Route
-                    key={index}
-                    path={route.path}
-                    exact={route.exact}
-                    component={route.main}
-                  />
-                ))}
+              <Route path="/dashboard/client/:id" component={Client} />
+              <Route path="/dashboard/reports/:id" component={ViewReports} />
+              <Route path="/dashboard/buildreport/:id" component={ReportsBuilder} />
+                 
+              
               </div>
             </main>
           </div>
-        </Router>
       </div>
     );
   }
@@ -503,4 +502,4 @@ Dashboard.propTypes = {
   theme: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(Dashboard);
+export default compose(withAuth, withStyles(styles, { withTheme: true }))(Dashboard);

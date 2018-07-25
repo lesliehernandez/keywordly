@@ -1,15 +1,8 @@
 import React, { Component } from 'react'
-import { TextField, Dialog, DialogActions, DialogContent, 
-  DialogContentText, DialogTitle, Button } from '@material-ui/core';
-import AuthService from '../../Auth/AuthService'
+import { Dialog, DialogActions, DialogContent, DialogTitle, Button } from '@material-ui/core';
 
-const styles = theme => ({
-  
-})
 
 class NewProject extends Component {
-
-  Auth = new AuthService();
 
   state = {
     dialogopen: false,
@@ -35,18 +28,16 @@ class NewProject extends Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault()
-    let newProject = {
-      user: null,
-      info: {
-        name:this.state.name,
-        domain:this.state.domain,
-      }
-    }
-    let confirmUser = this.Auth.getConfirm();
-    newProject.user = confirmUser
-    console.log(newProject.user);
-    
 
+    let userId = this.props.user
+
+    let newProject = {
+        name:this.state.name,
+        domain:this.state.domain
+    }   
+
+    console.log(newProject);
+    
     const headers = new Headers()
     headers.append('Content-Type', 'application/json')
     const options = {
@@ -55,17 +46,24 @@ class NewProject extends Component {
       body:JSON.stringify(newProject)
     }
 
-    fetch('/project/new', options)
+    fetch(`/project/new/${userId}`, options)
     .then((data) => {
       console.log(data);
+      window.location.reload()
     })
-
-    this.state.name = ''
-    this.state.domain = ''
-    this.props.getProjects()
     this.handleClickClose()
   }
+
+  // reportBuilderHandler = () => {
+  //   console.log('Building Report');
+  //   fetch(`/project/data/${this.props.projectDomain}/${this.props.projectId}`)
+  //   .then(res => res.json())
+  //   .then(results => {
+  //       console.log(results);          
+  //   })
+  // }
   
+
   render () {
     return (
       <div>
@@ -82,14 +80,14 @@ class NewProject extends Component {
           <DialogContent>
 
           <form>
-            <div clas="row">
-            <div class="form-group">
+            <div className="row">
+            <div className="form-group">
               <label style={{ fontSize: '12px'}}>Project Name</label><br></br>
               <input ref="name" name="name" type="name" onChange={this.handleChange} style={{ width: '350px', height: '25px', fontSize: '12px'}}/>
               </div>
               </div>
-              <div class="row" style={{ marginLeft: '0'}}>
-              <div class="form-group">
+              <div className="row" style={{ marginLeft: '0'}}>
+              <div className="form-group">
               <label style={{ fontSize: '12px'}}>Project Domain</label><br></br>
               <input ref="domain" name="domain" type="domain" onChange={this.handleChange} style={{ width: '350px', height: '25px', fontSize: '12px'}}/>
               </div>

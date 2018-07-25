@@ -11,17 +11,23 @@ class DomainOverview extends Component {
     
     return (
       
-        <Grid container className='client'>
-          <Grid item md={4} style={{marginBottom: '50px'}} style={{height: this.props.height}}>
-            <TrafficCard thisProject={thisProject} />
+      <Grid container className='reportbuilder' item xs={12} style= {{width: '84vw'}} >
+     <Grid item xs={12}>  
+     </Grid>
+     <Grid container style={{justifyContent: 'space-evenly', marginBottom: '20px'}}>
+          <Grid item xs={4}  >
+            <TrafficCard width='400px' height= '300px' thisProject={thisProject} />
           </Grid>
-          <Grid item md={4} style={{marginBottom: '50px'}} >
-            <SerpChart width='450px' thisProject={thisProject} style={{height: this.props.height}}/>
+          <Grid item xs={4} >
+            <SerpChart width='400px' height= '300px' thisProject={thisProject} />
           </Grid>
-          <Grid item md={4} style={{marginBottom: '50px', height: this.props.height}} >
-            <Tables thisProject={thisProject}/>
+          <Grid item xs={4} >
+            <Tables width='400px' height= '300px' thisProject={thisProject}/>
           </Grid>
         </Grid>
+        </Grid>
+
+
     );
   }
 }
