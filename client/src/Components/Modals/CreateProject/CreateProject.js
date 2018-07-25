@@ -80,7 +80,7 @@ class NewProject extends Component {
           <DialogContent>
 
           <form>
-            <div className="row">
+            <div className="row" style={{ marginLeft: '0'}}>
             <div className="form-group">
               <label style={{ fontSize: '12px'}}>Project Name</label><br></br>
               <input ref="name" name="name" type="name" onChange={this.handleChange} style={{ width: '350px', height: '25px', fontSize: '12px'}}/>
