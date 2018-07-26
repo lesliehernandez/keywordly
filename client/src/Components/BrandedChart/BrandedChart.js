@@ -49,7 +49,10 @@ class BrandedChart extends React.Component {
                     ],
                     datasets: [
                       {
-                        data: [(this.props.thisProject.reports > 0 ? this.props.thisProject.reports[0] : 50), 50],
+                        data: [
+                                (this.props.thisProject.reports.length !== 0 ? this.props.thisProject.reports[0].brandedSummary.branded[0] : 50), 
+                                (this.props.thisProject.reports.length !== 0 ? this.props.thisProject.reports[0].keywordSummary.unbranded[0] : 50)
+                              ],
                         backgroundColor: [
                           '#46E4C4',
                           '#5370FB',
