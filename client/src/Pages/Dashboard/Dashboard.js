@@ -139,22 +139,8 @@ const styles = theme => ({
   }
 });
 
-// let routes = [
-//   {
-//     path: `/dashboard`,
-//     main: () => <Client />
-//   },
-//   {
-//     path: `/dashboard/reports/:id`,
-//     main: () => <ViewReports />
-//   },
-//   {
-//     path: `/dashboard/client/:id`,
-//     main: () => <Client />
-//   },
-// ];
-
 class Dashboard extends Component {
+  Auth = new AuthService()
   constructor(props){
     super(props)
     this.state = {
@@ -163,42 +149,10 @@ class Dashboard extends Component {
       reportsCollapseOpen: false,
       anchorEl: null,
     }
-  }
-
-  Auth = new AuthService()
-
-  componentDidMount() {
     this.getProjects()
   }
+  
 
-  componentDidUpdate() {
-  }
-
-  // buildRoutes = () => {
-  //   this.state.projects.forEach(project => {
-  //     routes.push({
-  //       path: `/reports/${project._id}`,
-  //       sidebar: () => <a>project.client</a>,
-  //       main: () => <ViewReports thisProject={project} />,
-  //       routes: [
-  //         {
-  //           path: `/reports/reportsBuilder`,
-  //           component: <ReportsBuilder thisProject={project} />
-  //         }
-  //       ]
-  //     });
-  //     routes.push({
-  //       path: `dashboard/client/${project._id}`,
-  //       sidebar: () => <a>project.client</a>,
-  //       main: () => <Client thisProject={project} />
-  //     });
-  //     routes.push({
-  //       path: `dashboard/reports/reportsBuilder/${project._id}`,
-  //       sidebar: () => <a>project.client</a>,
-  //       main: () => <ReportsBuilder thisProject={project} />
-  //     });
-  //   });
-  // }
 
   getProjects = () => {
     fetch(`/project/user/${this.props.confirm.user}`)
@@ -210,7 +164,6 @@ class Dashboard extends Component {
             isLoaded: true,
             projects: result
           })
-          //this.buildRoutes()
         }
       );
   };
@@ -246,6 +199,7 @@ class Dashboard extends Component {
   };
 
   render() {
+    
     const { classes, theme } = this.props;
     const { anchorEl } = this.state;
     return (
@@ -392,7 +346,7 @@ class Dashboard extends Component {
                             primary={
                               <Button>
                                 <Link
-                                  to={{pathname: `/dashboard/client/${project._id}`,
+                                  to={{pathname: `/dashboard/client`,
                                   state: {thisProject: project}}}
                                   style={{
                                     color: "rgba(0, 0, 0, 0.87)",
@@ -407,7 +361,7 @@ class Dashboard extends Component {
                                     float: "left"
                                   }}
                                 >
-                                  {project.name}
+                                  {project.clientInfo.domain}
                                 </Link>
                               </Button>
                             }
@@ -451,7 +405,7 @@ class Dashboard extends Component {
                             primary={
                               <Button>
                                 <Link
-                                  to={{pathname: `/dashboard/reports/${project._id}`,
+                                  to={{pathname: `/dashboard/reports`,
                                   state: {thisProject: project}}}
                                   style={{
                                     color: "rgba(0, 0, 0, 0.87)",
@@ -484,9 +438,9 @@ class Dashboard extends Component {
             >
               <div className={classes.toolbar} />
               <div style={{ display: "flex" }}>
-              <Route path="/dashboard/client/:id" component={Client} />
-              <Route path="/dashboard/reports/:id" component={ViewReports} />
-              <Route path="/dashboard/buildreport/:id" component={ReportsBuilder} />
+              <Route path="/dashboard/client/" component={Client} />
+              <Route path="/dashboard/reports/" component={ViewReports} />
+              <Route path="/dashboard/buildreport/" component={ReportsBuilder} />
                  
               
               </div>

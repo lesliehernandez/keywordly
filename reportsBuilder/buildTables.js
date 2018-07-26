@@ -1,3 +1,6 @@
+const fs = require('fs')
+const json2csv = require('json2csv').Parser
+
 // Database 
 // pulls cliet and competitors
 
@@ -707,8 +710,113 @@ function getAvg(x, key){
     
 }
 
+
+function convertSummarryToCsv(data){
+    let r1 = data.totals, r2 = data.avg, r3 = data.top3, r4 = data.top410, r5 = data.top1120, r6 = data.top2150, r7 = data.top51100, r8 = data.unbranded, r9 = data.branded
+
+    dataArr = [
+        {
+            "name": "Totals",
+            "c1": r1[0] ,      
+            "c2": r1[1] ,      
+            "c3": r1[2] ,      
+            "c4": r1[3] ,      
+        },
+        {
+            "name": "Avg",
+            "c1": r2[0] ,      
+            "c2": r2[1] ,      
+            "c3": r2[2] ,      
+            "c4": r2[3] ,      
+        },
+        {
+            "name": "Top 3 Totals",
+            "c1": r3[0] ,      
+            "c2": r3[1] ,      
+            "c3": r3[2] ,      
+            "c4": r3[3] ,      
+        },
+        {
+            "name": "Top 4-10 Totals",
+            "c1": r4[0] ,      
+            "c2": r4[1] ,      
+            "c3": r4[2] ,      
+            "c4": r4[3] ,      
+        },
+        {
+            "name": "Top 11-20 Totals",
+            "c1": r5[0] ,      
+            "c2": r5[1] ,      
+            "c3": r5[2] ,      
+            "c4": r5[3] ,      
+        },
+        {
+            "name": "Top 21-50 Totals",
+            "c1": r6[0] ,      
+            "c2": r6[1] ,      
+            "c3": r6[2] ,      
+            "c4": r6[3] ,      
+        },
+        {
+            "name": "Top 51-100 Totals",
+            "c1": r7[0] ,      
+            "c2": r7[1] ,      
+            "c3": r7[2] ,      
+            "c4": r7[3] ,      
+        },
+        {
+            "name": "Unbranded",
+            "c1": r8[0] ,      
+            "c2": r8[1] ,      
+            "c3": r8[2] ,      
+            "c4": r8[3] ,      
+        },
+        {
+            "name": "Branded",
+            "c1": r9[0] ,      
+            "c2": r9[1] ,      
+            "c3": r9[2] ,      
+            "c4": r9[3] ,      
+        },
+        
+    ]
+    const fields = [
+        {
+            label: '   ',
+            value: 'name'   
+        },
+        {
+            label: 'Rank Count',
+            value: 'c1'
+        },
+        {
+            label: 'Search Volume Sum',
+            value: 'c2'
+        },
+        {
+            label: 'Avg Competition',
+            value: 'c3'
+        },
+        {
+            label: 'Traffic %',
+            value: 'c4'
+        }
+    ]
+    const toCSV = new json2csv({ fields, quote: '' })
+    const csv = toCSV.parse(dataArr);
+    return csv;
+}
+
+function convertResearchToCsv(data){
+    
+}
+
+
  
 
+module.exports.downloadSumarry = convertSummarryToCsv
 module.exports.branded = branded
 module.exports.summary = summary
+module.exports.rankingOpportunities = rankingOpportunities
+module.exports.trafficDrivers = trafficDrivers
 

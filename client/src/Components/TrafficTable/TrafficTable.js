@@ -19,7 +19,9 @@ const styles = theme => ({
 
 
 
-function SimpleTable(props) { 
+function SimpleTable(props) {
+  console.log(props);
+   
   const { classes } = props;
   
   return (

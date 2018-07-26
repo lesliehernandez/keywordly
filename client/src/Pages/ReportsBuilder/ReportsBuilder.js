@@ -7,10 +7,10 @@ import ContentOverview from '../../Components/ContentOverview'
 import KeywordOverview from '../../Components/KeywordOverview'
 
 
-function TabContainer({ children, dir }) {
+function TabContainer(props) {
   return (
-    <div component="div" style={{ padding: 8 * 3, height: '100%' }}>
-      {children}
+    <div component="div" style={{ padding: 8 * 3 }}>
+      {props.children}
     </div>
   );
 }
@@ -29,15 +29,28 @@ const styles = theme => ({
 });
 
 class ReportsBuilder extends Component {
-  constructor(props){
-    super(props)
-    this.state= {
+
+    state= {
       value: 'one',
       brandedDialogOpen: false,
       branded: '',
     }
-  }
+    //this.getProject
 
+
+  getProject = () => {
+    fetch(`/project/user/`)
+      .then(res => res.json())
+      .then(
+        result => {
+          console.log(result);
+          this.setState({
+            isLoaded: true,
+            projects: result
+          })
+        }
+      );
+  };
     
   handleChange = (event, value) => {
     this.setState({ value });
@@ -74,7 +87,7 @@ class ReportsBuilder extends Component {
       headers,
       body: JSON.stringify(query)
     }
-    fetch(`/project/branded/${this.props.match.params.id}`, options)
+    fetch(`/project/branded/${this.props.location.state.thisProject._id}`, options)
     .then(res => res.json())
     .then(result => {
       this.setState({
@@ -89,7 +102,8 @@ class ReportsBuilder extends Component {
     console.log(this.state);
     console.log(this.props);
     
-    const { classes, thisProject } = this.props;
+    const { classes } = this.props;
+    const thisProject  = this.props.location.state.thisProject;
     const { value } = this.state;
 
     return (
@@ -98,7 +112,7 @@ class ReportsBuilder extends Component {
       <div className={classes.root}>
         <AppBar position="static" color="default">
           <Tabs
-            value={this.state.value}
+            value={value}
             onChange={this.handleChange}
             indicatorColor="primary"
             textColor="primary"
@@ -111,7 +125,7 @@ class ReportsBuilder extends Component {
         </AppBar>
 
 
-        {value === 'one' && <TabContainer dir={'ltr'}>
+        {value === 'one' ? <TabContainer thisProject={thisProject} dir={'ltr'}>
           <DomainOverview thisProject={thisProject} style={{height: this.props.height, width: this.props.width}}/>
           
           
@@ -156,14 +170,17 @@ class ReportsBuilder extends Component {
             <Button onClick={this.handleBrandedClickOpen} style={{margin: '7px', backgroundColor: '#46E4C4'}}>
               Enter Branded Keywords
             </Button>
-            <Tab value='two' label="Save and Continue" style={{margin: '7px', backgroundColor: '#46E4C4', borderRadius: '4px',  padding: '8px 16px', minWidth: '64px', minHeight: '36px', fontWeight: '500',  color: 'rgba(0, 0, 0, 0.87)'}}/>
+            <Tab 
+              value='two'
+              label="Save and Continue" 
+              style={{margin: '7px', backgroundColor: '#46E4C4', borderRadius: '4px',  padding: '8px 16px', minWidth: '64px', minHeight: '36px', fontWeight: '500',  color: 'rgba(0, 0, 0, 0.87)'}}/>
           </Tabs>
-        </TabContainer>}
+        </TabContainer>: undefined}
 
 
 
-        {value === 'two' && <TabContainer dir={'ltr'}><KeywordOverview/></TabContainer>}
-        {value === 'three' && <TabContainer dir={'ltr'}><ContentOverview/></TabContainer>}
+        {value === 'two' ? <TabContainer dir={'ltr'}><KeywordOverview msg="helo" thisProject={thisProject} /></TabContainer>: undefined}
+        {value === 'three' ? <TabContainer dir={'ltr'}><ContentOverview thisProject={thisProject} reportId="something" /></TabContainer>: undefined}
       </div>
       </div>
 

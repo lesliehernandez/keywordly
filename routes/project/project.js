@@ -1,6 +1,8 @@
 const router = require("express").Router();
-const ProjectsController = require('../../controllers/projectsController')
-const UserController = require('../../controllers/usersController')
+const ProjectsController = require('../../controllers/projectsController');
+const UserController = require('../../controllers/usersController');
+const fs = require('fs');
+const path = require('path');
 
 
 router.post('/new/:userId', (req, res) => {
@@ -19,6 +21,31 @@ router.post('/new/:userId', (req, res) => {
     })
 });
 
+router.get('/download/:projectId/:reportId', (req, res) => {
+    console.log(req.params)
+    ProjectsController.getProjectById(req.params.projectId, (err, project) => {
+        if(err) throw err
+        ProjectsController.getReport(req.params.projectId, req.params.reportId, (err, data) => {
+            if(err) throw err
+            console.log(data);
+            // fs.writeFile(`summary${project.name}.csv`, data)
+            // res.send(data)
+            const filePath = path.join(__dirname, "..", "public", "exports", "csv-" + project.name + ".csv")
+            fs.writeFile(filePath, data, function (err) {
+              if (err) {
+                return res.json(err).status(500);
+              }
+              else {
+                setTimeout(function () {
+                  fs.unlinkSync(filePath); // delete this file after 30 seconds
+                }, 30000)
+                return res.json("/exports/csv-" + project.name + ".csv");
+              };
+            })
+        })
+    })
+})
+
 router.post('/branded/:projectId', (req, res) => {
     console.log('You hit the Branded Route');
     console.log('------------------------------');
@@ -31,10 +58,9 @@ router.post('/branded/:projectId', (req, res) => {
 
 router.get('/user/:id', (req, res) => {
     ProjectsController.getProjects(req.params.id, (err, projects) => {
-        if(err) res.end(err)
-        console.log('Getting all projects for you');
-        console.log('------------------------------');
-        console.log(projects);
+        if(err){
+            res.send(err)
+        }
         res.json(projects)
     })
 })
@@ -49,15 +75,6 @@ router.get('/data/:domain/:projectId', (req, res) => {
     })
 })
 
-
-
-router.post('/update', (req, res) => {
-    res.send({ express: 'Hello From Express' });
-});
-
-router.delete('/delete/:id', (req, res) => {
-    res.send({ express: 'Hello From Express' });
-});
 
 
 

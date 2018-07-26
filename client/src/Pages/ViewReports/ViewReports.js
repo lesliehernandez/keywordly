@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -25,6 +26,16 @@ const styles = theme => ({
 
 class ViewReports extends Component {
 
+  downloadReortHandler = (i) => {
+    console.log(i);
+    fetch(`/project/download/${this.props.location.state.thisProject._id}/${i}`)
+    .then(res => res.json())  
+    .then(data => {
+      console.log(data);
+      
+    })
+  }
+
 
     render(){
       console.log(this.props);
@@ -33,10 +44,29 @@ class ViewReports extends Component {
         return(
             <div className="Reports" style={{paddingTop: '50px'}}>
               <h1 className="App-title" style={{position: 'fixed'}}>{this.props.location.state.thisProject.name}</h1>
-              <CreateReportButton 
-                projectId={this.props.location.state.thisProject._id} 
-                projectDomain={this.props.location.state.thisProject.clientInfo.domain}
-                projectName={this.props.location.state.thisProject.name}/>
+              <Button
+                variant="contained"
+                style={{
+                    margin: '0', 
+                    float: 'right', 
+                    backgroundColor: '#46E4C4',
+                    height: '40px',
+                    padding: '10px',
+                    color: 'rgba(0, 0, 0, 0.87)', 
+                    fontSize: '0.875rem', 
+                    minWidth: '150px',
+                    minHeight: '45px',
+                    fontFamily: 'Roboto', 
+                    borderRadius: '4px', 
+                    textTransform: 'uppercase', 
+                    verticalAlign: 'middle'
+                }}
+              >
+              <Link style={{padding: '0'}}
+                to={{pathname: `/dashboard/buildreport`,
+                state: {thisProject: this.props.location.state.thisProject}}}
+              >Create Report</Link>
+              </Button>
               <br></br><br></br><br></br>
               <div>
                 <Paper className={classes.root}>
@@ -49,11 +79,11 @@ class ViewReports extends Component {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {this.props.location.state.thisProject.reports.map(report => (
-                        <TableRow key={report.name} style={{height:'42px', textAlign: 'none'}}>
+                      {this.props.location.state.thisProject.reports.map((report, i) => (
+                        <TableRow key={i} style={{height:'42px', textAlign: 'none'}}>
                           <TableCell component="th" scope="row" style={{fontSize: '12px', textAlign: 'left'}}>{report.name}</TableCell>
                           <TableCell numeric style={{fontSize: '12px', textAlign: 'left'}}>Keyword Research</TableCell>
-                          <TableCell numeric style={{fontSize: '12px', textAlign: 'left'}}><Button variant='contained'>Download</Button></TableCell>
+                          <TableCell numeric style={{fontSize: '12px', textAlign: 'left'}}><Button key={i} onClick={this.downloadReortHandler.bind(null, i)} variant='contained'>Download</Button></TableCell>
                         </TableRow>  
                       ))}
                     </TableBody>
