@@ -44,10 +44,10 @@ function SimpleTable(props) {
 
   return (
     <Paper className={classes.root}>
-        <br></br><br></br><h1 style= {{fontSize: '20px', fontFamily: 'Montserrat', fontWeight: '500', paddingLeft: '20px', color: '#534FC3'}}>Keyword Overview</h1><br></br><br></br>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
+        <br></br><br></br><h1 style= {{fontSize: '15px', fontFamily: 'Montserrat', fontWeight: '500', paddingLeft: '20px', color: '#534FC3'}}>Keyword Overview</h1><br></br><br></br>
+      <Table className={classes.table} style={{height: '30px'}}>
+        <TableHead style={{height: '20px'}}>
+          <TableRow style={{height:'20px'}}>
             <TableCell style= {{fontSize: '12px', fontWeight: '800'}}>Rank Count</TableCell>
             <TableCell numeric style= {{fontSize: '12px', fontWeight: '800'}}>Search Volume Sum</TableCell>
             <TableCell numeric style= {{fontSize: '12px', fontWeight: '800'}}>Avg. Competition</TableCell>
@@ -55,10 +55,10 @@ function SimpleTable(props) {
             <TableCell numeric style= {{fontSize: '12px', fontWeight: '800'}}>Traffic %</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody style={{height: '30px'}}>
           {data.map(n => {
             return (
-              <TableRow key={n.id}>
+              <TableRow key={n.id} style={{height: '40px'}}>
                 <TableCell component="th" scope="row" style= {{fontSize: '12px'}}>
                   {n.name}
                 </TableCell>

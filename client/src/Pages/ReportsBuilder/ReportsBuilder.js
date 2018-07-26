@@ -165,15 +165,15 @@ class ReportsBuilder extends Component {
             onChange={this.handleChange}
             indicatorColor="primary"
             textColor="primary"
-            centered
-          >
-            <Button onClick={this.handleBrandedClickOpen} style={{margin: '7px', backgroundColor: '#46E4C4'}}>
+            style= {{float: 'right', marginRight: '30px'}}>
+            
+            <Button onClick={this.handleBrandedClickOpen} style={{margin: '7px', backgroundColor: '#46E4C4', float: 'right'}}>
               Enter Branded Keywords
             </Button>
             <Tab 
               value='two'
               label="Save and Continue" 
-              style={{margin: '7px', backgroundColor: '#46E4C4', borderRadius: '4px',  padding: '8px 16px', minWidth: '64px', minHeight: '36px', fontWeight: '500',  color: 'rgba(0, 0, 0, 0.87)'}}/>
+              style={{margin: '7px', backgroundColor: '#46E4C4', borderRadius: '4px',  padding: '8px 16px', minWidth: '64px', minHeight: '36px', fontWeight: '500',  color: 'rgba(0, 0, 0, 0.87)', float: 'right'}}/>
           </Tabs>
         </TabContainer>: undefined}
 

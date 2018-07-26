@@ -52,7 +52,7 @@ class ViewReports extends Component {
                     backgroundColor: '#46E4C4',
                     height: '40px',
                     padding: '10px',
-                    color: 'rgba(0, 0, 0, 0.87)', 
+                    color: 'rgba(0, 0, 0, 0.87)',
                     fontSize: '0.875rem', 
                     minWidth: '150px',
                     minHeight: '45px',
@@ -62,7 +62,7 @@ class ViewReports extends Component {
                     verticalAlign: 'middle'
                 }}
               >
-              <Link style={{padding: '0'}}
+              <Link style={{padding: '0', color: 'rgba(0, 0, 0, 0.87)'}}
                 to={{pathname: `/dashboard/buildreport`,
                 state: {thisProject: this.props.location.state.thisProject}}}
               >Create Report</Link>
