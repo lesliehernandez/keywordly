@@ -17,28 +17,6 @@ const options = {
 class OrChart extends Component {
   
   render() {
-
-    const bar = {
-      labels: ['1-3', '4-10', '11-20', '21-50', '51-100'],
-      datasets: [
-        {
-          label: 'Organic Keywords',
-          backgroundColor: '#46E4C4',
-          borderColor: '#46E4C4',
-          borderWidth: 1,
-          hoverBackgroundColor: '#46E4C4',
-          hoverBorderColor: '#46E4C4',
-          data: [
-          24,
-          34,
-          76,
-          12,
-          42,
-          ],
-        },
-      ],
-    };
-
     console.log(this.props);
     return (
       <div className="animated fadeIn">
@@ -54,7 +32,28 @@ class OrChart extends Component {
             </CardHeader>
             <CardBody>
               <div className="chart-wrapper">
-                <Bar data={bar} options={options} />
+                <Bar data={
+                  {
+                    labels: ['1-3', '4-10', '11-20', '21-50', '51-100'],
+                    datasets: [
+                      {
+                        label: 'Organic Keywords',
+                        backgroundColor: '#46E4C4',
+                        borderColor: '#46E4C4',
+                        borderWidth: 1,
+                        hoverBackgroundColor: '#46E4C4',
+                        hoverBorderColor: '#46E4C4',
+                        data: [
+                        (this.props.thisProject.reports.length !== 0 ? this.props.thisProject.reports[0].keywordSummary.top3[0] : 14),
+                        (this.props.thisProject.reports.length !== 0 ? this.props.thisProject.reports[0].keywordSummary.top410[0] : 30),
+                        (this.props.thisProject.reports.length !== 0 ? this.props.thisProject.reports[0].keywordSummary.top1120[0] : 61),
+                        (this.props.thisProject.reports.length !== 0 ? this.props.thisProject.reports[0].keywordSummary.top2150[0] : 57),
+                        (this.props.thisProject.reports.length !== 0 ? this.props.thisProject.reports[0].keywordSummary.top51100[0] : 25),
+                        ],
+                      },
+                    ],
+                  }
+                } options={options} />
               </div>
             </CardBody>
           </Card>    
