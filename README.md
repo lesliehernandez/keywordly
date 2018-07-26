@@ -19,4 +19,4 @@ The user signs in and creates a new project by entering their Project Name and W
 
 
 ## Screenshots
-![Desktop](readme-images/desktop.png "Desktop")
+![keywordly](https://thumb.ibb.co/jMjXb8/image.png)
