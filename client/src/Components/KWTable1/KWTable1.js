@@ -54,7 +54,7 @@ function SimpleTable(props) {
 
   return (
     <Paper className={classes.root}>
-        <br></br><br></br><h1 style= {{fontSize: '15px', fontFamily: 'Montserrat', fontWeight: '500', paddingLeft: '20px', color: '#534FC3'}}>Keyword Overview</h1><br></br><br></br>
+        <br></br><br></br><h1 style= {{fontSize: '20px', fontFamily: 'Montserrat', fontWeight: '500', paddingLeft: '20px', color: '#534FC3'}}>Keyword Overview</h1><br></br><br></br>
       <Table className={classes.table} style={{height: '30px'}}>
         <TableHead style={{height: '20px'}}>
           <TableRow style={{height:'20px'}}>
