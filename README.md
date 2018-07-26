@@ -8,12 +8,7 @@ The user signs in and creates a new project by entering their Project Name and W
 
 ## Built With
 
-<img src="/client/public/images/react.png" width="100" title="react">
-<img src="/client/public/images/nodejs.png" width="100" title="nodejs">
-<img src="/client/public/images/expressjs.png" width="100" title="expressjs">
-<img src="/client/public/images/mongodb.png" width="100" title="mongodb">
-<img src="/client/public/images/materialui.png" width="100" title="materialui">
-<img src="/client/public/images/chartjs.png" width="600" title="chartjs">
+<img src="/client/public/images/react.png" width="100" title="react"<img src="/client/public/images/nodejs.png" width="100" title="nodejs"><img src="/client/public/images/expressjs.png" width="100" title="expressjs"><img src="/client/public/images/mongodb.png" width="100" title="mongodb"><img src="/client/public/images/materialui.png" width="100" title="materialui"><img src="/client/public/images/chartjs.jpg" width="100" title="chartjs">
 
 
 ## Screenshots
