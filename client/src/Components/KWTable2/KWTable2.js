@@ -60,10 +60,10 @@ function SimpleTable(props) {
                 <TableCell component="th" scope="row">
                   {n.name}
                 </TableCell>
-                <TableCell numeric>{n.calories}</TableCell>
-                <TableCell numeric>{n.fat}</TableCell>
-                <TableCell numeric>{n.carbs}</TableCell>
-                <TableCell numeric>{n.protein}</TableCell>
+                <TableCell numeric style= {{fontSize: '12px'}}>{n.calories}</TableCell>
+                <TableCell numeric style= {{fontSize: '12px'}}>{n.fat}</TableCell>
+                <TableCell numeric style= {{fontSize: '12px'}}>{n.carbs}</TableCell>
+                <TableCell numeric style= {{fontSize: '12px'}}>{n.protein}</TableCell>
               </TableRow>
             );
           })}
