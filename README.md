@@ -17,4 +17,4 @@ The user signs in and creates a new project by entering their Project Name and W
 
 
 ## Screenshots
-![](images/readme.png)
+<img src="./public/images/readme.png" width="600" title="keywordly">
