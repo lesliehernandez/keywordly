@@ -51,11 +51,9 @@ class Landing extends Component {
                 <br></br>
                 <br></br>
                 <br></br>
-                <h4>Traffic Overview</h4>
+                <h4>Website Traffic</h4>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Risus viverra adipiscing at in.
+                Grow your market share and website traffic with Keywordly's digital market intelligence platform. 
                 </p>
                 <br></br>
                 <br></br>
@@ -67,9 +65,7 @@ class Landing extends Component {
 
                 <h4>Keyword Resarch</h4>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Risus viverra adipiscing at in.
+                Stop guessing at what people are searching for and use the Keywordly's Keyword Research tool to get keyword ideas and suggestions for your content.
                 </p>
                 </div>
                 <div class="col-md-3">
@@ -79,9 +75,8 @@ class Landing extends Component {
                 <br></br>
                 <h4>Competitor Data</h4>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Risus viverra adipiscing at in.
+                Find out where your main rivals invest most of the marketing efforts
+and adopt their experience in your own marketing strategy
                 </p>
                 <br></br>
                 <br></br>
@@ -92,9 +87,7 @@ class Landing extends Component {
 
                 <h4>Content Audit</h4>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Risus viverra adipiscing at in.
+                Inventory, audit, and analyze your website content and identify gaps in your strategy with Keywordly's content audit tool.
                 </p>
                 </div>
                 <div class="col-md-6">
@@ -121,11 +114,10 @@ class Landing extends Component {
           <h3>Basic</h3>
         </div>
         <div class="panel-body">
-          <p><strong>20</strong> Lorem</p>
-          <p><strong>15</strong> Ipsum</p>
-          <p><strong>5</strong> Dolor</p>
-          <p><strong>2</strong> Sit</p>
-          <p><strong>Endless</strong> Amet</p>
+          <p><strong>1</strong> Domain</p>
+          <p><strong>100</strong>Keywords</p>
+          <p><strong>3</strong> Competitors</p>
+          <p><strong>1</strong> User</p>
         </div>
         <div class="panel-footer">
           <h3>$19</h3>
@@ -140,11 +132,10 @@ class Landing extends Component {
           <h3>Pro</h3>
         </div>
         <div class="panel-body">
-          <p><strong>50</strong> Lorem</p>
-          <p><strong>25</strong> Ipsum</p>
-          <p><strong>10</strong> Dolor</p>
-          <p><strong>5</strong> Sit</p>
-          <p><strong>Endless</strong> Amet</p>
+          <p><strong>5</strong> Domains</p>
+          <p><strong>500</strong> Keywords</p>
+          <p><strong>5</strong> Competitors</p>
+          <p><strong>3</strong> Users</p>
         </div>
         <div class="panel-footer">
           <h3>$29</h3>
@@ -159,12 +150,11 @@ class Landing extends Component {
           <h3>Premium</h3>
         </div>
         <div class="panel-body">
-          <p><strong>100</strong> Lorem</p>
-          <p><strong>50</strong> Ipsum</p>
-          <p><strong>25</strong> Dolor</p>
-          <p><strong>10</strong> Sit</p>
-          <p><strong>Endless</strong> Amet</p>
-        </div>
+          <p><strong>10+</strong> Domains</p>
+          <p><strong>Unlimited</strong> Keywords</p>
+          <p><strong>10</strong> Competitors</p>
+          <p><strong>10</strong> Users</p>
+      </div>
         <div class="panel-footer">
           <h3>$49</h3>
           <h4>per month</h4>
@@ -202,9 +192,10 @@ class Landing extends Component {
           </div>
           </div>
 
-
+<div item xs={12}>
         <footer class="container-fluid text-center">
-          <div class="footerlinks">
+        
+          <div class="footerlinks" item xs={6}>
             <a href="#about" class="footerlinks">
               About
             </a>
@@ -216,6 +207,7 @@ class Landing extends Component {
             </a>
           </div>
 
+          <div item xs={6}>
           <a href="#">
             <i class="socialicons fab fa-facebook" />
           </a>
@@ -228,11 +220,13 @@ class Landing extends Component {
           <a href="#">
             <i class="socialicons fab fa-instagram" />
           </a>
+         </div>
           <br />
           <br />
           <br />
-          <p>Copyright 2018</p>
+
         </footer>
+        </div>
         </div>
     );
   }

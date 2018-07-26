@@ -30,6 +30,8 @@ h4 {
 p {
     color: #9291AB;   
     font-size: 13px;
+    justify-content: 'center';
+    align-items: 'center';
 }
 
 .herotext {
@@ -125,7 +127,7 @@ footer {
 
 .footerlinks {
    float: left;
-   padding-left: 30px;
+   padding-left: 15px;
    color: #534FC3;
    font-size: 12px;
 }
@@ -140,9 +142,10 @@ footer {
 
 .socialicons {
     float: right;
-    padding-right: 20px;
+    padding-right: 30px;
     color: #534FC3;
     font-size: 20px;
+    padding-top: 30px;
 
 }
 
