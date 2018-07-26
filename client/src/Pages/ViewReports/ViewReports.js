@@ -43,7 +43,7 @@ class ViewReports extends Component {
         const { classes } = this.props;
         return(
             <div className="Reports" style={{paddingTop: '50px'}}>
-              <h1 className="App-title" style={{position: 'fixed'}}>{this.props.location.state.thisProject.name}</h1>
+              <h1 className="App-title" style={{position: 'fixed'}}>{this.props.location.state.thisProject ? (this.props.location.state.thisProject.name) : 'My Reports' }</h1>
               <Button
                 variant="contained"
                 style={{

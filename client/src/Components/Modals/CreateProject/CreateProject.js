@@ -49,7 +49,7 @@ class NewProject extends Component {
     fetch(`/project/new/${userId}`, options)
     .then((data) => {
       console.log(data);
-      window.location = '/dashboard/client'
+      window.location.reload()
     })
     this.handleClickClose()
   }
