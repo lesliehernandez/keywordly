@@ -17,7 +17,7 @@ class KeywordOverview extends Component {
         <Button onClick={this.handleBrandedClickOpen} style={{backgroundColor: '#46E4C4', float: 'right', width: '160px', height: '40px'}}>
               Generate Report
             </Button>
-        <Button onClick={this.handleBrandedClickOpen} style={{backgroundColor: '#46E4C4', float: 'right', width: '160px', height: '40px'}}>
+        <Button onClick={this.handleBrandedClickOpen} style={{backgroundColor: '#46E4C4', float: 'right', width: '160px', height: '40px', marginRight: '10px'}}>
               Add Competitors
             </Button>
     </div>      
