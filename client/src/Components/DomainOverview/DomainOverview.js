@@ -17,8 +17,8 @@ class DomainOverview extends Component {
      <Grid item xs={12}>  
      </Grid>
      <Grid container style={{justifyContent: 'space-evenly', marginBottom: '20px'}}>
-          <Grid item xs={4}  >
-            <TrafficCard width='400px' height= '300px' thisProject={thisProject} />
+          <Grid item xs={4}>
+            <TrafficCard width='400px' height= '300px' thisProject={thisProject}/>
           </Grid>
           <Grid item xs={4} >
             <SerpChart width='400px' height= '300px' thisProject={thisProject} />
