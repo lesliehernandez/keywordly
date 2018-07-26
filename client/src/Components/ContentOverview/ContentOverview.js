@@ -19,10 +19,13 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 import { Button } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
+
 
 
 
 const styles = theme => ({
+  
   button: {
     margin: theme.spacing.unit,
   },
@@ -43,9 +46,11 @@ class ContentOverview extends React.Component {
     console.log(this.props);
     
     return (
-      <Button variant="contained" onClick={this.downloadReortHandler} className={classes.button}>
+      <Grid container className='viewreport' item xs={12} style= {{width: '84vw', height: '100vh', justifyContent: 'center'}} >
+      <Button variant="contained" onClick={this.downloadReortHandler} className={classes.button} style={{backgroundColor: '#46E4C4', float: 'right', width: '160px', height: '40px', marginRight: '10px'}}>
         Download Report
       </Button>
+      </Grid>
     );
   }
 }

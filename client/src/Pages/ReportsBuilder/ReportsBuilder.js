@@ -120,7 +120,7 @@ class ReportsBuilder extends Component {
           >
             <Tab value='one' label="Domain Overview" />
             <Tab value='two' label="Keyword Overview" />
-            <Tab value='three' label="Content Overview" />
+            <Tab value='three' label="View Report" />
           </Tabs>
         </AppBar>
 
