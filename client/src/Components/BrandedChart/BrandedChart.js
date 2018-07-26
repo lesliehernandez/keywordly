@@ -10,25 +10,26 @@ import './Chart.css'
 class BrandedChart extends React.Component {    
 
   render(){
-
-    const pie = {
-      labels: [
-        'Branded',
-        'Unbranded',
-      ],
-      datasets: [
-        {
-          data: [ 50,  50],
-          backgroundColor: [
-            '#46E4C4',
-            '#5370FB',
-          ],
-          hoverBackgroundColor: [
-            '#46E4C4',
-            '#5370FB',
-          ],
-        }],
-    };
+    console.log(this.props);
+    
+    // const pie = {
+    //   labels: [
+    //     'Branded',
+    //     'Unbranded',
+    //   ],
+    //   datasets: [
+    //     {
+    //       data: [ 50, 50],
+    //       backgroundColor: [
+    //         '#46E4C4',
+    //         '#5370FB',
+    //       ],
+    //       hoverBackgroundColor: [
+    //         '#46E4C4',
+    //         '#5370FB',
+    //       ],
+    //     }],
+    // };
     
     return (
       <div className="animated fadeIn">
@@ -40,7 +41,26 @@ class BrandedChart extends React.Component {
             </ CardHeader>
             <CardBody style={{marginTop: '0', paddingTop: '0'}}>
               <div className="chart-wrapper">
-                <Pie data={pie}/>
+                <Pie data={
+                  {
+                    labels: [
+                      'Branded',
+                      'Unbranded',
+                    ],
+                    datasets: [
+                      {
+                        data: [(this.props.thisProject.reports > 0 ? this.props.thisProject.reports[0] : 50), 50],
+                        backgroundColor: [
+                          '#46E4C4',
+                          '#5370FB',
+                        ],
+                        hoverBackgroundColor: [
+                          '#46E4C4',
+                          '#5370FB',
+                        ],
+                      }],
+                  }
+                }/>
               </div>
             </CardBody >
           </Card>

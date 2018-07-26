@@ -199,6 +199,8 @@ class Dashboard extends Component {
   };
 
   render() {
+    console.log(this.state);
+    console.log(this.props);
     
     const { classes, theme } = this.props;
     const { anchorEl } = this.state;
@@ -434,7 +436,7 @@ class Dashboard extends Component {
 
             <main
               className={classes.content}
-              style={{ height: "100vh", width: "95vw" }}
+              style={{ height: "100vh", width: "95vw", overflow: 'scroll' }}
             >
               <div className={classes.toolbar} />
               <div style={{ display: "flex" }}>
