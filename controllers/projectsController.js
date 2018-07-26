@@ -64,12 +64,10 @@ module.exports.summaryBuilder = (projectId, query, cb) => {
                     OrSummary.branded = brandedSummary.branded
                     console.log(OrSummary);
                     console.log(brandedSummary);
-                    tableBuilder.rankingOpportunities(orData, words[0])
+                    tableBuilder.trafficDrivers(orData, words[0])
                     .then(trafficDrivers => {
-                        console.log(trafficDrivers);
                         tableBuilder.rankingOpportunities(orData, words[0])
                         .then(rankingOpportunities => {
-                            console.log(rankingOpportunities);
                             Project.findByIdAndUpdate(projectId, {
                                 $push: {
                                     'reports': {
