@@ -30,17 +30,13 @@ router.get('/download/:projectId/:reportId', (req, res) => {
             console.log(data);
             // fs.writeFile(`summary${project.name}.csv`, data)
             // res.send(data)
-            const filePath = path.join(__dirname, "..", "public", "exports", "csv-" + project.name + ".csv")
-            fs.writeFile(filePath, data, function (err) {
+            fs.writeFile(project.name + ".csv", data, function (err) {
               if (err) {
                 return res.json(err).status(500);
               }
               else {
-                setTimeout(function () {
-                  fs.unlinkSync(filePath); // delete this file after 30 seconds
-                }, 30000)
-                return res.json("/exports/csv-" + project.name + ".csv");
-              };
+                  return res.json("/exports/csv-" + project.name + ".csv");
+              }
             })
         })
     })
