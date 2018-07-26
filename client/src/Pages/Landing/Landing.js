@@ -98,7 +98,7 @@ class Landing extends Component {
                 </p>
                 </div>
                 <div class="col-md-6">
-                <img alt="" src="http://via.placeholder.com/500x350"></img>
+                <img src="https://preview.ibb.co/cWB63o/reportbuilder.png" alt="reportbuilder" width="500px" height="350px"></img>
                 </div>
 </div>
 </div>
