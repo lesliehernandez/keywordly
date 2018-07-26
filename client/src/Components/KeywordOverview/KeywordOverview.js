@@ -14,10 +14,10 @@ class KeywordOverview extends Component {
         <Button onClick={this.handleBrandedFormSubmit}  color="primary" style={{ backgroundColor: '#46E4C4', borderRadius: '4px',  padding: '8px 16px', fontWeight: '500',  color: 'rgba(0, 0, 0, 0.87)', float: 'right', width: '160px', height: '40px'}}>
               Add Bracket</Button><br></br><br></br>
         <KWTable2 width='400px' height= '300px' thisProject={thisProject} /><br></br><br></br>
-        <Button onClick={this.handleBrandedClickOpen} style={{margin: '7px', backgroundColor: '#46E4C4', float: 'right', width: '160px', height: '40px'}}>
+        <Button onClick={this.handleBrandedClickOpen} style={{backgroundColor: '#46E4C4', float: 'right', width: '160px', height: '40px'}}>
               Generate Report
             </Button>
-        <Button onClick={this.handleBrandedClickOpen} style={{margin: '7px', backgroundColor: '#46E4C4', float: 'right', width: '160px', height: '40px'}}>
+        <Button onClick={this.handleBrandedClickOpen} style={{backgroundColor: '#46E4C4', float: 'right', width: '160px', height: '40px'}}>
               Add Competitors
             </Button>
     </div>      
