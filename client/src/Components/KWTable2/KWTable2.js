@@ -225,7 +225,8 @@ class KeywordOverview extends React.Component {
 <div id="table1">
         <div className={classes.tableWrapper}>
           <Table className={classes.table} aria-labelledby="tableTitle">
-           
+          <br></br><br></br><h1 style= {{fontSize: '14px', fontFamily: 'Montserrat', fontWeight: '500'}}>Keyword Brackets</h1><br></br><br></br>
+
             <TableBody>
               {data
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
