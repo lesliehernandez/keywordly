@@ -44,6 +44,7 @@ class EnhancedTableHead extends React.Component {
     return (
       <TableHead>
         <TableRow>
+        <br></br><br></br><h1 style= {{fontSize: '14px', fontFamily: 'Montserrat', fontWeight: '500'}}>Report Builder</h1><br></br><br></br>
           {columnData.map(column => {
             return (
               <TableCell
@@ -221,11 +222,10 @@ class KeywordOverview extends React.Component {
       
       
       <Paper className={classes.root} style={{width: '84vw',padding: '20px'}}>
-
 <div id="table1">
         <div className={classes.tableWrapper}>
           <Table className={classes.table} aria-labelledby="tableTitle">
-           
+          <br></br><br></br><h1 style= {{fontSize: '14px', fontFamily: 'Montserrat', fontWeight: '500'}}>Keyword Overview</h1><br></br><br></br> 
             <TableBody>
               {data
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
