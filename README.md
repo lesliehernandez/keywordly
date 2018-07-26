@@ -8,8 +8,6 @@ The user signs in and creates a new project by entering their Project Name and W
 
 ## Built With
 
-# Final Project Requirements
-
 -React
 -Node
 -Express
@@ -19,4 +17,4 @@ The user signs in and creates a new project by entering their Project Name and W
 
 
 ## Screenshots
-![keywordly](https://thumb.ibb.co/jMjXb8/image.png)
+![](images/readme.png)
