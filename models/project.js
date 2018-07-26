@@ -25,18 +25,28 @@ const ProjectSchema = mongoose.Schema({
     clientData: {
         type: Object
     },
-    competitors: {
+    competitors: [{
         type: Object
-    },
+    }],
     reports:[ {
         name: {
             type: String
         },
+        createdAt:{
+            type: Date,
+            default: Date.now,
+        } ,
         organicResearch: {type:Object},
         keywordSummary: {type:Object},
-        brandedSummary: {type:Object}
+        brandedSummary: {type:Object},
+        keywordBrackets:[{type: Object}],
+        rankingOpps: {type: Object},
+        trafficDrivers: {type: Object}
     }]
-})
+}, { timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+}})
 
 // const ProjectSchema = mongoose.Schema({
 //     name: {

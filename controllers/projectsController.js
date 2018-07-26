@@ -12,6 +12,15 @@ module.exports.getProjects = (user, cb) => {
     })
 }
 
+
+module.exports.getProjectById = (projectId, cb) => {
+    Project.findById(projectId)
+    .exec((err, project) => {
+        if(err) throw err
+        cb(null, project)
+    })
+}
+
 module.exports.getData = (domain, projectId, cb) => {
     let domainArr = []
     domainArr.push(domain)
@@ -27,6 +36,7 @@ module.exports.getData = (domain, projectId, cb) => {
         })
     })
 }
+
 
 module.exports.summaryBuilder = (projectId, query, cb) => {
     console.log(query);
@@ -54,20 +64,30 @@ module.exports.summaryBuilder = (projectId, query, cb) => {
                     OrSummary.branded = brandedSummary.branded
                     console.log(OrSummary);
                     console.log(brandedSummary);
-                    Project.findByIdAndUpdate(projectId, {
-                        $push: {
-                            'reports': {
-                                name: project.name + Date.now(),
-                                organicResearch: orData,
-                                keywordSummary: OrSummary,
-                                brandedSummary: brandedSummary
-                            }
-                        } 
-                    }, (err, results) => {
-                        if(err) throw err
-                        Project.findById(projectId, (err, project) => {
-                            if(err) throw err
-                            cb(null, project)
+                    tableBuilder.rankingOpportunities(orData, words[0])
+                    .then(trafficDrivers => {
+                        console.log(trafficDrivers);
+                        tableBuilder.rankingOpportunities(orData, words[0])
+                        .then(rankingOpportunities => {
+                            console.log(rankingOpportunities);
+                            Project.findByIdAndUpdate(projectId, {
+                                $push: {
+                                    'reports': {
+                                        name: project.name + Date.now(),
+                                        organicResearch: orData,
+                                        keywordSummary: OrSummary,
+                                        brandedSummary: brandedSummary,
+                                        rankingOpps: rankingOpportunities,
+                                        trafficDrivers: trafficDrivers
+                                    }
+                                } 
+                            }, (err, results) => {
+                                if(err) throw err
+                                Project.findById(projectId, (err, project) => {
+                                    if(err) throw err
+                                    cb(null, project)
+                                })
+                            })
                         })
                     })
                 })
@@ -75,6 +95,14 @@ module.exports.summaryBuilder = (projectId, query, cb) => {
             
             
         })
+    })
+}
+
+module.exports.getReport = (projectId, reportId, cb) => {    
+    Project.findById(projectId, (err, project) => {
+        if(err) throw err
+        let file = tableBuilder.downloadSumarry(project.reports[reportId].keywordSummary)
+        cb(null, file)
     })
 }
 

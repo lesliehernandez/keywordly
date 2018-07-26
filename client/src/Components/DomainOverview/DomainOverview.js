@@ -6,6 +6,8 @@ import { Grid } from '@material-ui/core'
 
 class DomainOverview extends Component {
   render() {
+    console.log(this.props);
+    
     const { thisProject } = this.props
     
     
